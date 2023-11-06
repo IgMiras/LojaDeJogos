@@ -1,7 +1,11 @@
-import { Inter } from "next/font/google";
-import "./globals.css";
+import { Kanit } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+const kanit = Kanit({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = {
   title: "Loja de Jogos",
@@ -10,8 +14,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-br">
-      <body className={inter.className}>{children}</body>
+    <html lang="pt-br" className={kanit.className}>
+      <body>{children}</body>
     </html>
   );
 }
