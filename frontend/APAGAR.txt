@@ -1,2 +1,0 @@
-criei esse arquivo só para a pasta
-frontend nao ficar vazia
