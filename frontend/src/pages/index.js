@@ -1,7 +1,10 @@
+import { SubHome } from "@/components/HomeSec01";
+
 export default function Home() {
   return (
     <main>
-      <h1>Hello</h1>
+      <Home />
+      <SubHome />
     </main>
   );
 }
