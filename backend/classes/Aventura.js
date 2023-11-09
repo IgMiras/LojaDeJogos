@@ -1,4 +1,4 @@
-import Jogo from './Jogo.js';
+import Jogo from "./Jogo.js";
 
 export default class Aventura extends Jogo {
     constructor(
