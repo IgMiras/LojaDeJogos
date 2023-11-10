@@ -35,7 +35,7 @@ export const NavBar = () => {
               <Itens>
                 <Trigger> JOGOS</Trigger>
 
-                <ConteudoPopupComponent width="350px" top="45px" left="130px">
+                <ConteudoPopupComponent width="350px" top="45px" left="70px">
                   <ul>
                     <li onClick={() => router.push("/")}>Todos os jogos</li>
                     <li onClick={() => router.push("/")}>Avaliar</li>
@@ -48,7 +48,7 @@ export const NavBar = () => {
               <Itens>
                 <Trigger> RELATÓRIOS</Trigger>
 
-                <ConteudoPopupComponent width="500px" top="45px" left="440px">
+                <ConteudoPopupComponent width="500px" top="45px" left="390px">
                   <SubContent>
                     <ul>
                       <TriggerSub> Jogos</TriggerSub>
@@ -104,7 +104,7 @@ export const NavBar = () => {
               </Itens>
               <Itens>
                 <Trigger> CADASTRAR</Trigger>
-                <ConteudoPopupComponent width="350px" top="45px" left="816px">
+                <ConteudoPopupComponent width="350px" top="45px" left="790px">
                   <ul>
                     <li>Cliente</li>
                     <li>Gerente</li>
