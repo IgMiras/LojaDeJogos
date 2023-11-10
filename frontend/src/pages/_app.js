@@ -33,11 +33,15 @@ export default function App({ Component, pageProps }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-          href="https://fonts.googleapis.com/css2?family=Kanit&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Kanit:wght@200;300;400&display=swap"
           rel="stylesheet"
         />
       </Head>
-      <Home />
+      <Layout>
+        <Home />
+        <SubHome1 />
+        <SubHome2 />
+      </Layout>
     </ThemeProvider>
   );
 }

@@ -19,11 +19,11 @@ export const Content = styled.div`
 
   #title {
     font-size: 3.5rem;
-    font-weight: bold;
+    font-weight: ${(props) => props.theme.fontWeight.subtitle};
   }
   #sub {
     font-size: 1.5rem;
     line-height: 35.88px;
-    font-weight: lighter;
+    font-weight: ${(props) => props.theme.fontWeight.text};
   }
 `;
