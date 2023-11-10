@@ -24,7 +24,7 @@ export const Container = styled.div`
   box-shadow: 2px 3px 6px 0px rgba(0, 0, 0, 0.21);
 
   #img {
-    width: 15%;
+    width: 20%;
     height: auto;
     padding: 0.5rem;
     margin-left: 1.5%;
@@ -95,7 +95,7 @@ export const Itens = styled(NavigationMenu.Item)`
 
 export const Link = styled(NavigationMenu.Link)`
   text-decoration: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   display: flex;
   flex-direction: row;
   font-weight: 500;
@@ -110,7 +110,7 @@ export const Link = styled(NavigationMenu.Link)`
 export const Trigger = styled(NavigationMenu.Trigger)`
   background-color: white;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: black;
   cursor: pointer;
   position: relative;
