@@ -11,28 +11,23 @@ export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={customTheme}>
       <Head>
-        <title>Grupo GV</title>
+        <title>Loja de Jogos</title>
         <meta
           name="description"
-          content="O GRUPO GV Consultoria Farmacêutica é uma empresa composta por duas áreas do segmento farmacêutico, uma empresa sendo de Consultoria e Assessoria Farmacêutica Magistral, e a outra, de Projetos e Equipamentos para abertura de Laboratório, Farmácia de Manipulação e Drogarias."
+          content="Site desenvolvido para a matéria de Programação Orientada à Objeto - FCT Unesp 2023"
         />
         <meta
           name="keywords"
-          content="consultoria farmacêutica, grupo GV, farmácia, equipamentos laboratoriais, manipulação, farmacêutico, drogaria, laboratório"
+          content="jogos, vendas, transportadora, jogo, avaliação"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        {/* <link rel="canonical" href="https://www.grupogv.com/" /> */}
         <meta
           property="og:title"
-          content="Grupo GV - Consultoria Farmacêutica"
+          content="Site desenvolvido para a matéria de Programação Orientada à Objeto - FCT Unesp 2023"
         />
-        <meta
-          property="og:description"
-          content="O GRUPO GV Consultoria Farmacêutica é uma empresa composta por duas áreas do segmento farmacêutico, uma empresa sendo de Consultoria e Assessoria Farmacêutica Magistral, e a outra, de Projetos e Equipamentos para abertura de Laboratório, Farmácia de Manipulação e Drogarias."
-        />
+
         <meta name="robots" content="index, follow" />
         <meta property="og:image" content="/favicon.png" />
-        {/* <meta property="og:url" content="https://www.grupogv.com/" /> */}
         <link rel="icon" href="/favicon.ico" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -42,16 +37,7 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      {/* <HomeLayout> */}
-      {/* <HomeQuemSomos />
-        <HomeValores /> */}
-      {/* <ConsultoriaCursos /> */}
       <Home />
-      {/* <CardProdutos /> */}
-      {/* <ButtonCategoria texto="Lais" isSelected={isSelected} setIsSelected={setIsSelect} /> */}
-      {/* <HeaderPesquisa /> */}
-      {/* <ConsultoriaPalestras /> */}
-      {/* </HomeLayout> */}
     </ThemeProvider>
   );
 }
