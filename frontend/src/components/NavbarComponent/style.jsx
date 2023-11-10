@@ -43,7 +43,7 @@ export const ConteudoPopupComponent = styled(NavigationMenu.Content)`
     padding: 10px 10px 10px 10px;
     line-height: 30px;
     color: white;
-    font-weight: 500;
+    font-weight: 200;
     border-radius: 2px 0.5rem 0.5rem 0.5rem;
     align-items: left;
 

@@ -1,16 +1,4 @@
 export const customTheme = {
-  colors: {
-    primary: "#ABD930",
-    secondary: "#5FC2CE",
-    softBlue: "#3E8AA1",
-    shadowBlue: "#20404A",
-    darkBlue: "#2B5E6B",
-    darkGreen: "#849913",
-    black: "#0B0B0B",
-    white: "#ECECEC",
-    gray: "#282828",
-  },
-
   fontSize: {
     title: "1.5rem",
     subtitle: "1.2rem",
@@ -18,9 +6,9 @@ export const customTheme = {
   },
 
   fontWeight: {
-    title: "bold",
+    title: "regular",
     subtitle: "bold",
-    text: "regular",
+    text: "200",
   },
 
   fontHeightLine: {
