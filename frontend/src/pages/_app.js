@@ -9,9 +9,9 @@ export default function App({ Component, pageProps }) {
   return (
     <Layout>
       <NavBar />
-      {/* <Home />
+      <Home />
       <SubHome1 />
-      <SubHome2 /> */}
+      <SubHome2 />
     </Layout>
   );
 }
