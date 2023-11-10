@@ -21,14 +21,16 @@ export const Content = styled.div`
   }
 `;
 export const Texto = styled.div`
-  padding: 0 3%;
+  padding: 2.7% 3% 0 1.5%;
   #title {
-    font-size: 3rem;
+    font-size: 3.5rem;
     font-weight: bold;
     color: rgba(1, 55, 87, 1);
   }
 
   #sub {
-    font-size: 1.7rem;
+    font-size: 1.625rem;
+    font-weight: 300;
+    line-height: 37.3px;
   }
 `;
