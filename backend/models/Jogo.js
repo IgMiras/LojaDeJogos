@@ -12,29 +12,26 @@ const JogoSchema = new mongoose.Schema({
 		ref: 'desenvolvedora',
 		required: true,
 	},
-	dataNasci: {
+	dataLancamento: {
 		type: Date,
 	},
-	endereco: {
-		type: String,
-	},
-	cep: {
-		type: String,
-	},
-	email: {
-		type: String,
-	},
-	dataCadastro: {
-		type: Date,
-		default: Date.now,
-	},
-	nivel: {
+	valor: {
 		type: Number,
-		default: 0,
 	},
-	clienteEpico: {
+	requisitosMinimos: {
+		type: String,
+	},
+	avaliacao: {
+		type: Number,
+	},
+	comentarios: {
+		type: String,
+	},
+	disponivel: {
 		type: Boolean,
-		default: false,
+	},
+	tipoJogo: {
+		type: String,
 	},
 });
 

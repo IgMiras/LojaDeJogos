@@ -5,20 +5,20 @@ export default class Jogo {
 		descricao,
 		desenvolvedora,
 		dataLancamento,
-		valor,
 		requisitosMinimos,
 		disponivel,
-		ehFisico
+		ehFisico,
+		tipoJogo
 	) {
 		this._codigo = codigo;
 		this._nome = nome;
 		this._descricao = descricao;
 		this._desenvolvedora = desenvolvedora;
 		this._dataLancamento = dataLancamento;
-		this._valor = valor;
 		this._requisitosMinimos = requisitosMinimos;
 		this._disponivel = disponivel;
 		this._ehFisico = ehFisico;
+		this._tipoJogo = tipoJogo;
 		this._avaliacao = 0;
 		this._comentarios = [];
 	}
@@ -109,5 +109,13 @@ export default class Jogo {
 
 	set ehFisico(ehFisico) {
 		this._ehFisico = ehFisico;
+	}
+
+	get tipoJogo() {
+		return this._tipoJogo;
+	}
+
+	set tipoJogo(tipoJogo) {
+		this._tipoJogo = tipoJogo;
 	}
 }
