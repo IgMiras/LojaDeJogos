@@ -1,34 +1,32 @@
 import Jogo from './Jogo.js';
 
 export default class RPG extends Jogo {
-	constructor(
-		codigo,
-		nome,
-		descricao,
-		desenvolvedora,
-		dataLancamento,
-		valor,
-		requisitosMinimos,
-		disponivel,
-		ehFisico,
-		tipoJogo
-	) {
-		super(
-			codigo,
-			nome,
-			descricao,
-			desenvolvedora,
-			dataLancamento,
-			requisitosMinimos,
-			disponivel,
-			ehFisico,
-			tipoJogo
-		);
-		this._valor = valor;
-		this._valor = this.calcularValor();
-	}
+    constructor(
+        nome,
+        descricao,
+        nomeDesenvolvedora,
+        dataLancamento,
+        valor,
+        requisitosMinimos,
+        disponivel,
+        ehFisico,
+        tipoJogo
+    ) {
+        super(
+            nome,
+            descricao,
+            nomeDesenvolvedora,
+            dataLancamento,
+            requisitosMinimos,
+            disponivel,
+            ehFisico,
+            tipoJogo
+        );
+        this._valor = valor;
+        this._valor = this.calcularValor();
+    }
 
-	calcularValor() {
-		return this._valor * 1.0375;
-	}
+    calcularValor() {
+        return this._valor * 1.0375;
+    }
 }
