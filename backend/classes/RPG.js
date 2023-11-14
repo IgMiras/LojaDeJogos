@@ -1,6 +1,6 @@
-import Jogo from './Jogo.js';
+const Jogo = require('./Jogo.js');
 
-export default class RPG extends Jogo {
+class RPG extends Jogo {
     constructor(
         nome,
         descricao,
@@ -30,3 +30,5 @@ export default class RPG extends Jogo {
         return this._valor * 1.0375;
     }
 }
+
+module.exports = RPG;

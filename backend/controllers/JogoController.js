@@ -1,14 +1,14 @@
-import Jogo from '../classes/Jogo.js';
-import Acao from '../classes/Acao.js';
-import Aventura from '../classes/Aventura.js';
-import Corrida from '../classes/Corrida.js';
-import Esporte from '../classes/Esporte.js';
-import RPG from '../classes/RPG.js';
-import DesenvolvedoraModel from '../models/DesenvolvedoraModel.js';
-import JogoModel from '../models/JogoModel.js';
-import FactoryJogo from '../factory/FactoryJogo.js';
+const Jogo = require('../classes/Jogo.js');
+const Acao = require('../classes/Acao.js');
+const Aventura = require('../classes/Aventura.js');
+const Corrida = require('../classes/Corrida.js');
+const Esporte = require('../classes/Esporte.js');
+const RPG = require('../classes/RPG.js');
+const DesenvolvedoraModel = require('../models/DesenvolvedoraModel.js');
+const JogoModel = require('../models/JogoModel.js');
+const FactoryJogo = require('../factory/FactoryJogo.js');
 
-export default async function cadastrarJogo(req, res) {
+async function cadastrarJogo(req, res) {
     const {
         nome,
         descricao,
@@ -34,9 +34,9 @@ export default async function cadastrarJogo(req, res) {
     );
 
     try {
-        const desenvolvedora = await DesenvolvedoraModel.findOne(
-            nomeDesenvolvedora
-        );
+        const desenvolvedora = await DesenvolvedoraModel.findOne({
+            nomeDesenvolvedora,
+        });
 
         if (!desenvolvedora) {
             return res
@@ -63,9 +63,11 @@ export default async function cadastrarJogo(req, res) {
         let jogoModel = new JogoModel(jogosFields);
 
         await jogoModel.save();
-        res.json(jogoModel);
+        res.status(200).json(jogoModel);
     } catch (err) {
         console.error(err.message);
         res.status(500).send('Erro de Servidor');
     }
 }
+
+module.exports = { cadastrarJogo };

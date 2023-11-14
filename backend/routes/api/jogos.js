@@ -1,9 +1,9 @@
-import express from 'express';
+const express = require('express');
 const router = express.Router();
-import { check, validationResult } from 'express-validator';
-import { cadastrarJogo } from '../../controllers/JogoController.js';
+const { check, validationResult } = require('express-validator');
+const { cadastrarJogo } = require('../../controllers/JogoController.js');
 
-import Jogo from '../../models/JogoModel.js';
+const Jogo = require('../../models/JogoModel');
 
 // @route   POST api/jogos
 // @desc    Cadastrar um jogo
@@ -16,6 +16,13 @@ router.post(
             .isEmpty(),
     ],
     (req, res) => {
+        const erros = validationResult(req);
+        if (!erros.isEmpty()) {
+            // Se tiver erros
+            return res.status(400).json({ erros: erros.array() });
+        }
         cadastrarJogo(req, res);
     }
 );
+
+module.exports = router;

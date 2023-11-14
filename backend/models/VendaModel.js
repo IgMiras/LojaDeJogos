@@ -1,45 +1,45 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const VendaSchema = new mongoose.Schema({
-	cliente: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'cliente',
-		required: true,
-	},
-	gerente: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'gerente',
-		required: true,
-	},
-	dataVenda: {
-		type: Date,
-		default: Date.now,
-	},
-	dataEntrega: {
-		type: Date,
-	},
-	itensVenda: [
-		{
-			type: mongoose.Schema.Types.ObjectId,
-			ref: 'itemvenda',
-		},
-	],
+    cliente: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'cliente',
+        required: true,
+    },
+    gerente: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'gerente',
+        required: true,
+    },
+    dataVenda: {
+        type: Date,
+        default: Date.now,
+    },
+    dataEntrega: {
+        type: Date,
+    },
+    itensVenda: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'itemvenda',
+        },
+    ],
 
-	// Sem possuiItensFisicos, pois eh so iterar por itensVenda
+    // Sem possuiItensFisicos, pois eh so iterar por itensVenda
 
-	valorTotal: {
-		type: Number,
-	},
+    valorTotal: {
+        type: Number,
+    },
 
-	// Sem valorComDesconto, pois eh so tirar de valorTotal
+    // Sem valorComDesconto, pois eh so tirar de valorTotal
 
-	formaPagamento: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'pagamento',
-	},
-	transportadora: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'transportadora',
-	},
+    formaPagamento: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'pagamento',
+    },
+    transportadora: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'transportadora',
+    },
 });
 
 const Venda = mongoose.model('venda', VendaSchema);

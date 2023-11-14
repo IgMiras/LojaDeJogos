@@ -1,11 +1,11 @@
-import Jogo from '../classes/Jogo.js';
-import Acao from '../classes/Acao.js';
-import Aventura from '../classes/Aventura.js';
-import Corrida from '../classes/Corrida.js';
-import Esporte from '../classes/Esporte.js';
-import RPG from '../classes/RPG.js';
+const Jogo = require('../classes/Jogo.js');
+const Acao = require('../classes/Acao.js');
+const Aventura = require('../classes/Aventura.js');
+const Corrida = require('../classes/Corrida.js');
+const Esporte = require('../classes/Esporte.js');
+const RPG = require('../classes/RPG.js');
 
-export default class FactoryJogo {
+class FactoryJogo {
     static factoryMethod(
         nome,
         descricao,
@@ -17,6 +17,9 @@ export default class FactoryJogo {
         ehFisico,
         tipoJogo
     ) {
+        if (tipoJogo === undefined) {
+            return console.log('Tipo de jogo nao encontrado');
+        }
         switch (tipoJogo.toLowerCase()) {
             case 'acao':
                 return new Acao(
@@ -81,3 +84,5 @@ export default class FactoryJogo {
         }
     }
 }
+
+module.exports = FactoryJogo;

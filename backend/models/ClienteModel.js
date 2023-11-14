@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const ClienteSchema = new mongoose.Schema({
     nome: {
         type: String,

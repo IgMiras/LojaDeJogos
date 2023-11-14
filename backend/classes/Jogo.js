@@ -1,4 +1,4 @@
-export default class Jogo {
+class Jogo {
     constructor(
         nome,
         descricao,
@@ -117,3 +117,5 @@ export default class Jogo {
         this._tipoJogo = tipoJogo;
     }
 }
+
+module.exports = Jogo;
