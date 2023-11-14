@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 const JogoSchema = new mongoose.Schema({
     nome: {
         type: String,
@@ -44,4 +44,4 @@ const JogoSchema = new mongoose.Schema({
 
 const Jogo = mongoose.model('jogo', JogoSchema);
 
-export default Jogo;
+module.exports = Jogo;

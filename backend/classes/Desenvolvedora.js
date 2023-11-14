@@ -1,4 +1,4 @@
-export default class Desenvolvedora {
+class Desenvolvedora {
     constructor(cnpj, nome, email, site, redeSocial, endereco) {
         this._cnpj = cnpj;
         this._nome = nome;
@@ -56,3 +56,5 @@ export default class Desenvolvedora {
         this._endereco = endereco;
     }
 }
+
+module.exports = Desenvolvedora;

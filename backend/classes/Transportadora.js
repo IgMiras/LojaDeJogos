@@ -1,14 +1,12 @@
-export default class Transportadora {
-    constructor(codigo, cnpj, nome, email,
-                telefone, endereco,tempoDeEntrega)
-    {
-        this._codigo = codigo
-        this._cnpj = cnpj
-        this._nome = nome
-        this._email = email
-        this._telefone = telefone
-        this._endereco = endereco
-        this._tempoDeEntrega = tempoDeEntrega
+class Transportadora {
+    constructor(codigo, cnpj, nome, email, telefone, endereco, tempoDeEntrega) {
+        this._codigo = codigo;
+        this._cnpj = cnpj;
+        this._nome = nome;
+        this._email = email;
+        this._telefone = telefone;
+        this._endereco = endereco;
+        this._tempoDeEntrega = tempoDeEntrega;
     }
 
     get codigo() {
@@ -67,3 +65,5 @@ export default class Transportadora {
         this._tempoDeEntrega = value;
     }
 }
+
+module.exports = Transportadora;

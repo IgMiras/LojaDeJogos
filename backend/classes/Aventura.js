@@ -1,6 +1,6 @@
-import Jogo from './Jogo.js';
+const Jogo = require('./Jogo.js');
 
-export default class Aventura extends Jogo {
+class Aventura extends Jogo {
     constructor(
         nome,
         descricao,
@@ -30,3 +30,5 @@ export default class Aventura extends Jogo {
         return this._valor * 1.055;
     }
 }
+
+module.exports = Aventura;
