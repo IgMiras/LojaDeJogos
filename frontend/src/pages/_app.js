@@ -8,6 +8,7 @@ import { customTheme } from "@/themes";
 import Head from "next/head";
 import { CardProdutos } from "@/components/Equipamentos/CardProdutos";
 import { Input } from "@/components/Equipamentos/Input";
+import { TelaAvaliacao } from "@/components/TelaAvalicao";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -39,7 +40,8 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <Input />
+      <TelaAvaliacao />
+      {/* <Input /> */}
       {/* <CardProdutos /> */}
       {/* <Layout>
         <Home />
