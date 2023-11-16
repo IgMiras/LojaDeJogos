@@ -18,7 +18,6 @@ export const Container = styled.div`
     padding: 6px;
     border-radius: 14px;
     font-weight: 300;
-    width: 20%;
     height: ${(props) => props.height};
     font-size: 0.9rem;
     color: rgba(2, 52, 84, 1);

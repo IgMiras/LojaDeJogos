@@ -17,6 +17,8 @@ export const TelaAvaliacao = () => {
           name="titulo"
           id="titulo"
           placeHolder="Ex. God of War"
+          width="10%"
+          height="auto"
           label="Título"
         ></Input>
       </Content>
