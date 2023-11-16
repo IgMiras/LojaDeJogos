@@ -13,11 +13,12 @@ export const Container = styled.div`
   input {
     border: 1px solid rgba(1, 118, 154, 1);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
-    width: 20%;
+    width: ${(props) => props.width};
     padding: 6px;
     border-radius: 14px;
     font-weight: 300;
     width: 20%;
+    height: ${(props) => props.height};
     font-size: 0.9rem;
     color: rgba(2, 52, 84, 1);
   }

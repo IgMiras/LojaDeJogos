@@ -10,6 +10,7 @@ export const Input = ({
   id,
   placeHolder,
   width,
+  height,
 }) => {
   return (
     <Container>
@@ -21,6 +22,7 @@ export const Input = ({
         value={value}
         placeholder={placeHolder}
         width={width}
+        height={height}
       />
     </Container>
   );
