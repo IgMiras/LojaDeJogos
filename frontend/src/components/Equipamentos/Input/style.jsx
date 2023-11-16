@@ -7,7 +7,8 @@ export const Container = styled.div`
     color: rgba(2, 52, 84, 1);
     margin-left: 6px;
     margin-bottom: 6px;
-    font-size: 1.2rem;
+    font-size: 1rem;
+    font-weight: bold;
   }
 
   input {
@@ -17,7 +18,6 @@ export const Container = styled.div`
     padding: 6px;
     border-radius: 14px;
     font-weight: 300;
-    width: 20%;
     height: ${(props) => props.height};
     font-size: 0.9rem;
     color: rgba(2, 52, 84, 1);
