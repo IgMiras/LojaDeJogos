@@ -35,7 +35,7 @@ async function cadastrarJogo(req, res) {
 
     try {
         const desenvolvedora = await DesenvolvedoraModel.findOne({
-            nomeDesenvolvedora,
+            nome: nomeDesenvolvedora,
         });
 
         if (!desenvolvedora) {
