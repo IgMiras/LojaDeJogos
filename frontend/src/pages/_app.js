@@ -6,6 +6,7 @@ import { SubHome2 } from "@/components/HomeSec02";
 import { ThemeProvider } from "styled-components";
 import { customTheme } from "@/themes";
 import Head from "next/head";
+import { CardProdutos } from "@/components/Equipamentos/CardProdutos";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -37,11 +38,12 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <Layout>
+      <CardProdutos />
+      {/* <Layout>
         <Home />
         <SubHome1 />
         <SubHome2 />
-      </Layout>
+      </Layout> */}
     </ThemeProvider>
   );
 }
