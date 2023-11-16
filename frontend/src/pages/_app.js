@@ -7,6 +7,7 @@ import { ThemeProvider } from "styled-components";
 import { customTheme } from "@/themes";
 import Head from "next/head";
 import { CardProdutos } from "@/components/Equipamentos/CardProdutos";
+import { Input } from "@/components/Equipamentos/Input";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -38,7 +39,8 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <CardProdutos />
+      <Input />
+      {/* <CardProdutos /> */}
       {/* <Layout>
         <Home />
         <SubHome1 />
