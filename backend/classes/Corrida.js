@@ -1,29 +1,33 @@
-import Jogo from './Jogo.js';
-
-export default class Corrida extends Jogo {
+const Jogo = require('./Jogo.js');
+class Corrida extends Jogo {
     constructor(
-        codigo,
         nome,
         descricao,
-        desenvolvedora,
+        nomeDesenvolvedora,
         dataLancamento,
         valor,
         requisitosMinimos,
-        disponivel
+        disponivel,
+        ehFisico,
+        tipoJogo
     ) {
         super(
-            codigo,
             nome,
             descricao,
-            desenvolvedora,
+            nomeDesenvolvedora,
             dataLancamento,
-            valor,
             requisitosMinimos,
-            disponivel
+            disponivel,
+            ehFisico,
+            tipoJogo
         );
+        this._valor = valor;
+        this._valor = this.calcularValor();
     }
 
     calcularValor() {
         return this._valor * 1.0725;
     }
 }
+
+module.exports = Corrida;

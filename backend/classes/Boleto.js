@@ -1,6 +1,6 @@
-import Pagamento from "./Pagamento";
+const Pagamento = require('./Pagamento.js');
 
-export default class Boleto extends Pagamento {
+class Boleto extends Pagamento {
     constructor(codigoNota, numero) {
         super(codigoNota);
         this._numero = numero;
@@ -18,3 +18,5 @@ export default class Boleto extends Pagamento {
         return Math.floor(Math.random() * 100);
     }
 }
+
+module.exports = Boleto;

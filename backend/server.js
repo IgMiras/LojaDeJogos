@@ -1,5 +1,7 @@
-import express from 'express';
-import connectDB from './config/db.js';
+process.env['NODE_CONFIG_DIR'] = __dirname + '/config/';
+const express = require('express');
+const connectDB = require('./config/db');
+const jogosRota = require('./routes/api/jogos');
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -12,7 +14,7 @@ app.use(express.json({ extended: false }));
 app.get('/', (req, res) => res.send('API running'));
 
 // Define Routes
-app.use('/api/jogos', require('./routes/api/jogos.js'));
+app.use('/api/jogos', jogosRota);
 //app.use('/api/auth', require('./routes/api/auth'));
 //app.use('/api/profile', require('./routes/api/profile'));
 //app.use('/api/posts', require('./routes/api/posts'));
