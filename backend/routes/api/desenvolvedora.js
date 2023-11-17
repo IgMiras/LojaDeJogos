@@ -5,8 +5,6 @@ const {
     cadastrarDesenvolvedora,
 } = require('../../controllers/DesenvolvedoraController.js');
 
-const Desenvolvedora = require('../../models/DesenvolvedoraModel');
-
 // @route   POST api/desenvolvedora
 // @desc    Cadastrar uma desenvolvedora
 // @acess   Publico (mudar futuramente caso tenha autenticação)

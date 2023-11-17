@@ -1,17 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
-const { cadastrarJogo } = require('../../controllers/JogoController.js');
+const { cadastrarCliente } = require('../../controllers/ClienteController.js');
 
-// @route   POST api/jogos
-// @desc    Cadastrar um jogo
+// @route   POST api/cliente
+// @desc    Cadastrar um cliente
 // @acess   Publico (mudar futuramente caso tenha autenticação)
 router.post(
     '/',
     [
-        check('nomeDesenvolvedora', 'Nome da Desenvolvedora é obigatorio')
-            .not()
-            .isEmpty(),
+        check('nome', 'Nome é obigatorio').not().isEmpty(),
+        check('cpf', 'CPF é obigatorio').not().isEmpty(),
+        check('rg', 'RG é obigatorio').not().isEmpty(),
     ],
     (req, res) => {
         const erros = validationResult(req);
@@ -19,7 +19,7 @@ router.post(
             // Se tiver erros
             return res.status(400).json({ erros: erros.array() });
         }
-        cadastrarJogo(req, res);
+        cadastrarCliente(req, res);
     }
 );
 

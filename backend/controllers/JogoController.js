@@ -34,6 +34,7 @@ async function cadastrarJogo(req, res) {
     );
 
     try {
+        // Ver se a desenvolvedora existe
         const desenvolvedora = await DesenvolvedoraModel.findOne({
             nome: nomeDesenvolvedora,
         });
@@ -44,6 +45,7 @@ async function cadastrarJogo(req, res) {
                 .json({ msg: 'Desenvolvedora nao existente' });
         }
 
+        // Preencher um objeto com os campos do jogo
         const jogosFields = {};
         if (nome) jogosFields.nome = nome;
         if (descricao) jogosFields.descricao = descricao;
@@ -60,7 +62,15 @@ async function cadastrarJogo(req, res) {
         }
         if (tipoJogo) jogosFields.tipoJogo = tipoJogo;
 
-        let jogoModel = new JogoModel(jogosFields);
+        // Ver se o jogo ja existe
+        let jogoModel = await JogoModel.findOne({ nome });
+
+        if (jogoModel) {
+            return res.status(400).json({ msg: 'Jogo ja existente' });
+        }
+
+        // Criar novo jogo
+        jogoModel = new JogoModel(jogosFields);
 
         await jogoModel.save();
         res.status(200).json(jogoModel);
