@@ -38,4 +38,4 @@ const GerenteSchema = new mongoose.Schema({
 
 const Gerente = mongoose.model('gerente', GerenteSchema);
 
-export default Gerente;
+module.exports = Gerente;
