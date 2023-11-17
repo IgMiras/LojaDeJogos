@@ -5,9 +5,9 @@ async function cadastrarDesenvolvedora(req, res) {
 
     try {
         // Ver se a desenvolvedora ja existe
-        let desenvolvedora = await DesenvolvedoraModel.findOne({ nome });
+        let desenvolvedoraModel = await DesenvolvedoraModel.findOne({ nome });
 
-        if (desenvolvedora) {
+        if (desenvolvedoraModel) {
             return res
                 .status(400)
                 .json({ errors: [{ msg: 'Desenvolvedora ja existente' }] });
@@ -22,7 +22,7 @@ async function cadastrarDesenvolvedora(req, res) {
         if (redeSocial) desenvolvedoraFields.redeSocial = redeSocial;
         if (endereco) desenvolvedoraFields.endereco = endereco;
 
-        let desenvolvedoraModel = new DesenvolvedoraModel(desenvolvedoraFields);
+        desenvolvedoraModel = new DesenvolvedoraModel(desenvolvedoraFields);
 
         await desenvolvedoraModel.save();
         res.status(200).json(desenvolvedoraModel);
