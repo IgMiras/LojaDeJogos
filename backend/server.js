@@ -4,6 +4,7 @@ const connectDB = require('./config/db');
 const jogosRota = require('./routes/api/jogos');
 const desenvolvedoraRota = require('./routes/api/desenvolvedora');
 const clienteRota = require('./routes/api/cliente');
+const gerenteRota = require('./routes/api/gerente');
 const PORT = process.env.PORT || 5000;
 const app = express();
 
@@ -19,6 +20,6 @@ app.get('/', (req, res) => res.send('API running'));
 app.use('/api/jogos', jogosRota);
 app.use('/api/desenvolvedora', desenvolvedoraRota);
 app.use('/api/cliente', clienteRota);
-//app.use('/api/posts', require('./routes/api/posts'));
+app.use('/api/gerente', gerenteRota);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
