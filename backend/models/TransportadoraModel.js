@@ -27,4 +27,4 @@ const TransportadoraSchema = new mongoose.Schema({
 
 const Transportadora = mongoose.model('transportadora', TransportadoraSchema);
 
-export default Transportadora;
+module.exports = Transportadora;
