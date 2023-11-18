@@ -12,6 +12,7 @@ import { TelaAvaliacao } from "@/components/TelaAvalicao";
 import { CardListagem } from "@/components/Equipamentos/CardListagem";
 import { ListarJogosCaros } from "@/components/DezJogosMaisCaros";
 import { JogosDeAcao } from "@/components/JogosDeAcao";
+import { CardListagemProdutos } from "@/components/Equipamentos/CardListagemProdutos";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -43,7 +44,8 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <JogosDeAcao />
+      <CardListagemProdutos />
+      {/* <JogosDeAcao /> */}
       {/* <ListarJogosCaros /> */}
       {/* <CardListagem /> */}
       {/* <TelaAvaliacao /> */}
