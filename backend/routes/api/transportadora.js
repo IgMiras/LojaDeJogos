@@ -3,6 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const {
     cadastrarTransportadora,
+    listarTodasTransportadoras,
 } = require('../../controllers/TransportadoraController.js');
 
 // @route   POST api/transportadora
@@ -24,5 +25,12 @@ router.post(
         cadastrarTransportadora(req, res);
     }
 );
+
+// @route   GET api/transportadora
+// @desc    Listar todas transportadoras
+// @acess   Publico (mudar futuramente caso tenha autenticação)
+router.get('/', (req, res) => {
+    listarTodasTransportadoras(req, res);
+});
 
 module.exports = router;
