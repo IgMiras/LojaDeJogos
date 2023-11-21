@@ -6,6 +6,10 @@ import { customTheme } from "@/themes";
 import Head from "next/head";
 
 import { TelaAvaliacao } from "@/components/TelaAvalicao/index.jsx";
+import { Layout } from "@/components/Layout";
+import { Home } from "@/components/Home";
+import { SubHome1 } from "@/components/HomeSec01";
+import { SubHome2 } from "@/components/HomeSec02";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -41,15 +45,16 @@ export default function App({ Component, pageProps }) {
       {/* <JogosDeAcao /> */}
       {/* <ListarJogosCaros /> */}
       {/* <CardListagem /> */}
-      <TelaAvaliacao />
+      {/* <TelaAvaliacao /> */}
       {/* <Input /> */}
       {/* <CardProdutos /> */}
-      {/* <Layout>
+      <Layout>
         <Home />
         <SubHome1 />
         <SubHome2 />
-      </Layout> */}
+        <Footer />
+      </Layout>
     </ThemeProvider>
 
-  );
+    );
 }
