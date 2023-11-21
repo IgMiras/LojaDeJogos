@@ -9,6 +9,7 @@ import Head from "next/head";
 import { CardProdutos } from "@/components/Equipamentos/CardProdutos";
 import { Input } from "@/components/Equipamentos/Input";
 import { TelaAvaliacao } from "@/components/TelaAvalicao";
+import { CardListagem } from "@/components/Equipamentos/CardListagem";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -40,7 +41,8 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <TelaAvaliacao />
+      <CardListagem />
+      {/* <TelaAvaliacao /> */}
       {/* <Input /> */}
       {/* <CardProdutos /> */}
       {/* <Layout>
