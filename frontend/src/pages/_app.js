@@ -10,6 +10,7 @@ import { CardProdutos } from "@/components/Equipamentos/CardProdutos";
 import { Input } from "@/components/Equipamentos/Input";
 import { TelaAvaliacao } from "@/components/TelaAvalicao";
 import { CardListagem } from "@/components/Equipamentos/CardListagem";
+import { ListarJogosCaros } from "@/components/DezJogosMaisCaros";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -41,7 +42,8 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <CardListagem />
+      <ListarJogosCaros />
+      {/* <CardListagem /> */}
       {/* <TelaAvaliacao /> */}
       {/* <Input /> */}
       {/* <CardProdutos /> */}
