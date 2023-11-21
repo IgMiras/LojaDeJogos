@@ -1,13 +1,13 @@
-import React from "react";
+import React, { Children } from "react";
 import Image from "next/image";
 
-import { Button } from "../Button";
+import { Button } from "../Button/index";
 
 import ProductImage from "../../../assets/images/gameImg.png";
 
 import { Container, Description, DivImage } from "./style";
 
-export const CardListagemProdutos = () => {
+export const CardListagem = ({ titulo, desenvolvedora, valor }) => {
   return (
     <Container>
       <DivImage>
@@ -18,10 +18,11 @@ export const CardListagemProdutos = () => {
         />
       </DivImage>
       <Description>
-        <a id="titulo">God of wars</a>
+        <a id="titulo">{titulo}</a>
         <a id="sub">
-          <strong>DESENVOLVEDORA: </strong> Sony Interactive Entertainment (SIE)
+          <strong>DESENVOLVEDORA: </strong> {desenvolvedora}
         </a>
+        <a id="value">{valor}</a>
       </Description>
     </Container>
   );

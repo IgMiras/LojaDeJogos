@@ -15,7 +15,7 @@ import {
 } from "./style";
 import Image from "next/image";
 import logoImg from "../../assets/images/image3.png";
-import { ConteudoPopupComponent } from "../NavbarComponent/style";
+import { ConteudoPopupComponent } from "../NavbarComponent/index";
 import { useRouter } from "next/router";
 
 export const NavBar = () => {
