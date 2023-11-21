@@ -1,20 +1,28 @@
-export default class Venda {
-    constructor(codigo, cliente, gerente, dataVenda,
-                dataDaEntrega, itensVenda, possuiItensFisicos,
-                valorTotal, valorComDesconto, formaPagamento,
-                transportadora)
-    {
-        this._codigo = codigo
-        this._cliente = cliente
-        this._gerente = gerente
-        this._dataVenda = dataVenda
-        this._dataDaEntrega = dataDaEntrega
-        this._itensVenda = itensVenda
-        this._possuiItensFisicos = possuiItensFisicos
-        this._valorTotal = valorTotal
-        this._valorComDesconto = valorComDesconto
-        this._formaPagamento = formaPagamento
-        this._transportadora = transportadora
+class Venda {
+    constructor(
+        codigo,
+        cliente,
+        gerente,
+        dataVenda,
+        dataDaEntrega,
+        itensVenda,
+        possuiItensFisicos,
+        valorTotal,
+        valorComDesconto,
+        formaPagamento,
+        transportadora
+    ) {
+        this._codigo = codigo;
+        this._cliente = cliente;
+        this._gerente = gerente;
+        this._dataVenda = dataVenda;
+        this._dataDaEntrega = dataDaEntrega;
+        this._itensVenda = itensVenda;
+        this._possuiItensFisicos = possuiItensFisicos;
+        this._valorTotal = valorTotal;
+        this._valorComDesconto = valorComDesconto;
+        this._formaPagamento = formaPagamento;
+        this._transportadora = transportadora;
     }
 
     get codigo() {
@@ -105,3 +113,5 @@ export default class Venda {
         this._transportadora = value;
     }
 }
+
+module.exports = Venda;

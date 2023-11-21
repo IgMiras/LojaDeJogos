@@ -1,29 +1,34 @@
-import Jogo from './Jogo.js';
+const Jogo = require('./Jogo.js');
 
-export default class Aventura extends Jogo {
+class Aventura extends Jogo {
     constructor(
-        codigo,
         nome,
         descricao,
-        desenvolvedora,
+        nomeDesenvolvedora,
         dataLancamento,
         valor,
         requisitosMinimos,
-        disponivel
+        disponivel,
+        ehFisico,
+        tipoJogo
     ) {
         super(
-            codigo,
             nome,
             descricao,
-            desenvolvedora,
+            nomeDesenvolvedora,
             dataLancamento,
-            valor,
             requisitosMinimos,
-            disponivel
+            disponivel,
+            ehFisico,
+            tipoJogo
         );
+        this._valor = valor;
+        this._valor = this.calcularValor();
     }
 
     calcularValor() {
         return this._valor * 1.055;
     }
 }
+
+module.exports = Aventura;
