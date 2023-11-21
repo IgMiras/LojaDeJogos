@@ -1,5 +1,6 @@
-import "@/styles/globals.css";
 
+import{ Footer } from "@/components/Footer/index";
+import "@/styles/globals.css";
 import { ThemeProvider } from "styled-components";
 import { customTheme } from "@/themes";
 import Head from "next/head";
@@ -49,5 +50,6 @@ export default function App({ Component, pageProps }) {
         <SubHome2 />
       </Layout> */}
     </ThemeProvider>
+
   );
 }
