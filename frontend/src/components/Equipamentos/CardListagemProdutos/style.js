@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin: 5%;
-  width: 15%;
-  height: 60%;
+  margin: 2%;
+  width: 10%;
+  height: 50%;
   border-radius: 10px;
   padding-bottom: 10px;
-  border: 0.2px solid gray;
+  border: 0.2px solid #4ec1e5;
 
   @media (max-width: 930px) {
     width: 20%;
@@ -41,7 +41,7 @@ export const DivImage = styled.div`
 `;
 
 export const Description = styled.div`
-  border-top: 1.5px solid gray;
+  border-top: 1.5px solid #4ec1e5;
   padding: 20px 20px 10px 20px;
 
   display: flex;
@@ -53,30 +53,10 @@ export const Description = styled.div`
     margin-bottom: 4%;
     justify-content: center;
     display: flex;
+    color: #013757;
   }
 
   #sub {
     font-size: 0.6rem;
-  }
-
-  #button {
-    Button {
-      background-color: rgba(78, 193, 229, 1);
-      color: white;
-      width: 100%;
-      margin: 6% 0 0 0;
-      padding: 1px;
-      font-size: 0.9rem;
-    }
-  }
-  @media (max-width: 400px) {
-    #button {
-      margin-top: 5px;
-      margin-bottom: 0;
-      Button {
-        font-size: 0.7rem;
-        font-weight: normal;
-      }
-    }
   }
 `;

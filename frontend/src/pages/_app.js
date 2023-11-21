@@ -1,16 +1,10 @@
-import { Home } from "@/components/Home";
-import { Layout } from "@/components/Layout";
-import { SubHome1 } from "@/components/HomeSec01";
 import "@/styles/globals.css";
-import { SubHome2 } from "@/components/HomeSec02";
+
 import { ThemeProvider } from "styled-components";
 import { customTheme } from "@/themes";
 import Head from "next/head";
-import { CardProdutos } from "@/components/Equipamentos/CardProdutos";
-import { Input } from "@/components/Equipamentos/Input";
-import { TelaAvaliacao } from "@/components/TelaAvalicao";
-import { CardListagem } from "@/components/Equipamentos/CardListagem";
-import { ListarJogosCaros } from "@/components/DezJogosMaisCaros";
+
+import { TelaAvaliacao } from "@/components/TelaAvalicao/index.jsx";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -42,9 +36,11 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <ListarJogosCaros />
+      {/* <CardListagemProdutos /> */}
+      {/* <JogosDeAcao /> */}
+      {/* <ListarJogosCaros /> */}
       {/* <CardListagem /> */}
-      {/* <TelaAvaliacao /> */}
+      <TelaAvaliacao />
       {/* <Input /> */}
       {/* <CardProdutos /> */}
       {/* <Layout>

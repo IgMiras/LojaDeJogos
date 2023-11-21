@@ -10,7 +10,7 @@ import {
 } from "./style";
 import Image from "next/image";
 import stars from "../../assets/svg/stars.svg";
-import { Input } from "../Equipamentos/Input";
+import { Input } from "../Equipamentos/Input/index";
 const value = "";
 export const TelaAvaliacao = () => {
   return (
