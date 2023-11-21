@@ -18,7 +18,7 @@ export const Input = ({
         placeholder={placeHolder}
         width={width}
         height={height}
-        onChange={onChage}
+        onChange={onChange}
       />
     </Container>
   );
