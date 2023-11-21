@@ -3,6 +3,7 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const {
     cadastrarDesenvolvedora,
+    listarTodasDesenvolvedoras,
 } = require('../../controllers/DesenvolvedoraController.js');
 
 // @route   POST api/desenvolvedora
@@ -24,5 +25,12 @@ router.post(
         cadastrarDesenvolvedora(req, res);
     }
 );
+
+// @route   GET api/desenvolvedora
+// @desc    Listar todas desenvolvedoras
+// @acess   Publico (mudar futuramente caso tenha autenticação)
+router.get('/', (req, res) => {
+    listarTodasDesenvolvedoras(req, res);
+});
 
 module.exports = router;

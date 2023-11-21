@@ -44,4 +44,4 @@ const VendaSchema = new mongoose.Schema({
 
 const Venda = mongoose.model('venda', VendaSchema);
 
-export default Venda;
+module.exports = Venda;
