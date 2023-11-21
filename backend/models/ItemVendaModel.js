@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const ItemVendaSchema = new mongoose.Schema({
     produto: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'produto',
+        ref: 'jogo',
         required: true,
     },
     valor: {
@@ -17,4 +17,4 @@ const ItemVendaSchema = new mongoose.Schema({
 
 const ItemVenda = mongoose.model('itemvenda', ItemVendaSchema);
 
-export default ItemVenda;
+module.exports = ItemVenda;

@@ -80,4 +80,94 @@ async function cadastrarJogo(req, res) {
     }
 }
 
-module.exports = { cadastrarJogo };
+async function listarTodosJogos(req, res) {
+    try {
+        const jogos = await JogoModel.find();
+        res.json(jogos);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de Servidor');
+    }
+}
+
+async function listarJogosAcao(req, res) {
+    try {
+        const jogos = await JogoModel.find({ tipoJogo: 'Acao' });
+        res.json(jogos);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de Servidor');
+    }
+}
+
+async function listarJogosAventura(req, res) {
+    try {
+        const jogos = await JogoModel.find({ tipoJogo: 'Aventura' });
+        res.json(jogos);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de Servidor');
+    }
+}
+
+async function listarJogosRPG(req, res) {
+    try {
+        const jogos = await JogoModel.find({ tipoJogo: 'RPG' });
+        res.json(jogos);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de Servidor');
+    }
+}
+
+async function listarJogosEsporte(req, res) {
+    try {
+        const jogos = await JogoModel.find({ tipoJogo: 'Esporte' });
+        res.json(jogos);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de Servidor');
+    }
+}
+
+async function listarJogosCorrida(req, res) {
+    try {
+        const jogos = await JogoModel.find({ tipoJogo: 'Corrida' });
+        res.json(jogos);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de Servidor');
+    }
+}
+
+async function listarDezJogosMaisCaros(req, res) {
+    try {
+        const jogos = await JogoModel.find().sort({ valor: -1 }).limit(10);
+        res.json(jogos);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de Servidor');
+    }
+}
+
+async function listarDezJogosMaisBaratos(req, res) {
+    try {
+        const jogos = await JogoModel.find().sort({ valor: 1 }).limit(10);
+        res.json(jogos);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de Servidor');
+    }
+}
+
+module.exports = {
+    cadastrarJogo,
+    listarTodosJogos,
+    listarJogosAcao,
+    listarJogosAventura,
+    listarJogosRPG,
+    listarJogosEsporte,
+    listarJogosCorrida,
+    listarDezJogosMaisCaros,
+    listarDezJogosMaisBaratos,
+};
