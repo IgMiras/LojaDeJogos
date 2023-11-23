@@ -13,6 +13,14 @@ export const Content = styled.div`
   font-weight: 300;
   font-size: 0.9rem;
   color: rgba(2, 52, 84, 1);
+  #button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* width: 30%; */
+    margin-top: 2%;
+    padding: 2% 30%;
+  }
 `;
 
 export const Title = styled.div`

@@ -36,4 +36,14 @@ async function cadastrarGerente(req, res) {
     }
 }
 
-module.exports = { cadastrarGerente };
+async function listarTodosGerentes(req, res) {
+    try {
+        const gerentes = await GerenteModel.find();
+        res.json(gerentes);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de servidor');
+    }
+}
+
+module.exports = { cadastrarGerente, listarTodosGerentes };

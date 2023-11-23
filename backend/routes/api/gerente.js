@@ -1,7 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
-const { cadastrarGerente } = require('../../controllers/GerenteController.js');
+const {
+    cadastrarGerente,
+    listarTodosGerentes,
+} = require('../../controllers/GerenteController.js');
 
 // @route   POST api/gerente
 // @desc    Cadastrar um gerente
@@ -22,5 +25,12 @@ router.post(
         cadastrarGerente(req, res);
     }
 );
+
+// @route   Get api/gerente
+// @desc    Listar todos gerentes
+// @acess   Publico (mudar futuramente caso tenha autenticação)
+router.get('/', (req, res) => {
+    listarTodosGerentes(req, res);
+});
 
 module.exports = router;

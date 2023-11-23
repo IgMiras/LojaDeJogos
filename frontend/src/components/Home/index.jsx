@@ -1,7 +1,7 @@
 import React from "react";
 import { Content, Container } from "./style";
 
-export const Home = () => {
+export const HomeComponent = () => {
   return (
     <Container>
       <Content>

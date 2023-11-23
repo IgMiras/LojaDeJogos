@@ -37,4 +37,41 @@ async function cadastrarCliente(req, res) {
     }
 }
 
-module.exports = { cadastrarCliente };
+async function listarTodosClientes(req, res) {
+    try {
+        const clientes = await ClienteModel.find();
+        res.json(clientes);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de servidor');
+    }
+}
+
+async function listarTodosClientesEpicos(req, res) {
+    try {
+        const clientes = await ClienteModel.find({ clienteEpico: true });
+        res.json(clientes);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de servidor');
+    }
+}
+
+async function listarDezClientesMaiorNivel(req, res) {
+    try {
+        const clientes = await ClienteModel.find()
+            .sort({ nivel: -1 })
+            .limit(10);
+        res.json(clientes);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de servidor');
+    }
+}
+
+module.exports = {
+    cadastrarCliente,
+    listarTodosClientes,
+    listarTodosClientesEpicos,
+    listarDezClientesMaiorNivel,
+};
