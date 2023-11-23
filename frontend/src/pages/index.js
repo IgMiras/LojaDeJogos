@@ -1,11 +1,14 @@
+import { SubHome1 } from "@/components/HomeSec01";
+import { SubHome2 } from "@/components/HomeSec02";
+import { Layout } from "@/components/Layout";
+import { HomeComponent } from "@/components/Home";
+
 export default function Home() {
   return (
-    <main>
-      <head>
-        <meta charSet="utf-8" />
-        <title>Loja de Jogos</title>
-      </head>
-      <body></body>
-    </main>
+    <Layout>
+      <HomeComponent />
+      <SubHome1 />
+      <SubHome2 />
+    </Layout>
   );
 }
