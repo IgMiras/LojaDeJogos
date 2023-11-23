@@ -11,8 +11,12 @@ import {
 import Image from "next/image";
 import stars from "../../assets/svg/stars.svg";
 import { Input } from "../Equipamentos/Input/index";
+import { Button } from "../Equipamentos/Button";
 const value = "";
 export const TelaAvaliacao = () => {
+  function saudacao() {
+    alert("Bom dia!");
+  }
   return (
     <Container>
       <Title>
@@ -53,6 +57,11 @@ export const TelaAvaliacao = () => {
             placeholder="Ex: Escreva seu feedback sobre o jogo"
           ></input>
         </BlocoInput3>
+        <div id="button">
+          <Button onClick={saudacao} height="40px">
+            <a>Enviar</a>
+          </Button>
+        </div>
       </Content>
     </Container>
   );
