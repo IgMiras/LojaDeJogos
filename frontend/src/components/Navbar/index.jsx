@@ -36,7 +36,9 @@ export const NavBar = () => {
                 <ConteudoPopup width="350px" top="45px" left="70px">
                   <ul>
                     <li onClick={() => router.push("/")}>Todos os jogos</li>
-                    <li onClick={() => router.push("/")}>Avaliar</li>
+                    <li onClick={() => router.push("/telaAvaliacao")}>
+                      Avaliar
+                    </li>
                   </ul>
                 </ConteudoPopup>
               </Itens>
