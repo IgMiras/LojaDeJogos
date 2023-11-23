@@ -16,19 +16,8 @@ export default function App({ Component, pageProps }) {
     <ThemeProvider theme={customTheme}>
       <Head>
         <title>Loja de Jogos</title>
-        <meta
-          name="description"
-          content="Site desenvolvido para a matéria de Programação Orientada à Objeto - FCT Unesp 2023"
-        />
-        <meta
-          name="keywords"
-          content="jogos, vendas, transportadora, jogo, avaliação"
-        />
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          property="og:title"
-          content="Site desenvolvido para a matéria de Programação Orientada à Objeto - FCT Unesp 2023"
-        />
 
         <meta name="robots" content="index, follow" />
         <meta property="og:image" content="/favicon.png" />
@@ -41,15 +30,7 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <NavBar />
-      {/* <CardListagemProdutos /> */}
-      {/* <JogosDeAcao /> */}
-      {/* <ListarJogosCaros /> */}
-      {/* <CardListagem /> */}
-      {/* <TelaAvaliacao /> */}
-      {/* <Input /> */}
-      {/* <CardProdutos /> */}
-      {/* <Home /> */}
+      <Component {...pageProps} />
     </ThemeProvider>
   );
 }
