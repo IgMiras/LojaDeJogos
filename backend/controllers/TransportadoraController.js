@@ -32,4 +32,14 @@ async function cadastrarTransportadora(req, res) {
     }
 }
 
-module.exports = { cadastrarTransportadora };
+async function listarTodasTransportadoras(req, res) {
+    try {
+        const transportadoras = await TransportadoraModel.find();
+        res.json(transportadoras);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de servidor');
+    }
+}
+
+module.exports = { cadastrarTransportadora, listarTodasTransportadoras };

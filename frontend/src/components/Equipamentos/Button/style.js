@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const StyledButton = styled.button`
   margin-top: 20px;
-  background-color: ${(props) => props.background};
-  color: ${(props) => props.color};
+  background-color: #4ec1e5;
+  color: white;
   border: none;
   height: ${(props) => props.height};
   text-align: center;
@@ -17,6 +17,7 @@ export const StyledButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 100%;
 
   @media (max-width: 768px) {
     height: 25px;
@@ -30,6 +31,6 @@ export const StyledButton = styled.button`
   }
 
   &:active {
-    background-color: ${(props) => props.activeBackground};
+    background-color: #2294b8;
   }
 `;

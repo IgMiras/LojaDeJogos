@@ -1,7 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
-const { cadastrarCliente } = require('../../controllers/ClienteController.js');
+const {
+    cadastrarCliente,
+    listarTodosClientes,
+    listarTodosClientesEpicos,
+    listarDezClientesMaiorNivel,
+} = require('../../controllers/ClienteController.js');
 
 // @route   POST api/cliente
 // @desc    Cadastrar um cliente
@@ -22,5 +27,26 @@ router.post(
         cadastrarCliente(req, res);
     }
 );
+
+// @route   GET api/cliente
+// @desc    Listar todos clientes
+// @acess   Publico (mudar futuramente caso tenha autenticação)
+router.get('/', (req, res) => {
+    listarTodosClientes(req, res);
+});
+
+// @route   GET api/cliente/epicos
+// @desc    Listar todos clientes epicos cadastrados
+// @acess   Publico (mudar futuramente caso tenha autenticação)
+router.get('/epicos', (req, res) => {
+    listarTodosClientesEpicos(req, res);
+});
+
+// @route   GET api/cliente/maiornivel
+// @desc    Listar os 10 clientes com maior nivel
+// @acess   Publico (mudar futuramente caso tenha autenticação)
+router.get('/maiornivel', (req, res) => {
+    listarDezClientesMaiorNivel(req, res);
+});
 
 module.exports = router;

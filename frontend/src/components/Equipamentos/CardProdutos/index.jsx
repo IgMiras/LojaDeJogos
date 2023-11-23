@@ -31,13 +31,7 @@ export const CardProdutos = () => {
           <strong>DESENVOLVEDORA: </strong> Sony Interactive Entertainment (SIE)
         </a>
         <div id="button">
-          <Button
-            background={background}
-            color={color}
-            activeBackground={activeBackground}
-            onClick={saudacao}
-            height={height}
-          >
+          <Button onClick={saudacao} height={height}>
             <a>Adicionar</a>
           </Button>
         </div>

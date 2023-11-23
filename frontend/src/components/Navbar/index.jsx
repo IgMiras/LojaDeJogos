@@ -7,15 +7,13 @@ import {
   Itens,
   Link,
   Trigger,
-  ConteudoPopup,
   NavContainer,
-  Separator,
   SubContent,
   TriggerSub,
 } from "./style";
 import Image from "next/image";
 import logoImg from "../../assets/images/image3.png";
-import { ConteudoPopupComponent } from "../NavbarComponent/index";
+import { ConteudoPopup } from "../NavbarComponent/index";
 import { useRouter } from "next/router";
 
 export const NavBar = () => {
@@ -26,7 +24,7 @@ export const NavBar = () => {
         <Image
           id="img"
           src={logoImg}
-          alt="Logo of Grupo GV"
+          alt="Logo da loja de jogos"
           onClick={() => router.push("/")}
         />
         <NavContainer>
@@ -35,12 +33,14 @@ export const NavBar = () => {
               <Itens>
                 <Trigger> JOGOS</Trigger>
 
-                <ConteudoPopupComponent width="350px" top="45px" left="70px">
+                <ConteudoPopup width="350px" top="45px" left="70px">
                   <ul>
                     <li onClick={() => router.push("/")}>Todos os jogos</li>
-                    <li onClick={() => router.push("/")}>Avaliar</li>
+                    <li onClick={() => router.push("/telaAvaliacao")}>
+                      Avaliar
+                    </li>
                   </ul>
-                </ConteudoPopupComponent>
+                </ConteudoPopup>
               </Itens>
               <Itens>
                 <Link href="#vendas"> VENDAS</Link>
@@ -48,15 +48,11 @@ export const NavBar = () => {
               <Itens>
                 <Trigger> RELATÓRIOS</Trigger>
 
-                <ConteudoPopupComponent width="500px" top="45px" left="390px">
+                <ConteudoPopup width="500px" top="45px" left="390px">
                   <SubContent>
                     <ul>
                       <TriggerSub> Jogos</TriggerSub>
-                      <ConteudoPopupComponent
-                        width="550px"
-                        top="25px"
-                        left="245px"
-                      >
+                      <ConteudoPopup width="550px" top="25px" left="245px">
                         <SubContent>
                           <ul>
                             <li onClick={() => router.push("/")}>Ação</li>
@@ -71,7 +67,7 @@ export const NavBar = () => {
                               Os 10 jogos mais baratos
                             </li>
                             <TriggerSub>Lista de avaliações</TriggerSub>
-                            <ConteudoPopupComponent
+                            <ConteudoPopup
                               width="300px"
                               top="265px"
                               left="155px"
@@ -86,10 +82,10 @@ export const NavBar = () => {
                                   </li>
                                 </ul>
                               </SubContent>
-                            </ConteudoPopupComponent>
+                            </ConteudoPopup>
                           </ul>
                         </SubContent>
-                      </ConteudoPopupComponent>
+                      </ConteudoPopup>
                       <li onClick={() => router.push("/")}>Desenvolvedoras</li>
                       <li onClick={() => router.push("/")}>Transportadoras</li>
                       <li onClick={() => router.push("/")}>Gerentes</li>
@@ -97,21 +93,21 @@ export const NavBar = () => {
                       <li onClick={() => router.push("/")}>Vendas</li>
                     </ul>
                   </SubContent>
-                </ConteudoPopupComponent>
+                </ConteudoPopup>
               </Itens>
               <Itens>
                 <Link href="#clientes"> CLIENTES </Link>
               </Itens>
               <Itens>
                 <Trigger> CADASTRAR</Trigger>
-                <ConteudoPopupComponent width="350px" top="45px" left="790px">
+                <ConteudoPopup width="350px" top="45px" left="790px">
                   <ul>
                     <li>Cliente</li>
                     <li>Gerente</li>
                     <li>Gênero do jogo</li>
                     <li>Desenvolvedora</li>
                   </ul>
-                </ConteudoPopupComponent>
+                </ConteudoPopup>
               </Itens>
             </Elementos>
           </Nav>

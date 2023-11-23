@@ -1,5 +1,4 @@
-
-import{ Footer } from "@/components/Footer/index";
+import { Footer } from "@/components/Footer/index";
 import "@/styles/globals.css";
 import { ThemeProvider } from "styled-components";
 import { customTheme } from "@/themes";
@@ -7,28 +6,20 @@ import Head from "next/head";
 
 import { TelaAvaliacao } from "@/components/TelaAvalicao/index.jsx";
 import { Layout } from "@/components/Layout";
-import { Home } from "@/components/Home";
+
+import Home from ".";
 import { SubHome1 } from "@/components/HomeSec01";
 import { SubHome2 } from "@/components/HomeSec02";
+import { NavBar } from "@/components/Navbar";
+
 
 export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={customTheme}>
       <Head>
         <title>Loja de Jogos</title>
-        <meta
-          name="description"
-          content="Site desenvolvido para a matéria de Programação Orientada à Objeto - FCT Unesp 2023"
-        />
-        <meta
-          name="keywords"
-          content="jogos, vendas, transportadora, jogo, avaliação"
-        />
+
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-          property="og:title"
-          content="Site desenvolvido para a matéria de Programação Orientada à Objeto - FCT Unesp 2023"
-        />
 
         <meta name="robots" content="index, follow" />
         <meta property="og:image" content="/favicon.png" />
@@ -41,20 +32,8 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      {/* <CardListagemProdutos /> */}
-      {/* <JogosDeAcao /> */}
-      {/* <ListarJogosCaros /> */}
-      {/* <CardListagem /> */}
-      {/* <TelaAvaliacao /> */}
-      {/* <Input /> */}
-      {/* <CardProdutos /> */}
-      <Layout>
-        <Home />
-        <SubHome1 />
-        <SubHome2 />
-        <Footer />
-      </Layout>
-    </ThemeProvider>
 
-    );
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
 }

@@ -32,4 +32,14 @@ async function cadastrarDesenvolvedora(req, res) {
     }
 }
 
-module.exports = { cadastrarDesenvolvedora };
+async function listarTodasDesenvolvedoras(req, res) {
+    try {
+        const desenvolvedoras = await DesenvolvedoraModel.find();
+        res.json(desenvolvedoras);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de servidor');
+    }
+}
+
+module.exports = { cadastrarDesenvolvedora, listarTodasDesenvolvedoras };
