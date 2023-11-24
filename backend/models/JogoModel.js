@@ -40,6 +40,9 @@ const JogoSchema = new mongoose.Schema({
     tipoJogo: {
         type: String,
     },
+    linkImagem: {
+        type: String,
+    },
 });
 
 const Jogo = mongoose.model('jogo', JogoSchema);

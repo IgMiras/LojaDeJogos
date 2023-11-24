@@ -1,5 +1,6 @@
 process.env['NODE_CONFIG_DIR'] = __dirname + '/config/';
 const express = require('express');
+const cors = require('cors');
 const connectDB = require('./config/db');
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -15,6 +16,8 @@ connectDB();
 
 // Init Middleware
 app.use(express.json({ extended: false }));
+
+app.use(cors());
 
 app.get('/', (req, res) => res.send('API running'));
 
