@@ -10,11 +10,7 @@ export const JogosDeRpg = () => {
   return (
     <Container>
       <a id="title">Jogos de RPG</a>
-      <Content>
-        <CardListagemProdutos>
-            
-        </CardListagemProdutos>
-      </Content>
+      <Content></Content>
     </Container>
   );
 };

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  margin-top: 5%;
   padding: 95px;
   display: flex;
   flex-direction: column;
@@ -11,15 +12,14 @@ export const Container = styled.div`
     font-weight: bold;
     font-size: 2.8rem;
     color: #013757;
-    position: fixed;
-    top: 50px;
   }
 `;
 
 export const Content = styled.div`
-  width: 120%;
-  display: inline-flex;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  row-gap: 4%;
+  column-gap: 5%;
   padding: 95px;
-
-  white-space: normal;
 `;
