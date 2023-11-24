@@ -6,10 +6,12 @@ import Head from "next/head";
 
 import { TelaAvaliacao } from "@/components/TelaAvalicao/index.jsx";
 import { Layout } from "@/components/Layout";
+
 import Home from ".";
 import { SubHome1 } from "@/components/HomeSec01";
 import { SubHome2 } from "@/components/HomeSec02";
 import { NavBar } from "@/components/Navbar";
+
 
 export default function App({ Component, pageProps }) {
   return (
@@ -30,6 +32,7 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
+
       <Component {...pageProps} />
     </ThemeProvider>
   );
