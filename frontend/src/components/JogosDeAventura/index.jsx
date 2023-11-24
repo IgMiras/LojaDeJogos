@@ -10,11 +10,7 @@ export const JogosDeAventura = () => {
   return (
     <Container>
       <a id="title">Jogos de Aventura</a>
-      <Content>
-        <CardListagemProdutos>
-            
-        </CardListagemProdutos>
-      </Content>
+      <Content></Content>
     </Container>
   );
 };
