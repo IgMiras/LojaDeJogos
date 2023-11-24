@@ -11,6 +11,7 @@ import Home from ".";
 import { SubHome1 } from "@/components/HomeSec01";
 import { SubHome2 } from "@/components/HomeSec02";
 import { NavBar } from "@/components/Navbar";
+import { JogosDeAcao } from "@/components/JogosDeAcao";
 
 
 export default function App({ Component, pageProps }) {
