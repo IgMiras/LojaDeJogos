@@ -5,10 +5,10 @@ import { HomeComponent } from "@/components/Home";
 
 export default function Home() {
   return (
-    <Layout>
+    <div>
       <HomeComponent />
       <SubHome1 />
       <SubHome2 />
-    </Layout>
+    </div>
   );
 }

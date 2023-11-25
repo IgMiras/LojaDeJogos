@@ -5,9 +5,5 @@ import { HomeComponent } from "@/components/Home";
 import { TelaAvaliacao } from "@/components/TelaAvalicao";
 
 export default function TelaAvaliacaoTeste() {
-  return (
-    <Layout>
-      <TelaAvaliacao />
-    </Layout>
-  );
+  return <TelaAvaliacao />;
 }
