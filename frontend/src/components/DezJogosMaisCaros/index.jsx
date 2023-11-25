@@ -1,17 +1,36 @@
-import React from "react";
-import { Container, Content, Texto } from "./style";
-import Image from "next/image";
-import img1 from "../../assets/images/Image1.png";
-import { CardListagem } from "../Equipamentos/CardListagem/index";
+import { CardListagemProdutos } from "../Equipamentos/CardListagemProdutos";
 
-export const ListarJogosCaros = () => {
+import React, { useState, useEffect } from "react";
+import { Container, Content } from "./style";
+import axios from "axios";
+
+const url = "http://localhost:5000/api/jogos/maiscaros";
+
+export const JogosMaisCaros = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((response) => {
+        setData(response.data);
+        console.log("Dados recebidos:", response.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  const renderizando = data.map((item) => (
+    <CardListagemProdutos
+      titulo={item.nome}
+      desenvolvedora={item.descricao}
+      src={item.linkImagem}
+    />
+  ));
+
   return (
     <Container>
-      <a>Dez Jogos Mais Caros</a>
-      <Content>
-        <CardListagem />
-        <CardListagem />
-      </Content>
+      <a id="title">10 Jogos Mais Caros</a>
+      <Content>{renderizando}</Content>
     </Container>
   );
 };
