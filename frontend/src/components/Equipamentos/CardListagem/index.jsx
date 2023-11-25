@@ -7,22 +7,24 @@ import ProductImage from "../../../assets/images/gameImg.png";
 
 import { Container, Description, DivImage } from "./style";
 
-export const CardListagem = ({ titulo, desenvolvedora, valor }) => {
+export const CardListagem = ({ titulo, descricao, valor, src }) => {
   return (
     <Container>
       <DivImage>
         <Image
+          loader={() => src}
+          src={src}
+          width={400}
+          height={400}
+          // fill={true}
           id="productImage"
-          src={ProductImage}
           alt="Picture of the author"
         />
       </DivImage>
       <Description>
         <a id="titulo">{titulo}</a>
-        <a id="sub">
-          <strong>DESENVOLVEDORA: </strong> {desenvolvedora}
-        </a>
-        <a id="value">{valor}</a>
+        <a id="sub">{descricao}</a>
+        <a id="value">R${valor}</a>
       </Description>
     </Container>
   );

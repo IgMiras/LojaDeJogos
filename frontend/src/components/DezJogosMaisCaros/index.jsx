@@ -3,6 +3,7 @@ import { CardListagemProdutos } from "../Equipamentos/CardListagemProdutos";
 import React, { useState, useEffect } from "react";
 import { Container, Content } from "./style";
 import axios from "axios";
+import { CardListagem } from "../Equipamentos/CardListagem";
 
 const url = "http://localhost:5000/api/jogos/maiscaros";
 
@@ -20,10 +21,11 @@ export const JogosMaisCaros = () => {
   }, []);
 
   const renderizando = data.map((item) => (
-    <CardListagemProdutos
+    <CardListagem
       titulo={item.nome}
-      desenvolvedora={item.descricao}
+      descricao={item.descricao}
       src={item.linkImagem}
+      valor={item.valor}
     />
   ));
 

@@ -1,12 +1,11 @@
 import { CardListagemProdutos } from "../Equipamentos/CardListagemProdutos";
-
 import React, { useState, useEffect } from "react";
 import { Container, Content } from "./style";
 import axios from "axios";
 
 const url = "http://localhost:5000/api/jogos";
 
-export const TodosOsJogos = () => {
+export const TodosJogos = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -29,7 +28,7 @@ export const TodosOsJogos = () => {
 
   return (
     <Container>
-      <a id="title">Todos os jogos cadastrados</a>
+      <a id="title">Todos Jogos Cadastrados</a>
       <Content>{renderizando}</Content>
     </Container>
   );

@@ -35,7 +35,9 @@ export const NavBar = () => {
 
                 <ConteudoPopup width="350px" top="45px" left="70px">
                   <ul>
-                    <li onClick={() => router.push("/")}>Todos os jogos</li>
+                    <li onClick={() => router.push("/listarTodosJogos")}>
+                      Todos os jogos
+                    </li>
                     <li onClick={() => router.push("/telaAvaliacao")}>
                       Avaliar
                     </li>
@@ -55,15 +57,37 @@ export const NavBar = () => {
                       <ConteudoPopup width="550px" top="25px" left="245px">
                         <SubContent>
                           <ul>
-                            <li onClick={() => router.push("/")}>Ação</li>
-                            <li onClick={() => router.push("/")}>Aventura</li>
-                            <li onClick={() => router.push("/")}>RPG</li>
-                            <li onClick={() => router.push("/")}>Esporte</li>
-                            <li onClick={() => router.push("/")}>Corrida</li>
-                            <li onClick={() => router.push("/")}>
+                            <li onClick={() => router.push("/listarJogosAcao")}>
+                              Ação
+                            </li>
+                            <li
+                              onClick={() =>
+                                router.push("/listarJogosAventura")
+                              }
+                            >
+                              Aventura
+                            </li>
+                            <li onClick={() => router.push("/listarJogosRpg")}>
+                              RPG
+                            </li>
+                            <li
+                              onClick={() => router.push("/listarJogosEsporte")}
+                            >
+                              Esporte
+                            </li>
+                            <li
+                              onClick={() => router.push("/listarJogosCorrida")}
+                            >
+                              Corrida
+                            </li>
+                            <li
+                              onClick={() => router.push("/listarJogosCaros")}
+                            >
                               Os 10 jogos mais caros
                             </li>
-                            <li onClick={() => router.push("/")}>
+                            <li
+                              onClick={() => router.push("/listarJogosBaratos")}
+                            >
                               Os 10 jogos mais baratos
                             </li>
                             <TriggerSub>Lista de avaliações</TriggerSub>
