@@ -13,7 +13,6 @@ import { SubHome2 } from "@/components/HomeSec02";
 import { NavBar } from "@/components/Navbar";
 import { JogosDeAcao } from "@/components/JogosDeAcao";
 
-
 export default function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={customTheme}>
@@ -33,8 +32,8 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-
-      <Component {...pageProps} />
+      <JogosDeAcao />
+      {/* <Component {...pageProps} /> */}
     </ThemeProvider>
   );
 }

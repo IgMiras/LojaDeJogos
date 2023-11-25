@@ -35,8 +35,11 @@ export const DivImage = styled.div`
   padding: 7%;
 
   #productImage {
-    width: 100%;
-    height: 100%;
+    width: 400px;
+    height: 100px;
+  }
+  Image {
+    /* width: 100%; */
   }
 `;
 
@@ -58,5 +61,6 @@ export const Description = styled.div`
 
   #sub {
     font-size: 0.6rem;
+    text-align: center;
   }
 `;
