@@ -10,6 +10,8 @@ export const Input = ({
   width,
   height,
   label,
+  onChange,
+  value,
 }) => {
   return (
     <Container>
@@ -21,6 +23,8 @@ export const Input = ({
         placeholder={placeHolder}
         width={width}
         height={height}
+        onChange={onChange}
+        value={value}
       />
     </Container>
   );
