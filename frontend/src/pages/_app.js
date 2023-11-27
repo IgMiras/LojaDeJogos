@@ -12,6 +12,10 @@ import { SubHome1 } from "@/components/HomeSec01";
 import { SubHome2 } from "@/components/HomeSec02";
 import { NavBar } from "@/components/Navbar";
 import { JogosDeAcao } from "@/components/JogosDeAcao";
+import { JogosDeAventura } from "@/components/JogosDeAventura";
+import { JogosDeCorrida } from "@/components/JogosDeCorrida";
+import { JogosDeEsporte } from "@/components/JogosDeEsporte";
+import { JogosDeRpg } from "@/components/JogosDeRpg";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -32,7 +36,7 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <JogosDeAcao />
+      <JogosDeRpg />
       {/* <Component {...pageProps} /> */}
     </ThemeProvider>
   );

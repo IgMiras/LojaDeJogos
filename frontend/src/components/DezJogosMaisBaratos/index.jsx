@@ -4,9 +4,9 @@ import React, { useState, useEffect } from "react";
 import { Container, Content } from "./style";
 import axios from "axios";
 
-const url = "http://localhost:5000/api/jogos/aventura";
+const url = "http://localhost:5000/api/jogos/maisbaratos";
 
-export const JogosDeAventura = () => {
+export const JogosMaisBaratos = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const JogosDeAventura = () => {
 
   return (
     <Container>
-      <a id="title">Jogos de Aventura</a>
+      <a id="title">10 Jogos Mais Baratos</a>
       <Content>{renderizando}</Content>
     </Container>
   );
