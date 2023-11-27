@@ -7,7 +7,7 @@ import ProductImage from "../../../assets/images/gameImg.png";
 
 import { Container, Description, DivImage } from "./style";
 
-export const CardProdutos = () => {
+export const CardProdutos = ({ titulo, desenvolvedora, src }) => {
   const background = "rgba(78, 193, 229, 1)";
   const color = "";
   const activeBackground = "rgba(78, 193, 229, 1)";
@@ -19,16 +19,12 @@ export const CardProdutos = () => {
   return (
     <Container>
       <DivImage>
-        <Image
-          id="productImage"
-          src={ProductImage}
-          alt="Picture of the author"
-        />
+        {/* <Image id="productImage" src={src} alt="Picture of the author" /> */}
       </DivImage>
       <Description>
-        <a id="titulo">God of wars</a>
+        <a id="titulo">{titulo}</a>
         <a id="sub">
-          <strong>DESENVOLVEDORA: </strong> Sony Interactive Entertainment (SIE)
+          <strong>DESENVOLVEDORA: </strong> {desenvolvedora}
         </a>
         <div id="button">
           <Button onClick={saudacao} height={height}>
