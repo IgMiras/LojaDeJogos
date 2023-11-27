@@ -19,6 +19,7 @@ async function cadastrarJogo(req, res) {
         disponivel,
         ehFisico,
         tipoJogo,
+        linkImagem,
     } = req.body;
 
     const jogo = FactoryJogo.factoryMethod(
@@ -61,6 +62,7 @@ async function cadastrarJogo(req, res) {
             jogosFields.ehFisico = ehFisico;
         }
         if (tipoJogo) jogosFields.tipoJogo = tipoJogo;
+        if (linkImagem) jogosFields.linkImagem = linkImagem;
 
         // Ver se o jogo ja existe
         let jogoModel = await JogoModel.findOne({ nome });
