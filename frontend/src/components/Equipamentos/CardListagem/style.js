@@ -25,7 +25,7 @@ export const Description = styled.div`
   display: flex;
   flex-direction: column;
   padding: 3.3%;
-  width: 60%;
+  width: 80%;
 
   #titulo {
     font-weight: bold;
@@ -38,11 +38,12 @@ export const Description = styled.div`
 
   #sub {
     font-size: 0.8rem;
+    font-weight: 400;
   }
 
   #value {
     display: flex;
-    margin-top: 5%;
+    /* margin-top: 2%; */
     font-weight: bold;
     font-size: 1rem;
     justify-content: end;

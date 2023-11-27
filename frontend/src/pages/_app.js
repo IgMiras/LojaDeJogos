@@ -16,6 +16,9 @@ import { JogosDeAventura } from "@/components/JogosDeAventura";
 import { JogosDeCorrida } from "@/components/JogosDeCorrida";
 import { JogosDeEsporte } from "@/components/JogosDeEsporte";
 import { JogosDeRpg } from "@/components/JogosDeRpg";
+import { CardListagem } from "@/components/Equipamentos/CardListagem";
+import { JogosMaisCaros } from "@/components/DezJogosMaisCaros";
+import { JogosMaisBaratos } from "@/components/DezJogosMaisBaratos";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -36,8 +39,9 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      <JogosDeRpg />
-      {/* <Component {...pageProps} /> */}
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
   );
 }
