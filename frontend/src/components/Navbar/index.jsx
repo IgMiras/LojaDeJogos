@@ -126,10 +126,16 @@ export const NavBar = () => {
                 <Trigger> CADASTRAR</Trigger>
                 <ConteudoPopup width="350px" top="45px" left="790px">
                   <ul>
-                    <li>Cliente</li>
-                    <li>Gerente</li>
+                    <li onClick={() => router.push("/cadastroDeCliente")}>
+                      Cliente
+                    </li>
+                    <li onClick={() => router.push("/cadastroDeGerente")}>
+                      Gerente
+                    </li>
                     <li>Gênero do jogo</li>
-                    <li>Desenvolvedora</li>
+                    <li onClick={() => router.push("/cadastroDeDesenv")}>
+                      Desenvolvedora
+                    </li>
                   </ul>
                 </ConteudoPopup>
               </Itens>

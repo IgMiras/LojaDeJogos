@@ -24,9 +24,10 @@ export const Container = styled.div`
   }
 
   input::placeholder {
-    font-weight: 300;
+    font-weight: lighter;
     font-size: 0.8rem;
     padding: 5px;
+    letter-spacing: 0.4px;
   }
 
   input:focus {
