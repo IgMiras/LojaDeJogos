@@ -77,7 +77,7 @@ export const Elementos = styled(NavigationMenu.List)`
   padding: 2px;
   list-style: none;
   cursor: pointer;
-  gap: 5rem;
+  gap: 3.3rem;
 
   @media (max-width: 420px) {
     flex-direction: row;
@@ -133,5 +133,8 @@ export const TriggerSub = styled(NavigationMenu.Trigger)`
 `;
 
 export const SubContent = styled(NavigationMenu.NavigationMenuSub)`
+  justify-content: left;
+`;
+export const SubContent2 = styled(NavigationMenu.NavigationMenuSub)`
   justify-content: left;
 `;

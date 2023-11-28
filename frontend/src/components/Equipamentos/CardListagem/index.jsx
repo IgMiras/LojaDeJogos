@@ -24,7 +24,7 @@ export const CardListagem = ({ titulo, descricao, valor, src }) => {
       <Description>
         <a id="titulo">{titulo}</a>
         <a id="sub">{descricao}</a>
-        <a id="value">R${valor}</a>
+        <a id="value">{valor !== undefined ? `R$${valor}` : "Grátis"}</a>
       </Description>
     </Container>
   );
