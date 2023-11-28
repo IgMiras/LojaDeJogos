@@ -9,13 +9,11 @@ export const Input = ({
   placeHolder,
   width,
   height,
-  label,
   onChange,
   value,
 }) => {
   return (
     <Container>
-      <label htmlFor="name">{label}</label>
       <input
         type={type}
         name={name}
