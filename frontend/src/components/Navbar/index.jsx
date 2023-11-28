@@ -10,6 +10,7 @@ import {
   NavContainer,
   SubContent,
   TriggerSub,
+  SubContent2,
 } from "./style";
 import Image from "next/image";
 import logoImg from "../../assets/images/image3.png";
@@ -33,7 +34,7 @@ export const NavBar = () => {
               <Itens>
                 <Trigger> JOGOS</Trigger>
 
-                <ConteudoPopup width="350px" top="45px" left="70px">
+                <ConteudoPopup width="350px" top="45px" left="40px">
                   <ul>
                     <li onClick={() => router.push("/listarTodosJogos")}>
                       Todos os jogos
@@ -45,12 +46,28 @@ export const NavBar = () => {
                 </ConteudoPopup>
               </Itens>
               <Itens>
-                <Link href="#vendas"> VENDAS</Link>
+                <Trigger> VENDAS</Trigger>
+                <ConteudoPopup width="500px" top="45px" left="150px">
+                  <ul>
+                    <li onClick={() => router.push("/")}>Todas</li>
+                    <li onClick={() => router.push("/")}>
+                      Vendas e lucro por mês
+                    </li>
+                    <li onClick={() => router.push("/")}>
+                      Vendas por desenvolvedoras
+                    </li>
+                    <li onClick={() => router.push("/")}>Pagas em boleto</li>
+                    <li onClick={() => router.push("/")}>
+                      Pagas em cartão de crédito
+                    </li>
+                    <li onClick={() => router.push("/")}>Pagas com PIX</li>
+                  </ul>
+                </ConteudoPopup>
               </Itens>
               <Itens>
                 <Trigger> RELATÓRIOS</Trigger>
 
-                <ConteudoPopup width="500px" top="45px" left="390px">
+                <ConteudoPopup width="500px" top="45px" left="290px">
                   <SubContent>
                     <ul>
                       <TriggerSub> Jogos</TriggerSub>
@@ -110,21 +127,51 @@ export const NavBar = () => {
                           </ul>
                         </SubContent>
                       </ConteudoPopup>
-                      <li onClick={() => router.push("/")}>Desenvolvedoras</li>
+
                       <li onClick={() => router.push("/")}>Transportadoras</li>
                       <li onClick={() => router.push("/")}>Gerentes</li>
-                      <li onClick={() => router.push("/")}>Clientes</li>
-                      <li onClick={() => router.push("/")}>Vendas</li>
                     </ul>
                   </SubContent>
                 </ConteudoPopup>
               </Itens>
               <Itens>
-                <Link href="#clientes"> CLIENTES </Link>
+                <Trigger> CLIENTES</Trigger>
+                <ConteudoPopup width="500px" top="45px" left="470px">
+                  <ul>
+                    <li onClick={() => router.push("/listarTodosClientes")}>
+                      Todos
+                    </li>
+                    <li onClick={() => router.push("/")}>Clientes épicos</li>
+                    <li onClick={() => router.push("/")}>
+                      Dez clientes com maior nível
+                    </li>
+                    <li onClick={() => router.push("/")}>Histórico de venda</li>
+                  </ul>
+                </ConteudoPopup>
               </Itens>
               <Itens>
+                <Trigger> DESENVOLVEDORAS</Trigger>
+                <ConteudoPopup width="450px" top="45px" left="620px">
+                  <ul>
+                    <li
+                      onClick={() => router.push("/listarTodasDesenvolvedoras")}
+                    >
+                      Todas
+                    </li>
+                    <li onClick={() => router.push("/cadastroDeGerente")}>
+                      Com mais jogos vendidos
+                    </li>
+                    <li>Gênero do jogo</li>
+                    <li onClick={() => router.push("/cadastroDeDesenv")}>
+                      De maior lucro
+                    </li>
+                  </ul>
+                </ConteudoPopup>
+              </Itens>
+
+              <Itens>
                 <Trigger> CADASTRAR</Trigger>
-                <ConteudoPopup width="350px" top="45px" left="790px">
+                <ConteudoPopup width="350px" top="45px" left="880px">
                   <ul>
                     <li onClick={() => router.push("/cadastroDeCliente")}>
                       Cliente
