@@ -13,6 +13,7 @@ export const CardCliente = ({
   cep,
   email,
   epico,
+  nivel,
 }) => {
   return (
     <Container>
@@ -33,7 +34,7 @@ export const CardCliente = ({
           <a id="cep">{cep} </a>
           <a id="email">{email}</a>
           <p>
-            CLIENTE {epico ? "ÉPICO" : "NÃO ÉPICO"}
+            CLIENTE {epico ? `ÉPICO - NÍVEL ${nivel}` : "NÃO ÉPICO"}
             {console.log(epico)}
           </p>
         </Description>
