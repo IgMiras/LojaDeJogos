@@ -10,6 +10,7 @@ const desenvolvedoraRota = require('./routes/api/desenvolvedora');
 const clienteRota = require('./routes/api/cliente');
 const gerenteRota = require('./routes/api/gerente');
 const transportadoraRota = require('./routes/api/transportadora');
+const vendaRota = require('./routes/api/venda');
 
 // Connect Database
 connectDB();
@@ -27,5 +28,6 @@ app.use('/api/desenvolvedora', desenvolvedoraRota);
 app.use('/api/cliente', clienteRota);
 app.use('/api/gerente', gerenteRota);
 app.use('/api/transportadora', transportadoraRota);
+app.use('/api/venda', vendaRota);
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
