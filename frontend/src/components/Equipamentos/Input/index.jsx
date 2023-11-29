@@ -12,6 +12,11 @@ export const Input = ({
   onChange,
   value,
 }) => {
+  const inputStyle = {
+    width: width,
+    height: height,
+  };
+
   return (
     <Container>
       <input
@@ -19,8 +24,7 @@ export const Input = ({
         name={name}
         id={id}
         placeholder={placeHolder}
-        width={width}
-        height={height}
+        style={inputStyle}
         onChange={onChange}
         value={value}
       />

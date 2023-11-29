@@ -14,6 +14,7 @@ import { ListagemTodasTransportadoras } from "@/components/Listagens/TodasTransp
 import { CardCliente } from "@/components/Equipamentos/CardCliente";
 import { ListagemTodosClientes } from "@/components/ListagensClientes/TodosClientes";
 import { ListagemTodosGerentes } from "@/components/Listagens/TodosGerentes";
+import { TelaCadastroJogos } from "@/components/TelasDeCadastro/CadastroJogo";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -37,7 +38,8 @@ export default function App({ Component, pageProps }) {
       {/* <ListagemTodasTransportadoras /> */}
       {/* <CardCliente /> */}
       {/* <ListagemTodosClientes /> */}
-      <ListagemTodosGerentes />
+      {/* <ListagemTodosGerentes /> */}
+      <TelaCadastroJogos />
       {/* <CardDesenvolvedora /> */}
       {/* <Layout>
         <Component {...pageProps} />
