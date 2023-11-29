@@ -29,6 +29,7 @@ export const ListagemTodosClientes = () => {
       cep={item.cep}
       email={item.email}
       epico={item.clienteEpico}
+      nivel={item.nivel}
     />
   ));
 
