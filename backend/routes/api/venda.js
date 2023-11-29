@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
-const { cadastrarVendda } = require('../../controllers/VendaController.js');
+const { cadastrarVenda } = require('../../controllers/VendaController.js');
 
 // @route   POST api/venda
 // @desc    Cadastrar uma venda
@@ -19,7 +19,7 @@ router.post(
 			// Se tiver erros
 			return res.status(400).json({ erros: erros.array() });
 		}
-		cadastrarVendda(req, res);
+		cadastrarVenda(req, res);
 	}
 );
 
