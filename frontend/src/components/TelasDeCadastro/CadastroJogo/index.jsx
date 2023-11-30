@@ -16,6 +16,8 @@ export const TelaCadastroJogos = () => {
   const [linkImagem, setLinkImagem] = useState("");
   const [descricao, setDescricao] = useState("");
   const [requisitos, setRequisitos] = useState("");
+  const [disponivel, setDisponivel] = useState("");
+  const [ehFisico, setEhFisico] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -23,13 +25,13 @@ export const TelaCadastroJogos = () => {
     try {
       const resp = await axios.post(url, {
         nome: nome,
+        descricao: descricao,
         desenvolvedora: desenvolvedora,
         dataLancamento: dataLancamento,
         valor: valor,
+        requisitos: requisitos,
         tipo: tipo,
         linkImagem: linkImagem,
-        descricao: descricao,
-        requisitos: requisitos,
       });
       console.log(resp.data);
       setNome("");
