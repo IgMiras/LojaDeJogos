@@ -15,6 +15,10 @@ import { CardCliente } from "@/components/Equipamentos/CardCliente";
 import { ListagemTodosClientes } from "@/components/ListagensClientes/TodosClientes";
 import { ListagemTodosGerentes } from "@/components/Listagens/TodosGerentes";
 import { TelaCadastroJogos } from "@/components/TelasDeCadastro/CadastroJogo";
+import { CardCarrinhoProduto } from "@/components/Equipamentos/CarrinhoCardProduto";
+import { CardCarrinhoTransportadora } from "@/components/Equipamentos/CarrinhoCardTransportadora";
+import { TelaNovaVenda } from "@/components/TelaVenda";
+import Provider from "../../context/provider";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -39,7 +43,11 @@ export default function App({ Component, pageProps }) {
       {/* <CardCliente /> */}
       {/* <ListagemTodosClientes /> */}
       {/* <ListagemTodosGerentes /> */}
-      <TelaCadastroJogos />
+      {/* <TelaCadastroJogos /> */}
+      {/* <CardCarrinhoTransportadora /> */}
+      <Provider>
+        <TelaNovaVenda />
+      </Provider>
       {/* <CardDesenvolvedora /> */}
       {/* <Layout>
         <Component {...pageProps} />

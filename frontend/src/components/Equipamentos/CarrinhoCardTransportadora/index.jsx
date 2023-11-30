@@ -1,19 +1,16 @@
-import React from "react";
 import Image from "next/image";
-
-import { Button } from "../Button/index";
-
-import ProductImage from "../../../assets/images/gameImg.png";
-
+import caminhaoImage from "../../../assets/svg/caminhao.svg";
 import { Container, Description, DivImage } from "./style";
 
-export const CardListagemProdutos = ({ titulo, desenvolvedora, src }) => {
+export const CardCarrinhoTransportadora = ({
+  nomeTransportadora,
+  tempoEntrega,
+}) => {
   return (
     <Container>
       <DivImage>
         <Image
-          loader={() => src}
-          src={src}
+          src={caminhaoImage}
           width={400}
           height={400}
           // fill={true}
@@ -22,8 +19,10 @@ export const CardListagemProdutos = ({ titulo, desenvolvedora, src }) => {
         />
       </DivImage>
       <Description>
-        <a id="titulo">{titulo}</a>
-        <a id="sub">{desenvolvedora}</a>
+        <a id="titulo">{nomeTransportadora}</a>
+        <a id="sub">
+          <strong>TEMPO DE ENTREGA: </strong> {`${tempoEntrega} dias`}
+        </a>
       </Description>
     </Container>
   );

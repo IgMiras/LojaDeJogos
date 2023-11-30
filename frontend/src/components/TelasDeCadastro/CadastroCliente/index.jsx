@@ -15,7 +15,7 @@ export const TelaCadastroCliente = () => {
   const [endereco, setEndereco] = useState("");
   const [cep, setCep] = useState("");
   const [email, setEmail] = useState("");
-  const [epico, setEpico] = useState(false);
+  const [epico, setEpico] = useState();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,10 +25,10 @@ export const TelaCadastroCliente = () => {
         nome: nome,
         cpf: cpf,
         rg: rg,
-        nasc: nasc,
         endereco: endereco,
         cep: cep,
         email: email,
+        nasc: nasc,
         epico: epico,
       });
       console.log(resp.data);
@@ -73,7 +73,7 @@ export const TelaCadastroCliente = () => {
               id="cpf"
               placeHolder="Insira o CPF"
               width="100%"
-              height="30px"
+              height="40px"
               value={cpf}
               onChange={(e) => setCpf(e.target.value)}
             />
@@ -86,20 +86,20 @@ export const TelaCadastroCliente = () => {
               id="rg"
               placeHolder="Insira aqui"
               width="100%"
-              height="30px"
+              height="40px"
               value={rg}
               onChange={(e) => setRg(e.target.value)}
             />
           </div>
           <div id="input4">
-            <label>Data de nascimento</label>
+            <label>Data de cadastro</label>
             <Input
               type="text"
               name="nasc"
               id="nasc"
               placeHolder="DD/MM/YYYY"
               width="100%"
-              height="30px"
+              height="40px"
               value={nasc}
               onChange={(e) => setNasc(e.target.value)}
             />
@@ -112,7 +112,7 @@ export const TelaCadastroCliente = () => {
               id="endereco"
               placeHolder="Ex. Rua..."
               width="100%"
-              height="30px"
+              height="40px"
               value={endereco}
               onChange={(e) => setEndereco(e.target.value)}
             />
@@ -125,7 +125,7 @@ export const TelaCadastroCliente = () => {
               id="cep"
               placeHolder="00000-000"
               width="100%"
-              height="30px"
+              height="40px"
               value={cep}
               onChange={(e) => setCep(e.target.value)}
             />
@@ -138,7 +138,7 @@ export const TelaCadastroCliente = () => {
               id="email"
               placeHolder="exemplo@gmail.com"
               width="100%"
-              height="30px"
+              height="40px"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />

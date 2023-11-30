@@ -8,6 +8,7 @@ export const Container = styled.div`
   padding-bottom: 10px;
   border: 0.2px solid gray;
   min-width: 20%;
+  background-color: white;
 
   @media (max-width: 930px) {
     width: 20%;
@@ -36,13 +37,13 @@ export const DivImage = styled.div`
   padding: 7%;
 
   #productImage {
-    width: 100%;
-    height: 100%;
+    width: 400px;
+    height: 100px;
   }
 `;
 
 export const Description = styled.div`
-  border-top: 1.5px solid gray;
+  border-top: 1.5px solid #4ec1e5;
   padding: 20px 20px 10px 20px;
 
   display: flex;
@@ -61,6 +62,7 @@ export const Description = styled.div`
   }
 
   #button {
+    bottom: 0;
     Button {
       background-color: rgba(78, 193, 229, 1);
       color: white;
@@ -74,6 +76,7 @@ export const Description = styled.div`
     #button {
       margin-top: 5px;
       margin-bottom: 0;
+
       Button {
         font-size: 0.7rem;
         font-weight: normal;
