@@ -4,6 +4,7 @@ const ClienteModel = require('../models/ClienteModel.js');
 const GerenteModel = require('../models/GerenteModel.js');
 const ItemVenda = require('../models/ItemVendaModel.js');
 const JogoModel = require('../models/JogoModel.js');
+const TransportadoraModel = require('../models/TransportadoraModel.js');
 
 async function cadastrarVenda(req, res) {
 	const {
