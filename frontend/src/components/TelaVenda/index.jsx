@@ -208,7 +208,7 @@ export const TelaNovaVenda = () => {
         numeroCartao: numeroCartao,
         codigoPix: codigoPix,
       });
-      console.log(resp.data);
+      //   console.log(resp.data);
       //   console.log(resp.data._id);
       setCodigoNota(parseInt(Math.random() * 1000000));
       setCodigoPix(parseInt(Math.random() * 50000));
@@ -220,7 +220,15 @@ export const TelaNovaVenda = () => {
     } catch (error) {
       console.log(error.response);
     }
-
+    console.log({
+      nomeCliente,
+      nomeGerente,
+      nomeTransportadora,
+      dataVenda,
+      dataEntrega,
+      itensVenda,
+      idPagamento,
+    });
     try {
       const resp = await axios.post(urlNovaVenda, {
         nomeCliente: nomeCliente,
@@ -232,12 +240,12 @@ export const TelaNovaVenda = () => {
         idPagamento: idPagamento,
       });
       console.log(resp.data);
+      //   console.log("AQUI");
       setNomeCliente("");
       setNomeGerente("");
       setDataVenda("");
       setDataEntrega("");
-      setTipoPagamento("");
-
+      //   setTipoPagamento("");
       setCodigoPix(parseInt(Math.random() * 50000));
       setNumeroBoleto(parseInt(Math.random() * 2301854));
     } catch (error) {
