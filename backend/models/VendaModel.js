@@ -32,7 +32,7 @@ const VendaSchema = new mongoose.Schema({
 
     // Sem valorComDesconto, pois eh so tirar de valorTotal
 
-    formaPagamento: {
+    pagamento: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'pagamento',
     },
