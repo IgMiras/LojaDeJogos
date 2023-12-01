@@ -66,7 +66,7 @@ export const TelaCadastroDesenvolvedora = () => {
               id="nome"
               placeHolder="Insira aqui"
               width="100%"
-              height="30px"
+              height="40px"
               value={nome}
               onChange={(e) => setNome(e.target.value)}
             />
@@ -79,7 +79,7 @@ export const TelaCadastroDesenvolvedora = () => {
               id="email"
               placeHolder="Insira aqui"
               width="100%"
-              height="30px"
+              height="40px"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -92,7 +92,7 @@ export const TelaCadastroDesenvolvedora = () => {
               id="site"
               placeHolder="Insira aqui"
               width="100%"
-              height="30px"
+              height="40px"
               value={site}
               onChange={(e) => setSIte(e.target.value)}
             />
@@ -105,7 +105,7 @@ export const TelaCadastroDesenvolvedora = () => {
               id="redes"
               placeHolder="Insira aqui"
               width="100%"
-              height="30px"
+              height="40px"
               value={redes}
               onChange={(e) => setRedes(e.target.value)}
             />
@@ -118,7 +118,7 @@ export const TelaCadastroDesenvolvedora = () => {
               id="endereco"
               placeHolder="Insira aqui"
               width="100%"
-              height="30px"
+              height="40px"
               value={endereco}
               onChange={(e) => setEndereco(e.target.value)}
             />

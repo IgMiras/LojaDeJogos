@@ -44,6 +44,15 @@ export const First = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  * {
+    label {
+      color: rgba(2, 52, 84, 1);
+      margin-left: 6px;
+      margin-bottom: 6px;
+      font-size: 1.1rem;
+      font-weight: normal;
+    }
+  }
 `;
 
 export const BlocoInput = styled.div`

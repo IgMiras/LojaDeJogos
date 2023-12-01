@@ -128,8 +128,16 @@ export const NavBar = () => {
                         </SubContent>
                       </ConteudoPopup>
 
-                      <li onClick={() => router.push("/")}>Transportadoras</li>
-                      <li onClick={() => router.push("/")}>Gerentes</li>
+                      <li
+                        onClick={() =>
+                          router.push("/listarTodasTransportadoras")
+                        }
+                      >
+                        Transportadoras
+                      </li>
+                      <li onClick={() => router.push("/listarTodosGerentes")}>
+                        Gerentes
+                      </li>
                     </ul>
                   </SubContent>
                 </ConteudoPopup>
@@ -158,13 +166,11 @@ export const NavBar = () => {
                     >
                       Todas
                     </li>
-                    <li onClick={() => router.push("/cadastroDeGerente")}>
+                    <li onClick={() => router.push("/")}>
                       Com mais jogos vendidos
                     </li>
                     <li>Gênero do jogo</li>
-                    <li onClick={() => router.push("/cadastroDeDesenv")}>
-                      De maior lucro
-                    </li>
+                    <li onClick={() => router.push("/")}>De maior lucro</li>
                   </ul>
                 </ConteudoPopup>
               </Itens>
