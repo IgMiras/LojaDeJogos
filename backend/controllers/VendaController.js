@@ -42,10 +42,12 @@ async function cadastrarVenda(req, res) {
 		if (dataVenda) vendaFields.dataVenda = dataVenda;
 		if (dataEntrega) vendaFields.dataEntrega = dataEntrega;
 		if (itensVenda) vendaFields.itensVenda = itensVenda; // Array de itemVenda
-		for await (const itemVenda of itensVenda) {
-			const jogoModel = await JogoModel.findOne({ nome: itemVenda.nome });
-			vendaFields.valorTotal += jogoModel.valor;
-		}
+		(async () => {
+			for await (const itemVenda of itensVenda) {
+				const jogoModel = await JogoModel.findOne({ nome: itemVenda.nome });
+				vendaFields.valorTotal += jogoModel.valor;
+			}
+		})();
 		if (clienteModel.clienteEpico) vendaFields.valorTotal *= 0.95; // Desconto de 5% para clientes epicos
 		if (formaPagamento) vendaFields.formaPagamento = formaPagamento;
 		if (nomeTransportadora) {
