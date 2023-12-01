@@ -44,6 +44,9 @@ const JogoSchema = new mongoose.Schema({
 	linkImagem: {
 		type: String,
 	},
+	ehFisico: {
+		type: Boolean,
+	}
 });
 
 const Jogo = mongoose.model('jogo', JogoSchema);

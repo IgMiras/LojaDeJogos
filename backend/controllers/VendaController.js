@@ -44,10 +44,11 @@ async function cadastrarVenda(req, res) {
 		if (itensVenda) vendaFields.itensVenda = itensVenda; // Array de itemVenda
 		for await (const itemVenda of itensVenda) {
 			const jogoModel = await JogoModel.findOne({ nome: itemVenda.nomeJogo });
-			vendaFields.valorTotal += jogoModel.valor * itemVenda.quantidade;
+			vendaFields.valorTotal += jogoModel.valor;
 		}
+		if (clienteModel.clienteEpico) vendaFields.valorTotal *= 0.95; // Desconto de 5% para clientes epicos
 		if (formaPagamento) vendaFields.formaPagamento = formaPagamento;
-		if (transportadora) {
+		if (nomeTransportadora) {
 			// Ver se a transportadora existe
 			const transportadoraModel = await TransportadoraModel.findOne({
 				nome: nomeTransportadora,
@@ -57,7 +58,7 @@ async function cadastrarVenda(req, res) {
 				return res.status(404).json({ msg: 'Transportadora nao existente' });
 			}
 
-			vendaFields.transportadora = transportadoraModel.id;
+			vendaFields.nomeTransportadora = transportadoraModel.id;
 		}
 
 		// Criar a venda
