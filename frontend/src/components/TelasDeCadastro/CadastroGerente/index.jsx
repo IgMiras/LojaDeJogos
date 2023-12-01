@@ -78,7 +78,7 @@ export const TelaCadastroGerente = () => {
               id="cpf"
               placeHolder="Insira o CPF"
               width="100%"
-              height="30px"
+              height="40px"
               value={cpf}
               onChange={(e) => setCpf(e.target.value)}
             />
@@ -91,7 +91,7 @@ export const TelaCadastroGerente = () => {
               id="rg"
               placeHolder="Insira aqui"
               width="100%"
-              height="30px"
+              height="40px"
               value={rg}
               onChange={(e) => setRg(e.target.value)}
             />
@@ -104,7 +104,7 @@ export const TelaCadastroGerente = () => {
               id="nasc"
               placeHolder="DD/MM/YYYY"
               width="100%"
-              height="30px"
+              height="40px"
               value={nasc}
               onChange={(e) => setNasc(e.target.value)}
             />
@@ -117,7 +117,7 @@ export const TelaCadastroGerente = () => {
               id="endereco"
               placeHolder="Ex. Rua..."
               width="100%"
-              height="30px"
+              height="40px"
               value={endereco}
               onChange={(e) => setEndereco(e.target.value)}
             />
@@ -130,7 +130,7 @@ export const TelaCadastroGerente = () => {
               id="cep"
               placeHolder="00000-000"
               width="100%"
-              height="30px"
+              height="40px"
               value={cep}
               onChange={(e) => setCep(e.target.value)}
             />
@@ -143,7 +143,7 @@ export const TelaCadastroGerente = () => {
               id="email"
               placeHolder="exemplo@gmail.com"
               width="100%"
-              height="30px"
+              height="40px"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -156,7 +156,7 @@ export const TelaCadastroGerente = () => {
               id="salario"
               placeHolder="R$"
               width="100%"
-              height="30px"
+              height="40px"
               value={salario}
               onChange={(e) => setSalario(e.target.value)}
             />
@@ -169,7 +169,7 @@ export const TelaCadastroGerente = () => {
               id="pis"
               placeHolder="Digite nesse campo"
               width="100%"
-              height="30px"
+              height="40px"
               value={pis}
               onChange={(e) => setPis(e.target.value)}
             />
@@ -182,7 +182,7 @@ export const TelaCadastroGerente = () => {
               id="dataAdmissao"
               placeHolder="DD/MM/YYYY"
               width="100%"
-              height="30px"
+              height="40px"
               value={dataAdmissao}
               onChange={(e) => setDataAdmissao(e.target.value)}
             />

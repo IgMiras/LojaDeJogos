@@ -26,24 +26,26 @@ export const TelaAvaliacao = () => {
       <Content>
         <First>
           <BlocoInput>
+            <label>Título</label>
             <Input
               type="text"
               name="titulo"
               id="titulo"
               placeHolder="Ex. God of War"
-              width="10%"
+              width="100%"
               height="auto"
               label="Título"
             ></Input>
           </BlocoInput>
 
           <BlocoInput2>
+            <label>Avaliação</label>
             <Input
               type="number"
               name="avalicao"
               id="avalicao"
               placeHolder="1 à 5"
-              width="10%"
+              width="100%"
               height="auto"
               label="Avaliação:"
             ></Input>
