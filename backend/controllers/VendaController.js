@@ -60,7 +60,7 @@ async function cadastrarVenda(req, res) {
 				return res.status(404).json({ msg: 'Transportadora nao existente' });
 			}
 
-			vendaFields.nomeTransportadora = transportadoraModel.id;
+			vendaFields.transportadora = transportadoraModel.id;
 		}
 
 		// Criar a venda
