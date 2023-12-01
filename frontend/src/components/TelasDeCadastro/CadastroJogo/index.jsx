@@ -9,39 +9,53 @@ const url = "http://localhost:5000/api/jogos";
 
 export const TelaCadastroJogos = () => {
   const [nome, setNome] = useState("");
-  const [desenvolvedora, setDesenvolvedora] = useState("");
+  const [nomeDesenvolvedora, setNomeDesenvolvedora] = useState("");
   const [dataLancamento, setDataLancamento] = useState("");
   const [valor, setValor] = useState("");
-  const [tipo, setTipo] = useState("");
+  const [tipoJogo, setTipoJogo] = useState("");
   const [linkImagem, setLinkImagem] = useState("");
   const [descricao, setDescricao] = useState("");
-  const [requisitos, setRequisitos] = useState("");
-  const [disponivel, setDisponivel] = useState("");
+  const [requisitosMinimos, setRequisitosMinimos] = useState("");
+  const [disponivel, setDisponivel] = useState(true);
   const [ehFisico, setEhFisico] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log({
+      nome,
+      descricao,
+      nomeDesenvolvedora,
+      dataLancamento,
+      valor,
+      requisitosMinimos,
+      tipoJogo,
+      linkImagem,
+      disponivel,
+      ehFisico,
+    });
 
     try {
       const resp = await axios.post(url, {
         nome: nome,
         descricao: descricao,
-        desenvolvedora: desenvolvedora,
+        nomeDesenvolvedora: nomeDesenvolvedora,
         dataLancamento: dataLancamento,
         valor: valor,
-        requisitos: requisitos,
-        tipo: tipo,
+        requisitosMininos: requisitosMinimos,
+        tipoJogo: tipoJogo,
+        disponivel: disponivel,
+        ehFisico: ehFisico,
         linkImagem: linkImagem,
       });
       console.log(resp.data);
       setNome("");
-      setDesenvolvedora("");
+      setNomeDesenvolvedora("");
       setDataLancamento("");
       setValor("");
-      setTipo("");
+      setTipoJogo("");
       setLinkImagem("");
       setDescricao("");
-      setRequisitos("");
+      setRequisitosMinimos("");
     } catch (error) {
       console.log(error.response);
     }
@@ -73,11 +87,11 @@ export const TelaCadastroJogos = () => {
               type="text"
               name="desenvolvedora"
               id="desenvolvedora"
-              placeHolder="Insira o CPF"
+              placeHolder="Insira o nome da desenvolvedora"
               width="100%"
               height="auto"
-              value={desenvolvedora}
-              onChange={(e) => setDesenvolvedora(e.target.value)}
+              value={nomeDesenvolvedora}
+              onChange={(e) => setNomeDesenvolvedora(e.target.value)}
             />
           </div>
           <div id="input3">
@@ -115,8 +129,8 @@ export const TelaCadastroJogos = () => {
               placeHolder="Ex. Ação"
               width="100%"
               height="auto"
-              value={tipo}
-              onChange={(e) => setTipo(e.target.value)}
+              value={tipoJogo}
+              onChange={(e) => setTipoJogo(e.target.value)}
             />
           </div>
           <div id="input6">
@@ -141,9 +155,28 @@ export const TelaCadastroJogos = () => {
               placeHolder="Ex. Processador Intel Core 7"
               width="100%"
               height="auto"
-              value={requisitos}
-              onChange={(e) => setRequisitos(e.target.value)}
+              value={requisitosMinimos}
+              onChange={(e) => setRequisitosMinimos(e.target.value)}
             />
+          </div>
+          <div id="input8">
+            <label>É um jogo físico?</label>
+            <input
+              type="radio"
+              id="sim"
+              name="epico"
+              checked={ehFisico === true}
+              onChange={() => setEhFisico(true)}
+            ></input>
+            <label id="sim">Sim</label>
+            <input
+              type="radio"
+              id="nao"
+              name="epico"
+              checked={ehFisico === false}
+              onChange={() => setEhFisico(false)}
+            ></input>
+            <label>Não</label>
           </div>
         </div>
         <div id="desc">

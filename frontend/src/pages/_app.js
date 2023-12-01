@@ -45,10 +45,11 @@ export default function App({ Component, pageProps }) {
       {/* <ListagemTodosGerentes /> */}
       {/* <TelaCadastroJogos /> */}
       {/* <CardCarrinhoTransportadora /> */}
-      <Provider>
+      {/* <Provider>
         <TelaNovaVenda />
-      </Provider>
+      </Provider> */}
       {/* <CardDesenvolvedora /> */}
+      <TelaCadastroJogos />
       {/* <Layout>
         <Component {...pageProps} />
       </Layout> */}
