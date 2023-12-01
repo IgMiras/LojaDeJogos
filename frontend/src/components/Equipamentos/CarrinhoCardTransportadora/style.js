@@ -6,6 +6,7 @@ export const Container = styled.div`
   padding: 2% 2%;
   display: flex;
   flex-direction: row;
+  background-color: rgba(255, 255, 255, 0.54);
 `;
 
 export const DivImage = styled.div`
