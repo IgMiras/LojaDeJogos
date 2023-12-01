@@ -1,4 +1,5 @@
 const ClienteModel = require('../models/ClienteModel.js');
+const { OrdenacaoStrategy, QuickSort, BubbleSort } = require('../strategy/OrdenacaoStrategy.js');
 
 async function cadastrarCliente(req, res) {
     const { nome, cpf, rg, dataNasci, endereco, cep, email, clienteEpico } =
@@ -39,7 +40,7 @@ async function cadastrarCliente(req, res) {
 
 async function listarTodosClientes(req, res) {
     try {
-        const clientes = await ClienteModel.find();
+        let clientes = await ClienteModel.find();
         res.json(clientes);
     } catch (err) {
         console.error(err.message);

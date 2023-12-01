@@ -48,3 +48,5 @@ async function cadastrarPagamento(req, res) {
 		res.status(500).send('Erro de Servidor');
 	}
 }
+
+module.exports = { cadastrarPagamento };

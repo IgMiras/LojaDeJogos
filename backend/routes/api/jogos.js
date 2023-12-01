@@ -11,6 +11,8 @@ const {
     listarJogosCorrida,
     listarDezJogosMaisCaros,
     listarDezJogosMaisBaratos,
+    listarTodosJogosQuickSort,
+    listarTodosJogosBubbleSort,
 } = require('../../controllers/JogoController.js');
 const Jogo = require('../../models/JogoModel.js');
 
@@ -88,6 +90,20 @@ router.get('/maiscaros', (req, res) => {
 // @acess   Publico (mudar futuramente caso tenha autenticação)
 router.get('/maisbaratos', (req, res) => {
     listarDezJogosMaisBaratos(req, res);
+});
+
+// @route   GET api/jogos/quicksort
+// @desc    Listar os jogos ordenados com QuickSort
+// @acess   Publico (mudar futuramente caso tenha autenticação)
+router.get('/quicksort', (req, res) => {
+    listarTodosJogosQuickSort(req, res);
+});
+
+// @route   GET api/jogos/bubblesort
+// @desc    Listar os jogos ordenados com BubbleSort
+// @acess   Publico (mudar futuramente caso tenha autenticação)
+router.get('/bubblesort', (req, res) => {
+    listarTodosJogosBubbleSort(req, res);
 });
 
 module.exports = router;

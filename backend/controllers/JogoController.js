@@ -7,6 +7,8 @@ const RPG = require("../classes/RPG.js");
 const DesenvolvedoraModel = require("../models/DesenvolvedoraModel.js");
 const JogoModel = require("../models/JogoModel.js");
 const FactoryJogo = require("../factory/FactoryJogo.js");
+const { OrdenacaoStrategy, QuickSort, BubbleSort } = require('../strategy/OrdenacaoStrategy.js');
+
 
 async function cadastrarJogo(req, res) {
   const {
@@ -160,6 +162,38 @@ async function listarDezJogosMaisBaratos(req, res) {
   }
 }
 
+async function listarTodosJogosQuickSort(req, res) {
+  try {
+    const jogos = await JogoModel.find().lean().exec();
+    const jogosArray = Array.from(jogos);
+    const ordenacaoStrategy = new OrdenacaoStrategy();
+    const quickSort = new QuickSort();
+    ordenacaoStrategy.strategy = quickSort;
+    ordenacaoStrategy.ordenar(jogosArray);
+    
+    res.json(jogosArray);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Erro de Servidor");
+  }
+}
+
+async function listarTodosJogosBubbleSort(req, res) {
+  try {
+    const jogos = await JogoModel.find().lean().exec();
+    const jogosArray = Array.from(jogos);
+    const ordenacaoStrategy = new OrdenacaoStrategy();
+    const bubbleSort = new BubbleSort();
+    ordenacaoStrategy.strategy = bubbleSort;
+    ordenacaoStrategy.ordenar(jogosArray);
+    
+    res.json(jogosArray);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Erro de Servidor");
+  }
+}
+
 module.exports = {
   cadastrarJogo,
   listarTodosJogos,
@@ -170,4 +204,6 @@ module.exports = {
   listarJogosCorrida,
   listarDezJogosMaisCaros,
   listarDezJogosMaisBaratos,
+  listarTodosJogosQuickSort,
+  listarTodosJogosBubbleSort,
 };
