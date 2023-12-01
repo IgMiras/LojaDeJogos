@@ -5,74 +5,88 @@ const GerenteModel = require('../models/GerenteModel.js');
 const ItemVenda = require('../models/ItemVendaModel.js');
 const JogoModel = require('../models/JogoModel.js');
 const TransportadoraModel = require('../models/TransportadoraModel.js');
+const PagamentoModel = require('../models/PagamentoModel.js');
 
 async function cadastrarVenda(req, res) {
-	const {
-		nomeCliente,
-		nomeGerente,
-		dataVenda,
-		dataEntrega,
-		itensVenda,
-		formaPagamento,
-		nomeTransportadora,
-	} = req.body;
+    const {
+        nomeCliente,
+        nomeGerente,
+        dataVenda,
+        dataEntrega,
+        itensVenda,
+        nomeTransportadora,
+        idPagamento,
+    } = req.body;
 
-	try {
-		// Ver se o cliente esta cadastrado
-		const clienteModel = await ClienteModel.findOne({
-			nome: nomeCliente,
-		});
+    try {
+        // Ver se o cliente esta cadastrado
+        const clienteModel = await ClienteModel.findOne({
+            nome: nomeCliente,
+        });
 
-		if (!clienteModel) {
-			return res.status(404).json({ msg: 'Cliente nao existente' });
-		}
+        if (!clienteModel) {
+            return res.status(404).json({ msg: 'Cliente nao existente' });
+        }
 
-		// Ver se o gerente esta cadastrado
-		const gerenteModel = await GerenteModel.findOne({
-			nome: nomeGerente,
-		});
+        // Ver se o gerente esta cadastrado
+        const gerenteModel = await GerenteModel.findOne({
+            nome: nomeGerente,
+        });
 
-		if (!gerenteModel) {
-			return res.status(404).json({ msg: 'Gerente nao existente' });
-		}
+        if (!gerenteModel) {
+            return res.status(404).json({ msg: 'Gerente nao existente' });
+        }
 
-		// Preencher um objeto com os campos da venda
-		const vendaFields = {};
-		vendaFields.cliente = clienteModel.id; // Obrigatorio
-		vendaFields.gerente = gerenteModel.id; // Obrigatorio
-		if (dataVenda) vendaFields.dataVenda = dataVenda;
-		if (dataEntrega) vendaFields.dataEntrega = dataEntrega;
-		if (itensVenda) vendaFields.itensVenda = itensVenda; // Array de itemVenda
-		(async () => {
-			for await (const itemVenda of itensVenda) {
-				const jogoModel = await JogoModel.findOne({ nome: itemVenda.nome });
-				vendaFields.valorTotal += jogoModel.valor;
-			}
-		})();
-		if (clienteModel.clienteEpico) vendaFields.valorTotal *= 0.95; // Desconto de 5% para clientes epicos
-		if (formaPagamento) vendaFields.formaPagamento = formaPagamento;
-		if (nomeTransportadora) {
-			// Ver se a transportadora existe
-			const transportadoraModel = await TransportadoraModel.findOne({
-				nome: nomeTransportadora,
-			});
+        // Preencher um objeto com os campos da venda
+        const vendaFields = {};
+        vendaFields.cliente = clienteModel.id; // Obrigatorio
+        vendaFields.gerente = gerenteModel.id; // Obrigatorio
+        if (dataVenda) vendaFields.dataVenda = dataVenda;
+        if (dataEntrega) vendaFields.dataEntrega = dataEntrega;
+        if (itensVenda) vendaFields.itensVenda = itensVenda; // Array de itemVenda
+        (async () => {
+            for await (const itemVenda of itensVenda) {
+                const jogoModel = await JogoModel.findOne({
+                    nome: itemVenda.nome,
+                });
+                vendaFields.valorTotal += jogoModel.valor;
+            }
+        })();
+        if (clienteModel.clienteEpico) vendaFields.valorTotal *= 0.95; // Desconto de 5% para clientes epicos
+        if (idPagamento) {
+            // Ver se o pagamento existe
+            const pagamentoModel = await PagamentoModel.findById(idPagamento);
 
-			if (!transportadoraModel) {
-				return res.status(404).json({ msg: 'Transportadora nao existente' });
-			}
+            if (!pagamentoModel) {
+                return res.status(404).json({ msg: 'Pagamento nao existente' });
+            }
 
-			vendaFields.transportadora = transportadoraModel.id;
-		}
+            vendaFields.pagamento = pagamentoModel.id;
+        }
+        if (nomeTransportadora) {
+            // Ver se a transportadora existe
+            const transportadoraModel = await TransportadoraModel.findOne({
+                nome: nomeTransportadora,
+            });
 
-		// Criar a venda
-		const vendaModel = new VendaModel(vendaFields);
+            if (!transportadoraModel) {
+                return res
+                    .status(404)
+                    .json({ msg: 'Transportadora nao existente' });
+            }
 
-		await vendaModel.save();
-		res.status(200).json(vendaModel);
-	} catch (err) {
-		console.error(err.message);
-		res.status(500).send('Erro de Servidor');
-	}
+            vendaFields.transportadora = transportadoraModel.id;
+        }
+
+        // Criar a venda
+        const vendaModel = new VendaModel(vendaFields);
+
+        await vendaModel.save();
+        res.status(200).json(vendaModel);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de Servidor');
+    }
 }
 
 module.exports = { cadastrarVenda };
