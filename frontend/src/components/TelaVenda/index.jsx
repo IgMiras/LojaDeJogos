@@ -10,6 +10,7 @@ import {
   InfosCompra,
   Inputs,
   InputsCartao,
+  ItemFisico,
   JogosSelecionados,
   Pagamento,
   RadioInputs,
@@ -19,17 +20,20 @@ import { CardProdutos } from "../Equipamentos/CardProdutos";
 import { Input } from "../Equipamentos/Input";
 import Image from "next/image";
 import boleto from "../../assets/images/boleto.png";
-import caminhao from "../../assets/svg/caminhao.svg";
+import pix from "../../assets/images/PIX.png";
 
 import { CardCarrinhoProduto } from "../Equipamentos/CarrinhoCardProduto";
 import { stringify } from "postcss";
 import AppContext from "../../../context/context";
 import Provider from "../../../context/provider";
+import { CardCarrinhoTransportadora } from "../Equipamentos/CarrinhoCardTransportadora";
 
 const url = "http://localhost:5000/api/jogos";
+const urlTransportadoras = "http://localhost:5000/api/transportadora";
 
 export const TelaNovaVenda = () => {
   const [data, setData] = useState([]);
+  const [dataTransportadora, setDataTransportadora] = useState([]);
   const [nomeCliente, setNomeCliente] = useState("");
   const [nomeGerente, setNomeGerente] = useState("");
   const [dataVenda, setDataVenda] = useState("");
@@ -42,6 +46,16 @@ export const TelaNovaVenda = () => {
       .get(url)
       .then((response) => {
         setData(response.data);
+        console.log("Dados recebidos:", response.data);
+      })
+      .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    axios
+      .get(urlTransportadoras)
+      .then((response) => {
+        setDataTransportadora(response.data);
         console.log("Dados recebidos:", response.data);
       })
       .catch((error) => console.log(error));
@@ -66,6 +80,37 @@ export const TelaNovaVenda = () => {
       valor={cartItem.valor}
     ></CardCarrinhoProduto>
   ));
+
+  const renderizaTransportadoras = cartItems.map((cartItem) => {
+    console.log(cartItem);
+    if (cartItem.ehFisico) {
+      console.log(cartItem);
+      return dataTransportadora.map((itemT) => (
+        <CardCarrinhoTransportadora
+          nomeTransportadora={itemT.nome}
+          tempoEntrega={itemT.tempoEntrega}
+        />
+      ));
+    }
+    return <a>lais</a>;
+  });
+
+  const valorTotal = () => {
+    const total = cartItems.reduce((acc, cartItem) => {
+      const itemValue = parseFloat(cartItem.valor);
+      if (!isNaN(itemValue)) {
+        return acc + itemValue;
+      } else {
+        console.warn(
+          `Invalid valor for cart item: ${JSON.stringify(cartItem)}`
+        );
+        return acc;
+      }
+    }, 0);
+
+    return total;
+  };
+
   const InfosCartao = () => (
     <InputsCartao>
       <div id="input1">
@@ -134,10 +179,12 @@ export const TelaNovaVenda = () => {
           <span>Itens</span>
           <JogosSelecionados>{renderizaCarrinho}</JogosSelecionados>
           <InfosCompra>
-            <a>VALOR TOTAL:</a>
+            <a>VALOR TOTAL: R${valorTotal()}</a>
             <a>VALOR C/ DESCONTO:</a>
           </InfosCompra>
+          <ItemFisico>{renderizaTransportadoras}</ItemFisico>
           <ConcluirVenda>
+            <a id="concluir">Concluir venda</a>
             <Inputs>
               <div id="input1">
                 <label>Nome cliente:</label>
@@ -230,7 +277,7 @@ export const TelaNovaVenda = () => {
                 ) : tipoPagamento === "Cartão de Crédito" ? (
                   <InfosCartao />
                 ) : (
-                  <Image id="img" src={boleto} alt="Stars" />
+                  <Image id="img" src={pix} alt="Código QR de pagamento" />
                 )}
               </ImagemTipoPagamento>
             </Pagamento>

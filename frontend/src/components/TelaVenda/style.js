@@ -62,6 +62,7 @@ export const InfosCompra = styled.div`
   flex-direction: row;
   column-gap: 15%;
   color: #023454;
+  margin: 2% 0;
 `;
 
 export const Transportadoras = styled.div`
@@ -71,7 +72,14 @@ export const Transportadoras = styled.div`
   flex-direction: column;
 `;
 
-export const ConcluirVenda = styled.div``;
+export const ItemFisico = styled.div``;
+export const ConcluirVenda = styled.div`
+  #concluir {
+    color: #023454;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+`;
 
 export const Inputs = styled.div`
   display: grid;

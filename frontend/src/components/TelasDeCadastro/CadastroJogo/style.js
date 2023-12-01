@@ -35,6 +35,11 @@ export const Content = styled.div`
       box-shadow: 0 0 0 0;
       outline: 0;
     }
+    #input8 {
+      #sim {
+        margin: 0 2%;
+      }
+    }
   }
 
   #desc {
