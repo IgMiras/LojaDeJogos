@@ -28,12 +28,17 @@ import AppContext from "../../../context/context";
 import Provider from "../../../context/provider";
 import { CardCarrinhoTransportadora } from "../Equipamentos/CarrinhoCardTransportadora";
 import { Button } from "../Equipamentos/Button";
-
+//url pra listar opções de jogos
 const url = "http://localhost:5000/api/jogos";
+//url pra cadastrar nova venda
 const urlNovaVenda = "http://localhost:5000/api/venda";
+//url pra cadastrar novo pagamento
+const urlPagamento = "http://localhost:5000/api/pagamento";
+//url pra listar opções de transportadoras
 const urlTransportadoras = "http://localhost:5000/api/transportadora";
 
 export const TelaNovaVenda = () => {
+  //cadastro de nova venda
   const [data, setData] = useState([]);
   const [dataTransportadora, setDataTransportadora] = useState([]);
   const [nomeCliente, setNomeCliente] = useState("");
@@ -43,10 +48,18 @@ export const TelaNovaVenda = () => {
   const [dataEntrega, setDataEntrega] = useState("");
   const [formaPagamento, setFormaPagamento] = useState("");
   const { cartItems } = useContext(AppContext);
-  let itensVendazzz = [...cartItems];
-
-  let itensVendaString = JSON.stringify(itensVendazzz);
+  let itensVendaObjeto = [...cartItems];
+  let itensVendaString = JSON.stringify(itensVendaObjeto);
   let itensVenda = JSON.parse(itensVendaString);
+
+  //cadastro pagamento
+  const [nomeCartao, setNomeCartao] = useState("");
+  const [numeroCartao, setNumeroCartao] = useState("");
+  const [bandeiraCartao, setBandeiraCartao] = useState("");
+  const [codigoNota, setCodigoNota] = useState(0);
+  const tipo = formaPagamento;
+  const [numeroBoleto, setNumeroBoleto] = useState(1111568977);
+  const [codigoPix, setCodigoPix] = useState(1000);
 
   useEffect(() => {
     axios
@@ -123,39 +136,50 @@ export const TelaNovaVenda = () => {
         <label>Nome:</label>
         <Input
           type="text"
-          name="nome"
-          id="nome"
-          placeHolder="Nome do cartão"
+          name="nomeCartao"
+          id="nomeCartao"
+          placeHolder="Insira o nome que esta no cartão"
           width="100%"
           height="40px"
+          value={nomeCartao}
+          onChange={(e) => setNomeCartao(e.target.value)}
         />
       </div>
       <div id="input2">
         <label>Bandeira:</label>
         <Input
           type="text"
-          name="bandeira"
-          id="bandeira"
-          placeHolder="Ex. Visa"
+          name="bandeiraCartao"
+          id="bandeiraCartao"
+          placeHolder="Ex. VISA"
           width="100%"
           height="40px"
+          value={bandeiraCartao}
+          onChange={(e) => setBandeiraCartao(e.target.value)}
         />
       </div>
       <div id="input3">
         <label>Número</label>
         <Input
           type="text"
-          name="numero"
-          id="numero"
+          name="numeroCartao"
+          id="numeroCartao"
           placeHolder="_ _ _"
           width="100%"
           height="40px"
+          value={numeroCartao}
+          onChange={(e) => setNumeroCartao(e.target.value)}
         />
       </div>
     </InputsCartao>
   );
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
+    handleSubmitPagamento(e);
+    handleSubmitVenda(e);
+  };
+
+  const handleSubmitVenda = async (e) => {
     e.preventDefault();
     console.log(cartItems);
 
@@ -175,6 +199,40 @@ export const TelaNovaVenda = () => {
       setDataVenda("");
       setDataEntrega("");
       setTipoPagamento("");
+    } catch (error) {
+      console.log(error.response);
+    }
+  };
+
+  const handleSubmitPagamento = async (e) => {
+    e.preventDefault();
+    console.log({
+      codigoNota,
+      tipo,
+      numeroBoleto,
+      nomeCartao,
+      bandeiraCartao,
+      numeroCartao,
+      codigoPix,
+    });
+
+    try {
+      const resp = await axios.post(urlPagamento, {
+        codigoNota: codigoNota,
+        tipo: tipo,
+        numeroBoleto: numeroBoleto,
+        nomeCartao: nomeCartao,
+        bandeiraCartao: bandeiraCartao,
+        numeroCartao: numeroCartao,
+        codigoPix: codigoPix,
+      });
+      console.log(resp.data);
+      setCodigoNota((prevCodigoNota) => prevCodigoNota + 1);
+      setNumeroBoleto((prevNumeroBoleto) => prevNumeroBoleto + 10);
+      setNomeCartao("");
+      setBandeiraCartao("");
+      setNumeroCartao("");
+      setCodigoPix((prevCodigoPix) => prevCodigoPix + 1);
     } catch (error) {
       console.log(error.response);
     }
@@ -280,7 +338,7 @@ export const TelaNovaVenda = () => {
                   id="tipoPagamento"
                   name="tipoPagamento"
                   //   checked={tipoPagamento === true}
-                  onChange={() => setFormaPagamento("Cartão de Crédito")}
+                  onChange={() => setFormaPagamento("Cartao")}
                 ></input>
                 <label>CARTÃO DE CRÉDITO</label>
                 <input
@@ -288,7 +346,7 @@ export const TelaNovaVenda = () => {
                   id="tipoPagamento"
                   name="tipoPagamento"
                   //   checked={tipoPagamento === true}
-                  onChange={() => setFormaPagamento("PIX")}
+                  onChange={() => setFormaPagamento("Pix")}
                 ></input>
                 <label>PIX</label>
               </RadioInputs>
@@ -297,7 +355,7 @@ export const TelaNovaVenda = () => {
                   <a>Escolha uma forma de pagamento</a>
                 ) : formaPagamento === "Boleto" ? (
                   <Image id="img" src={boleto} alt="Código de barras" />
-                ) : formaPagamento === "Cartão de Crédito" ? (
+                ) : formaPagamento === "Cartao" ? (
                   <InfosCartao />
                 ) : (
                   <Image id="img" src={pix} alt="Código QR de pagamento" />
