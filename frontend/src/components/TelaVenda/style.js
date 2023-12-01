@@ -48,6 +48,13 @@ export const ConteudoCarrinho = styled.div`
     font-weight: bold;
     color: #023454;
   }
+
+  #title {
+    font-weight: bold;
+    font-size: 2.2rem;
+    color: #023454;
+    letter-spacing: 0.5px;
+  }
 `;
 
 export const JogosSelecionados = styled.div`
@@ -72,12 +79,31 @@ export const Transportadoras = styled.div`
   flex-direction: column;
 `;
 
-export const ItemFisico = styled.div``;
+export const ItemFisico = styled.div`
+  margin: 2% 0;
+`;
 export const ConcluirVenda = styled.div`
   #concluir {
     color: #023454;
     font-size: 2rem;
     font-weight: bold;
+  }
+
+  #input5 {
+    margin-top: 4%;
+  }
+  p,
+  label {
+    color: rgba(2, 52, 84, 1);
+    margin-left: 6px;
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+    font-weight: normal;
+  }
+
+  Input:focus {
+    box-shadow: 0 0 0 0;
+    outline: 0;
   }
 `;
 
@@ -108,7 +134,6 @@ export const Pagamento = styled.div`
     color: #023454;
   }
 `;
-
 export const RadioInputs = styled.div`
   display: flex;
   flex-direction: row;

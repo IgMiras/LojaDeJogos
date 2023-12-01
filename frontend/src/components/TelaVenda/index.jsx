@@ -27,8 +27,10 @@ import { stringify } from "postcss";
 import AppContext from "../../../context/context";
 import Provider from "../../../context/provider";
 import { CardCarrinhoTransportadora } from "../Equipamentos/CarrinhoCardTransportadora";
+import { Button } from "../Equipamentos/Button";
 
 const url = "http://localhost:5000/api/jogos";
+const urlNovaVenda = "http://localhost:5000/api/venda";
 const urlTransportadoras = "http://localhost:5000/api/transportadora";
 
 export const TelaNovaVenda = () => {
@@ -36,17 +38,24 @@ export const TelaNovaVenda = () => {
   const [dataTransportadora, setDataTransportadora] = useState([]);
   const [nomeCliente, setNomeCliente] = useState("");
   const [nomeGerente, setNomeGerente] = useState("");
+  const [nomeTransportadora, setNomeTransportadora] = useState("");
   const [dataVenda, setDataVenda] = useState("");
   const [dataEntrega, setDataEntrega] = useState("");
-  const [tipoPagamento, setTipoPagamento] = useState("");
+  const [formaPagamento, setFormaPagamento] = useState("");
   const { cartItems } = useContext(AppContext);
+  let itensVendazzz = {
+    item: [...cartItems], // Copiando o array cartItems para o objeto itensVenda
+  };
+
+  let itensVendaString = JSON.stringify(itensVendazzz);
+  let itensVenda = JSON.parse(itensVendaString);
 
   useEffect(() => {
     axios
       .get(url)
       .then((response) => {
         setData(response.data);
-        console.log("Dados recebidos:", response.data);
+        // console.log("Dados recebidos:", response.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -56,7 +65,7 @@ export const TelaNovaVenda = () => {
       .get(urlTransportadoras)
       .then((response) => {
         setDataTransportadora(response.data);
-        console.log("Dados recebidos:", response.data);
+        console.log("Transportadoras recebidss:", response.data);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -82,17 +91,16 @@ export const TelaNovaVenda = () => {
   ));
 
   const renderizaTransportadoras = cartItems.map((cartItem) => {
-    console.log(cartItem);
+    // console.log(cartItem);
     if (cartItem.ehFisico) {
-      console.log(cartItem);
+      // console.log(cartItem);
       return dataTransportadora.map((itemT) => (
         <CardCarrinhoTransportadora
           nomeTransportadora={itemT.nome}
           tempoEntrega={itemT.tempoEntrega}
         />
       ));
-    }
-    return <a>lais</a>;
+    } else return null;
   });
 
   const valorTotal = () => {
@@ -151,14 +159,17 @@ export const TelaNovaVenda = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(cartItems);
 
     try {
-      const resp = await axios.post(url, {
+      const resp = await axios.post(urlNovaVenda, {
         nomeCliente: nomeCliente,
         nomeGerente: nomeGerente,
+        nomeTransportadora: nomeTransportadora,
         dataVenda: dataVenda,
         dataEntrega: dataEntrega,
-        tipoPagamento: tipoPagamento,
+        formaPagamento: formaPagamento,
+        itensVenda: itensVenda,
       });
       console.log(resp.data);
       setNomeCliente("");
@@ -182,6 +193,7 @@ export const TelaNovaVenda = () => {
             <a>VALOR TOTAL: R${valorTotal()}</a>
             <a>VALOR C/ DESCONTO:</a>
           </InfosCompra>
+          <a id="title">Transportadoras</a>
           <ItemFisico>{renderizaTransportadoras}</ItemFisico>
           <ConcluirVenda>
             <a id="concluir">Concluir venda</a>
@@ -218,7 +230,7 @@ export const TelaNovaVenda = () => {
                   type="text"
                   name="dataVenda"
                   id="dataVenda"
-                  placeHolder="DD/MM/YYYY"
+                  placeHolder="MM/DD/YYYY"
                   width="100%"
                   height="40px"
                   value={dataVenda}
@@ -231,7 +243,7 @@ export const TelaNovaVenda = () => {
                   type="text"
                   name="dataEntrega"
                   id="dataEntrega"
-                  placeHolder="DD/MM/YYYY"
+                  placeHolder="MM/DD/YYYY"
                   width="100%"
                   height="40px"
                   value={dataEntrega}
@@ -239,6 +251,19 @@ export const TelaNovaVenda = () => {
                 />
               </div>
             </Inputs>
+            <div id="input5">
+              <label>Nome Transportadora</label>
+              <Input
+                type="text"
+                name="nomeTransportadora"
+                id="nomeTransportadora"
+                placeHolder="Em caso de não haver item físico deixe o campo em branco"
+                width="100%"
+                height="40px"
+                value={nomeTransportadora}
+                onChange={(e) => setNomeTransportadora(e.target.value)}
+              />
+            </div>
             <Pagamento>
               <div id="titulo">
                 <a>FORMA DE PAGAMENTO</a>
@@ -249,7 +274,7 @@ export const TelaNovaVenda = () => {
                   id="tipoPagamento"
                   name="tipoPagamento"
                   //   checked={tipoPagamento === true}
-                  onChange={() => setTipoPagamento("Boleto")}
+                  onChange={() => setFormaPagamento("Boleto")}
                 ></input>
                 <label id="sim">BOLETO</label>
                 <input
@@ -257,7 +282,7 @@ export const TelaNovaVenda = () => {
                   id="tipoPagamento"
                   name="tipoPagamento"
                   //   checked={tipoPagamento === true}
-                  onChange={() => setTipoPagamento("Cartão de Crédito")}
+                  onChange={() => setFormaPagamento("Cartão de Crédito")}
                 ></input>
                 <label>CARTÃO DE CRÉDITO</label>
                 <input
@@ -265,22 +290,26 @@ export const TelaNovaVenda = () => {
                   id="tipoPagamento"
                   name="tipoPagamento"
                   //   checked={tipoPagamento === true}
-                  onChange={() => setTipoPagamento("PIX")}
+                  onChange={() => setFormaPagamento("PIX")}
                 ></input>
                 <label>PIX</label>
               </RadioInputs>
               <ImagemTipoPagamento>
-                {tipoPagamento === "" ? (
+                {formaPagamento === "" ? (
                   <a>Escolha uma forma de pagamento</a>
-                ) : tipoPagamento === "Boleto" ? (
+                ) : formaPagamento === "Boleto" ? (
                   <Image id="img" src={boleto} alt="Código de barras" />
-                ) : tipoPagamento === "Cartão de Crédito" ? (
+                ) : formaPagamento === "Cartão de Crédito" ? (
                   <InfosCartao />
                 ) : (
                   <Image id="img" src={pix} alt="Código QR de pagamento" />
                 )}
               </ImagemTipoPagamento>
             </Pagamento>
+
+            <Button height="40px" onClick={handleSubmit}>
+              CADASTRAR
+            </Button>
           </ConcluirVenda>
         </ConteudoCarrinho>
       </Carrinho>
