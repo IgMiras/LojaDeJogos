@@ -43,9 +43,7 @@ export const TelaNovaVenda = () => {
   const [dataEntrega, setDataEntrega] = useState("");
   const [formaPagamento, setFormaPagamento] = useState("");
   const { cartItems } = useContext(AppContext);
-  let itensVendazzz = {
-    item: [...cartItems], // Copiando o array cartItems para o objeto itensVenda
-  };
+  let itensVendazzz = [...cartItems];
 
   let itensVendaString = JSON.stringify(itensVendazzz);
   let itensVenda = JSON.parse(itensVendaString);
