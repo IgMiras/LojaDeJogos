@@ -71,3 +71,5 @@ async function cadastrarVenda(req, res) {
 		res.status(500).send('Erro de Servidor');
 	}
 }
+
+module.exports = { cadastrarVenda };
