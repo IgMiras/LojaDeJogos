@@ -46,9 +46,13 @@ async function cadastrarVenda(req, res) {
         if (itensVenda) vendaFields.itensVenda = itensVenda; // Array de itemVenda
         (async () => {
             for await (const itemVenda of itensVenda) {
+                console.log('itemVenda:');
+                console.log(itemVenda);
                 const jogoModel = await JogoModel.findOne({
                     nome: itemVenda.nome,
                 });
+                console.log('jogoModel:');
+                console.log(jogoModel);
                 vendaFields.valorTotal += jogoModel.valor;
             }
         })();
