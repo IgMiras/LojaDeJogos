@@ -29,7 +29,7 @@ router.post(
 // @route   GET api/venda
 // @desc    Listar todas vendas
 // @acess   Publico (mudar futuramente caso tenha autenticação)
-router.post('/', (req, res) => {
+router.get('/', (req, res) => {
     listarTodasVendas(req, res);
 });
 
