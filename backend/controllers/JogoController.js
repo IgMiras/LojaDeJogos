@@ -221,6 +221,36 @@ async function listarTodosJogosBubbleSort(req, res) {
 	}
 }
 
+async function avaliarJogo(req, res) {
+	const { nomeJogo, avaliacao, comentario } = req.body;
+
+	try {
+		const jogo = await JogoModel.findOne({ nome: nomeJogo });
+
+		if (!jogo) {
+			return res.status(404).json({ msg: 'Jogo nao existente' });
+		}
+
+		// Atualizar a avaliacao
+		let numeroDeAvaliacoes = jogo.numeroDeAvaliacoes + 1;
+		let somaAvaliacoes = jogo.avaliacao * jogo.numeroDeAvaliacoes;
+		somaAvaliacoes += avaliacao;
+		jogo.avaliacao = somaAvaliacoes / numeroDeAvaliacoes;
+		jogo.numeroDeAvaliacoes = numeroDeAvaliacoes;
+
+		// Atualizar os comentarios
+		if (comentario) {
+			jogo.comentarios.unshift(comentario);
+		}
+
+		await jogo.save();
+		res.json(jogo);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Erro de Servidor');
+	}
+}
+
 module.exports = {
 	cadastrarJogo,
 	listarTodosJogos,
@@ -233,4 +263,5 @@ module.exports = {
 	listarDezJogosMaisBaratos,
 	listarTodosJogosQuickSort,
 	listarTodosJogosBubbleSort,
+	avaliarJogo,
 };

@@ -31,8 +31,7 @@ const JogoSchema = new mongoose.Schema({
 		default: 0,
 	},
 	comentarios: {
-		type: String,
-		default: '',
+		type: [String],
 	},
 	disponivel: {
 		type: Boolean,
@@ -46,7 +45,7 @@ const JogoSchema = new mongoose.Schema({
 	},
 	ehFisico: {
 		type: Boolean,
-	}
+	},
 });
 
 const Jogo = mongoose.model('jogo', JogoSchema);
