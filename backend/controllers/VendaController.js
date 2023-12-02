@@ -56,7 +56,7 @@ async function cadastrarVenda(req, res) {
                 console.log('jogoModel:');
                 console.log(jogoModel);
                 console.log(jogoModel.valor);
-                vendaFields.valorTotal += jogoModel.valor;
+                vendaFields.valorTotal += parseFloat(jogoModel.valor);
             }
         })();
         if (clienteModel.clienteEpico) vendaFields.valorTotal *= 0.95; // Desconto de 5% para clientes epicos
