@@ -39,20 +39,22 @@ export default function App({ Component, pageProps }) {
           rel="stylesheet"
         />
       </Head>
-      {/* <ListagemTodasTransportadoras /> */}
-      {/* <CardCliente /> */}
-      {/* <ListagemTodosClientes /> */}
-      {/* <ListagemTodosGerentes /> */}
-      {/* <TelaCadastroJogos /> */}
-      {/* <CardCarrinhoTransportadora /> */}
       <Provider>
-        <TelaNovaVenda />
+        {/* <ListagemTodasTransportadoras /> */}
+        {/* <CardCliente /> */}
+        {/* <ListagemTodosClientes /> */}
+        {/* <ListagemTodosGerentes /> */}
+        {/* <TelaCadastroJogos /> */}
+        {/* <CardCarrinhoTransportadora /> */}
+
+        {/* <TelaNovaVenda /> */}
+
+        {/* <CardDesenvolvedora /> */}
+        {/* <TelaCadastroJogos /> */}
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </Provider>
-      {/* <CardDesenvolvedora /> */}
-      {/* <TelaCadastroJogos /> */}
-      {/* <Layout>
-                <Component {...pageProps} />
-            </Layout> */}
     </ThemeProvider>
   );
 }

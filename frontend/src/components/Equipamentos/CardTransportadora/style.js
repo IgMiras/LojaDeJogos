@@ -11,6 +11,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  margin: 2% 0;
 `;
 
 export const Content = styled.div`

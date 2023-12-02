@@ -1,5 +1,6 @@
 import React, { Children } from "react";
 import Image from "next/image";
+import { format } from "date-fns";
 
 import clienteImage from "../../../assets/svg/carrinho.svg";
 import { Container, Content, Description, DivImage, Title } from "./style";
@@ -11,8 +12,12 @@ export const CardVenda = ({
   cliente,
   gerente,
   valor,
-  tipoPagamento,
+  itensVenda,
 }) => {
+  const data = new Date(dataVenda);
+  const dataFormatada = format(data, "dd/MM/yyyy");
+  const valorFormatado = valor.toFixed(2);
+
   return (
     <Container>
       <DivImage>
@@ -23,12 +28,16 @@ export const CardVenda = ({
           <h1>Venda {codigoVenda} </h1>
         </Title>
         <Description>
-          <a id="dataNasc">Transportadora {nomeTransportadora}</a>
-          <a id="endereco">Data venda: {dataVenda} </a>
+          <a id="dataNasc">
+            {nomeTransportadora !== undefined
+              ? `Transportadora: ${nomeTransportadora}`
+              : ""}
+          </a>
+          <a id="endereco">Data venda: {dataFormatada} </a>
           <a>Cliente: {cliente}</a>
           <a>Gerente: {gerente}</a>
-          <a id="cep">Valor R${valor} </a>
-          <a id="email">Pago via {tipoPagamento}</a>
+          <a id="cep">Valor R${valorFormatado} </a>
+          {/* <div id="itens">{renderizando}</div> */}
         </Description>
       </Content>
     </Container>

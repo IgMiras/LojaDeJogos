@@ -49,7 +49,9 @@ export const NavBar = () => {
                 <Trigger> VENDAS</Trigger>
                 <ConteudoPopup width="500px" top="45px" left="150px">
                   <ul>
-                    <li onClick={() => router.push("/")}>Todas</li>
+                    <li onClick={() => router.push("/listarTodasVendas")}>
+                      Todas
+                    </li>
                     <li onClick={() => router.push("/")}>
                       Vendas e lucro por mês
                     </li>
@@ -185,9 +187,12 @@ export const NavBar = () => {
                     <li onClick={() => router.push("/cadastroDeGerente")}>
                       Gerente
                     </li>
-                    <li>Gênero do jogo</li>
+
                     <li onClick={() => router.push("/cadastroDeDesenv")}>
                       Desenvolvedora
+                    </li>
+                    <li onClick={() => router.push("/cadastroNovaVenda")}>
+                      Nova Venda
                     </li>
                   </ul>
                 </ConteudoPopup>

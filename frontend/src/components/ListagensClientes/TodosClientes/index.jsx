@@ -22,7 +22,7 @@ export const ListagemTodosClientes = () => {
   const renderizando = data.map((item) => (
     <CardCliente
       nome={item.nome}
-      cnf={item.cpf}
+      cpf={item.cpf}
       rg={item.rg}
       dataNasci={item.dataNasci}
       endereco={item.endereco}
