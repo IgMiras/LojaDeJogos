@@ -30,7 +30,7 @@ export const TelaAvaliacao = () => {
         avaliacao: parseInt(avaliacao),
         comentario: comentario,
       });
-      console.log("aqui", stringify(resp.data));
+      console.log("aqui", resp.data);
       setNomeJogo("");
       setAvaliacao(0);
       setComentario("");
