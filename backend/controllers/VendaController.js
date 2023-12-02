@@ -48,6 +48,7 @@ async function cadastrarVenda(req, res) {
             for await (const itemVenda of itensVenda) {
                 console.log('itemVenda:');
                 console.log(itemVenda);
+                console.log(itemVenda.nome);
                 const jogoModel = await JogoModel.findOne({
                     nome: itemVenda.nome,
                 });
