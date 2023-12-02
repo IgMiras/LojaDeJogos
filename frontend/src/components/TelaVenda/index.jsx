@@ -181,12 +181,7 @@ export const TelaNovaVenda = () => {
     </InputsCartao>
   );
 
-  const handleSubmit = (e) => {
-    handleSubmitPagamento(e);
-    handleSubmitVenda(e);
-  };
-
-  const handleSubmitVenda = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log({
       codigoNota,
@@ -208,15 +203,14 @@ export const TelaNovaVenda = () => {
         numeroCartao: numeroCartao,
         codigoPix: codigoPix,
       });
-      //   console.log(resp.data);
-      //   console.log(resp.data._id);
+
       setCodigoNota(parseInt(Math.random() * 1000000));
       setCodigoPix(parseInt(Math.random() * 50000));
       setNumeroBoleto(parseInt(Math.random() * 2301854));
       setNomeCartao("");
       setBandeiraCartao("");
       setNumeroCartao("");
-      setIdPagamento(res.data._id);
+      setIdPagamento(respPagamento.data._id);
     } catch (error) {
       console.log(error.response);
     }
@@ -240,12 +234,12 @@ export const TelaNovaVenda = () => {
         idPagamento: idPagamento,
       });
       console.log(resp.data);
-      //   console.log("AQUI");
+
       setNomeCliente("");
       setNomeGerente("");
       setDataVenda("");
       setDataEntrega("");
-      //   setTipoPagamento("");
+
       setCodigoPix(parseInt(Math.random() * 50000));
       setNumeroBoleto(parseInt(Math.random() * 2301854));
     } catch (error) {
@@ -253,40 +247,6 @@ export const TelaNovaVenda = () => {
     }
   };
 
-  const handleSubmitPagamento = async (e) => {
-    e.preventDefault();
-    console.log({
-      codigoNota,
-      tipo,
-      numeroBoleto,
-      nomeCartao,
-      bandeiraCartao,
-      numeroCartao,
-      codigoPix,
-    });
-
-    try {
-      const resp = await axios.post(urlPagamento, {
-        codigoNota: codigoNota,
-        tipo: tipo,
-        numeroBoleto: numeroBoleto,
-        nomeCartao: nomeCartao,
-        bandeiraCartao: bandeiraCartao,
-        numeroCartao: numeroCartao,
-        codigoPix: codigoPix,
-      });
-      console.log(resp.data);
-      //   console.log(resp.data._id);
-      setCodigoNota(parseInt(Math.random() * 1000000));
-      setCodigoPix(parseInt(Math.random() * 50000));
-      setNumeroBoleto(parseInt(Math.random() * 2301854));
-      setNomeCartao("");
-      setBandeiraCartao("");
-      setNumeroCartao("");
-    } catch (error) {
-      console.log(error.response);
-    }
-  };
   return (
     <Container>
       <a id="title">Carrinho</a>
