@@ -100,4 +100,14 @@ async function cadastrarVenda(req, res) {
     }
 }
 
-module.exports = { cadastrarVenda };
+async function listarTodasVendas(req, res) {
+    try {
+        const vendas = await VendaModel.find();
+        res.status(200).json(vendas);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro de Servidor');
+    }
+}
+
+module.exports = { cadastrarVenda, listarTodasVendas };
