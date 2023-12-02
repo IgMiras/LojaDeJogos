@@ -45,27 +45,28 @@ async function cadastrarVenda(req, res) {
         if (dataVenda) vendaFields.dataVenda = dataVenda;
         if (dataEntrega) vendaFields.dataEntrega = dataEntrega;
         if (itensVenda) vendaFields.itensVenda = itensVenda; // Array de itemVenda
-        (async () => {
-            for (const itemVenda of itensVenda) {
-                console.log('itemVenda:');
-                console.log(itemVenda);
-                console.log(itemVenda.nome);
+        await (async () => {
+            const promises = itensVenda.map(async (itemVenda) => {
                 const jogoModel = await JogoModel.findOne({
                     nome: itemVenda.nome,
                 });
-                console.log('jogoModel:');
-                console.log(jogoModel);
-                console.log(jogoModel.valor);
 
                 vendaFields.valorTotal += parseFloat(jogoModel.valor);
-                console.log('vendaFields.valorTotal:');
-                console.log(vendaFields.valorTotal);
-            }
+            });
+
+            // Aguarda a conclusão de todas as consultas
+            await Promise.all(promises);
         })();
+
         if (clienteModel.clienteEpico) vendaFields.valorTotal *= 0.95; // Desconto de 5% para clientes epicos
+        console.log('idPagamento:');
+        console.log(idPagamento);
         if (idPagamento) {
+            console.log('Existe idPagamento');
             // Ver se o pagamento existe
             const pagamentoModel = await PagamentoModel.findById(idPagamento);
+            console.log('pagamentoModel:');
+            console.log(pagamentoModel);
 
             if (!pagamentoModel) {
                 return res.status(404).json({ msg: 'Pagamento nao existente' });
