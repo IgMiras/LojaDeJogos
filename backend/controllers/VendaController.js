@@ -46,7 +46,7 @@ async function cadastrarVenda(req, res) {
         if (dataEntrega) vendaFields.dataEntrega = dataEntrega;
         if (itensVenda) vendaFields.itensVenda = itensVenda; // Array de itemVenda
         (async () => {
-            for await (const itemVenda of itensVenda) {
+            for (const itemVenda of itensVenda) {
                 console.log('itemVenda:');
                 console.log(itemVenda);
                 console.log(itemVenda.nome);
