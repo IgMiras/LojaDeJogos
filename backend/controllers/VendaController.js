@@ -55,6 +55,7 @@ async function cadastrarVenda(req, res) {
                 });
                 console.log('jogoModel:');
                 console.log(jogoModel);
+                console.log(jogoModel.valor);
                 vendaFields.valorTotal += jogoModel.valor;
             }
         })();
