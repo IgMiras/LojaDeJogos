@@ -69,8 +69,8 @@ export const BlocoInput3 = styled.div`
     color: rgba(2, 52, 84, 1);
     margin-left: 6px;
     margin-bottom: 6px;
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 1.1rem;
+    font-weight: normal;
   }
   input {
     border: 1px solid rgba(1, 118, 154, 1);
