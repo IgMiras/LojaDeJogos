@@ -262,7 +262,7 @@ export const TelaNovaVenda = () => {
             <a>VALOR TOTAL: R${valorTotal()}</a>
             <a>VALOR C/ DESCONTO:</a>
           </InfosCompra>
-          <a id="title">Transportadoras</a>
+          <a id="concluir">Transportadoras</a>
           <ItemFisico>{renderizaTransportadoras}</ItemFisico>
           <ConcluirVenda>
             <a id="concluir">Concluir venda</a>
