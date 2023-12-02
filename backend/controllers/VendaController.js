@@ -39,6 +39,7 @@ async function cadastrarVenda(req, res) {
 
         // Preencher um objeto com os campos da venda
         const vendaFields = {};
+        vendaFields.valorTotal = 0;
         vendaFields.cliente = clienteModel.id; // Obrigatorio
         vendaFields.gerente = gerenteModel.id; // Obrigatorio
         if (dataVenda) vendaFields.dataVenda = dataVenda;
