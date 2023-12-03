@@ -1,4 +1,5 @@
 const DesenvolvedoraModel = require('../models/DesenvolvedoraModel.js');
+const VendaModel = require('../models/VendaModel.js');
 
 async function cadastrarDesenvolvedora(req, res) {
 	const { cnpj, nome, email, site, redeSocial, endereco } = req.body;
@@ -36,6 +37,14 @@ async function listarTodasDesenvolvedoras(req, res) {
 	try {
 		const desenvolvedoras = await DesenvolvedoraModel.find();
 		res.json(desenvolvedoras);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Erro de servidor');
+	}
+}
+
+async function desenvolvedorasMaisJogosVendidos(req, res) {
+	try {
 	} catch (err) {
 		console.error(err.message);
 		res.status(500).send('Erro de servidor');
