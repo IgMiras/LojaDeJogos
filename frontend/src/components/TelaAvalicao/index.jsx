@@ -19,7 +19,7 @@ const url = "http://localhost:5000/api/jogos/avaliar";
 
 export const TelaAvaliacao = () => {
   const [nomeJogo, setNomeJogo] = useState("");
-  const [avaliacao, setAvaliacao] = useState("");
+  const [avaliacao, setAvaliacao] = useState();
   const [comentario, setComentario] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,12 +27,12 @@ export const TelaAvaliacao = () => {
     try {
       const resp = await axios.post(url, {
         nomeJogo: nomeJogo,
-        avaliacao: avaliacao,
+        avaliacao: parseInt(avaliacao),
         comentario: comentario,
       });
-      console.log("aqui", stringify(resp.data));
+      console.log("aqui", resp.data);
       setNomeJogo("");
-      setAvaliacao("");
+      setAvaliacao(0);
       setComentario("");
     } catch (error) {
       console.log(error.response);
