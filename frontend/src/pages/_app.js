@@ -9,7 +9,7 @@ import { Layout } from "@/components/Layout";
 
 import Home from ".";
 
-import { ListagemTodasDesenvolvedoras } from "@/components/Listagens/TodasDesenvolvedoras";
+import { ListagemTodasDesenvolvedoras } from "@/components/ListagensDesenvolvedoras/TodasDesenvolvedoras";
 import { ListagemTodasTransportadoras } from "@/components/Listagens/TodasTransportadoras";
 import { CardCliente } from "@/components/Equipamentos/CardCliente";
 import { ListagemTodosClientes } from "@/components/ListagensClientes/TodosClientes";
@@ -19,6 +19,7 @@ import { CardCarrinhoProduto } from "@/components/Equipamentos/CarrinhoCardProdu
 import { CardCarrinhoTransportadora } from "@/components/Equipamentos/CarrinhoCardTransportadora";
 import { TelaNovaVenda } from "@/components/TelaVenda";
 import Provider from "../../context/provider";
+import { ListagemHitoricoClienteEspecifico } from "@/components/ListagensClientes/HistoricoClienteEspecifico";
 
 export default function App({ Component, pageProps }) {
   return (
@@ -54,6 +55,7 @@ export default function App({ Component, pageProps }) {
         <Layout>
           <Component {...pageProps} />
         </Layout>
+        {/* <ListagemHitoricoClienteEspecifico /> */}
       </Provider>
     </ThemeProvider>
   );
