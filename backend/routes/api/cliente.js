@@ -50,11 +50,15 @@ router.get('/maiornivel', (req, res) => {
 	listarDezClientesMaiorNivel(req, res);
 });
 
-// @route   GET api/cliente/historico
+// @route   POST api/cliente/historico
 // @desc    Listar os 10 clientes com maior nivel
 // @acess   Publico (mudar futuramente caso tenha autenticação)
-router.get('/historico', (req, res) => {
-	historicoVendaClienteEspecifico(req, res);
-});
+router.post(
+	'/historico',
+	[check('nome', 'Nome é obigatorio').not().isEmpty()],
+	(req, res) => {
+		historicoVendaClienteEspecifico(req, res);
+	}
+);
 
 module.exports = router;

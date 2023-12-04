@@ -38,19 +38,34 @@ router.get('/', (req, res) => {
 	listarTodasVendas(req, res);
 });
 
-// @route   GET api/venda/meslucro
+// @route   POST api/venda/meslucro
 // @desc    Listar todas vendas de um mes especifico e seu lucro
 // @acess   Publico (mudar futuramente caso tenha autenticação)
-router.get('/meslucro', (req, res) => {
-	listarVendasMesEspecificoLucro(req, res);
-});
+router.post(
+	'/meslucro',
+	[
+		check('mes', 'Mes é obigatorio').not().isEmpty(),
+		check('ano', 'Ano é obigatorio').not().isEmpty(),
+	],
+	(req, res) => {
+		listarVendasMesEspecificoLucro(req, res);
+	}
+);
 
-// @route   GET api/venda/desenvolvedora
+// @route   POST api/venda/desenvolvedora
 // @desc    Listar todas vendas de uma desenvolvedora em um mes especifico e seu lucro
 // @acess   Publico (mudar futuramente caso tenha autenticação)
-router.get('/desenvolvedora', (req, res) => {
-	vendasDesenvolvedoraMesELucro(req, res);
-});
+router.post(
+	'/desenvolvedora',
+	[
+		check('mes', 'Mes é obigatorio').not().isEmpty(),
+		check('ano', 'Ano é obigatorio').not().isEmpty(),
+		check('nomeDesenvolvedora', 'Desenvolvedora é obigatorio').not().isEmpty(),
+	],
+	(req, res) => {
+		vendasDesenvolvedoraMesELucro(req, res);
+	}
+);
 
 // @route   GET api/venda/boleto
 // @desc    Listar todas vendas em que o pagamento foi feito com boleto
