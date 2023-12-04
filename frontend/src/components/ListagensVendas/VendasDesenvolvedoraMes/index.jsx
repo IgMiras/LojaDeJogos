@@ -6,11 +6,13 @@ import { Button } from "@/components/Equipamentos/Button";
 import Image from "next/image";
 
 import clienteImage from "../../../assets/svg/carrinho.svg";
-const url = "http://localhost:5000/api/venda/meslucro";
+import { Input } from "@/components/Equipamentos/Input";
+const url = "http://localhost:5000/api/venda/desenvolvedora";
 
-export const ListagemVendasMes = () => {
+export const ListagemVendasDesenvolvedoraMes = () => {
   const [data, setData] = useState([]);
   const [mes, setMes] = useState("");
+  const [nomeDesenvolvedora, setNomeDesenvolvedora] = useState("");
   const ano = new Date().getFullYear();
 
   const handleSubmit = async (e) => {
@@ -18,6 +20,7 @@ export const ListagemVendasMes = () => {
 
     try {
       const resp = await axios.post(url, {
+        nomeDesenvolvedora: nomeDesenvolvedora,
         mes: mes,
         ano: ano,
       });
@@ -37,7 +40,7 @@ export const ListagemVendasMes = () => {
     data.length > 0 ? (
       data.map((item) => (
         <div>
-          <h1>{item.totalVendas} vendas realizadas</h1>
+          <h1>{item.numeroJogosVendidos} jogos vendidos!</h1>
           <a>Lucro total de R$ ${item.lucroTotal.toFixed(2)}</a>
         </div>
       ))
@@ -49,7 +52,18 @@ export const ListagemVendasMes = () => {
 
   return (
     <Container>
-      <a id="title">Vendas por mês</a>
+      <a id="title">Vendas da desenvolvedora </a>
+      <Input
+        type="text"
+        name="nomeDesenvolvedora"
+        id="nomeDesenvolvedora"
+        placeHolder="Nome da desenvolvedora"
+        width="100%"
+        height="40px"
+        value={nomeDesenvolvedora}
+        onChange={(e) => setNomeDesenvolvedora(e.target.value)}
+      />
+      <a id="title2">no mês de </a>
       <Info>
         <select id="mes" name="mes" onChange={handleMesChange} value={mes}>
           <option value="1">Janeiro</option>
@@ -73,14 +87,3 @@ export const ListagemVendasMes = () => {
     </Container>
   );
 };
-{
-  /* <CardVenda
-codigoVenda={"12345"}
-nomeTransportadora={"Ubisoft"}
-dataVenda={"22/11/2023"}
-cliente={"Laís Sousa"}
-gerente={"Igor Miras"}
-valor={"200,00"}
-tipoPagamento={"Boleto"}
-/> */
-}

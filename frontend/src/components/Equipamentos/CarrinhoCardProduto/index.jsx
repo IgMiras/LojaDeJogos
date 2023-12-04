@@ -43,9 +43,11 @@ export const CardCarrinhoProduto = ({
         <a id="sub">{`CATEGORIA: ${tipoJogo}`}</a>
       </Description>
       <Valor>
-        <a id="value">{valor !== undefined ? `R$${valor}` : "Grátis"}</a>
+        <a id="value">
+          {valor !== undefined ? `R$${valor.toFixed(2)}` : "Grátis"}
+        </a>
       </Valor>
-      <ButtonQuant>
+      {/* <ButtonQuant>
         <button id="decrement" onClick={handleDecrement}>
           -
         </button>
@@ -61,7 +63,7 @@ export const CardCarrinhoProduto = ({
         <button id="increment" onClick={handleIncrement}>
           +
         </button>
-      </ButtonQuant>
+      </ButtonQuant> */}
     </Container>
   );
 };

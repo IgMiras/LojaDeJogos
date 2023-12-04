@@ -57,7 +57,7 @@ export const NavBar = () => {
                     >
                       Vendas e lucro por mês
                     </li>
-                    <li onClick={() => router.push("/")}>
+                    <li onClick={() => router.push("/listarVendasDesenvMes")}>
                       Vendas por desenvolvedoras
                     </li>
                     <li onClick={() => router.push("/listarVendasBoleto")}>
