@@ -6,6 +6,7 @@ const ItemVenda = require('../models/ItemVendaModel.js');
 const JogoModel = require('../models/JogoModel.js');
 const TransportadoraModel = require('../models/TransportadoraModel.js');
 const PagamentoModel = require('../models/PagamentoModel.js');
+const DesenvolvedoraModel = require('../models/DesenvolvedoraModel.js');
 
 async function cadastrarVenda(req, res) {
 	const {
@@ -109,4 +110,138 @@ async function listarTodasVendas(req, res) {
 	}
 }
 
-module.exports = { cadastrarVenda, listarTodasVendas };
+async function listarVendasMesEspecificoLucro(req, res) {
+	const { mes, ano } = req.body;
+
+	const dataInicio = new Date(ano, mes - 1, 1);
+	const dataFim = new Date(ano, mes, 1);
+
+	try {
+		const vendas = await VendaModel.aggregate([
+			{
+				$match: {
+					dataVenda: {
+						$gte: dataInicio,
+						$lt: dataFim,
+					},
+				},
+			},
+			{
+				$group: {
+					_id: null,
+					totalVendas: { $sum: 1 },
+					lucroTotal: { $sum: '$valorTotal' },
+				},
+			},
+		]);
+
+		res.json(vendas);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Erro de Servidor');
+	}
+}
+
+async function vendasDesenvolvedoraMesELucro(req, res) {
+	const { mes, ano, nomeDesenvolvedora } = req.body;
+
+	const dataInicio = new Date(ano, mes - 1, 1);
+	const dataFim = new Date(ano, mes, 1);
+
+	try {
+		const desenvolvedora = await DesenvolvedoraModel.findOne({
+			nome: nomeDesenvolvedora,
+		});
+
+		if (!desenvolvedora) {
+			return res.status(404).json({ msg: 'Desenvolvedora nao existente' });
+		}
+
+		const vendas = await VendaModel.aggregate([
+			{
+				$unwind: '$itensVenda',
+			},
+			{
+				$lookup: {
+					from: 'jogos',
+					localField: 'itensVenda',
+					foreignField: '_id',
+					as: 'jogo',
+				},
+			},
+			{
+				$unwind: '$jogo',
+			},
+			{
+				$match: {
+					'jogo.desenvolvedora': desenvolvedora._id,
+					dataVenda: {
+						$gte: dataInicio,
+						$lt: dataFim,
+					},
+				},
+			},
+			{
+				$group: {
+					_id: null,
+					numeroJogosVendidos: { $sum: 1 },
+					lucroTotal: { $sum: '$valorTotal' },
+				},
+			},
+		]);
+
+		res.json(vendas);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Erro de Servidor');
+	}
+}
+
+async function listarVendasBoleto(req, res) {
+	try {
+		const vendas = await VendaModel.find().populate({
+			path: 'pagamento',
+			match: { tipo: 'Boleto' },
+		});
+		res.status(200).json(vendas);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Erro de Servidor');
+	}
+}
+
+async function listarVendasCartao(req, res) {
+	try {
+		const vendas = await VendaModel.find().populate({
+			path: 'pagamento',
+			match: { tipo: 'Cartao' },
+		});
+		res.status(200).json(vendas);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Erro de Servidor');
+	}
+}
+
+async function listarVendasPix(req, res) {
+	try {
+		const vendas = await VendaModel.find().populate({
+			path: 'pagamento',
+			match: { tipo: 'Pix' },
+		});
+		res.status(200).json(vendas);
+	} catch (err) {
+		console.error(err.message);
+		res.status(500).send('Erro de Servidor');
+	}
+}
+
+module.exports = {
+	cadastrarVenda,
+	listarTodasVendas,
+	listarVendasMesEspecificoLucro,
+	vendasDesenvolvedoraMesELucro,
+	listarVendasBoleto,
+	listarVendasCartao,
+	listarVendasPix,
+};
