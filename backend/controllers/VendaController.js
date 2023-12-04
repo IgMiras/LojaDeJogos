@@ -102,7 +102,11 @@ async function cadastrarVenda(req, res) {
 
 async function listarTodasVendas(req, res) {
     try {
-        const vendas = await VendaModel.find();
+        const vendas = await VendaModel.find()
+            .populate('cliente')
+            .populate('gerente')
+            .exec();
+
         res.status(200).json(vendas);
     } catch (err) {
         console.error(err.message);
