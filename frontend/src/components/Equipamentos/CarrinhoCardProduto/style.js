@@ -7,7 +7,7 @@ export const Container = styled.div`
   background-color: rgba(255, 255, 255, 0.54);
   display: grid;
   margin-bottom: 2%;
-  grid-template-columns: 0.3fr 1.5fr 0.7fr 0.5fr;
+  grid-template-columns: 0.3fr 1.5fr 0.5fr;
 `;
 
 export const DivImage = styled.div`

@@ -76,6 +76,11 @@ export const InfosCompra = styled.div`
   column-gap: 15%;
   color: #023454;
   margin: 2% 0;
+
+  #total {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 `;
 
 export const Transportadoras = styled.div`

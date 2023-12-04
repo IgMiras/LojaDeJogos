@@ -14,18 +14,18 @@ export const ListagemHitoricoClienteEspecifico = () => {
   const [data, setData] = useState([]);
   const [nome, setNome] = useState("");
 
-  const handleSubmit = async () => {
-    try {
-      const response = await axios.get(url, {
-        params: {
-          nome: nome,
-        },
-      });
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-      setData(response.data);
-      console.log("Dados recebidos:", response.data);
+    try {
+      const resp = await axios.post(url, {
+        nome: nome,
+      });
+      setData(resp.data);
+      console.log(resp.data);
+      setNome("");
     } catch (error) {
-      console.log(error);
+      console.log(error.response);
     }
   };
 

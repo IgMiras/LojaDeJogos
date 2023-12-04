@@ -102,7 +102,7 @@ export const TelaNovaVenda = () => {
       id={cartItem.id}
       src={cartItem.linkImagem}
       nomeJogo={cartItem.nome}
-      nomeDesenvolvedora={cartItem.desenvolvedora}
+      nomeDesenvolvedora={cartItem.desenvolvedora.nome}
       tipoJogo={cartItem.tipoJogo}
       valor={cartItem.valor}
     ></CardCarrinhoProduto>
@@ -135,6 +135,22 @@ export const TelaNovaVenda = () => {
     }, 0);
 
     return total;
+  };
+
+  const valorDesconto = () => {
+    const total = cartItems.reduce((acc, cartItem) => {
+      const itemValue = parseFloat(cartItem.valor);
+      if (!isNaN(itemValue)) {
+        return acc + itemValue;
+      } else {
+        console.warn(
+          `Invalid valor for cart item: ${JSON.stringify(cartItem)}`
+        );
+        return acc;
+      }
+    }, 0);
+
+    return total * 0.95;
   };
 
   const InfosCartao = () => (
@@ -259,8 +275,11 @@ export const TelaNovaVenda = () => {
           <span>Itens</span>
           <JogosSelecionados>{renderizaCarrinho}</JogosSelecionados>
           <InfosCompra>
-            <a>VALOR TOTAL: R${valorTotal()}</a>
-            <a>VALOR C/ DESCONTO:</a>
+            <a id="total">VALOR TOTAL = R${valorTotal().toFixed(2)}</a>
+            <a id="desc">
+              Valor com 5% de desconto caso seja cliente épico: R$
+              {valorDesconto().toFixed(2)}
+            </a>
           </InfosCompra>
           <a id="concluir">Transportadoras</a>
           <ItemFisico>{renderizaTransportadoras}</ItemFisico>

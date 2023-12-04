@@ -7,6 +7,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: row;
   background-color: rgba(255, 255, 255, 0.54);
+  margin-top: 2%;
 `;
 
 export const DivImage = styled.div`

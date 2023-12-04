@@ -13,6 +13,11 @@ export const Container = styled.div`
     font-size: 2.8rem;
     color: #013757;
   }
+  #title2 {
+    font-weight: bold;
+    font-size: 2.6rem;
+    color: #013757;
+  }
 `;
 
 export const Info = styled.div`
