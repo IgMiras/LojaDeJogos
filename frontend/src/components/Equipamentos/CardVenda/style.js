@@ -39,7 +39,7 @@ export const Description = styled.div`
 
   a {
     font-weight: bold;
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     line-height: 14px;
   }
 `;

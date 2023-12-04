@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 95px;
+  padding: 150px 95px 95px 95px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,9 +11,14 @@ export const Container = styled.div`
 
   #title {
     font-weight: bold;
-    font-size: 2.8rem;
+    font-size: 3.5rem;
     color: white;
     letter-spacing: 1.5px;
+  }
+  #concluir {
+    color: #023454;
+    font-size: 2rem;
+    font-weight: bold;
   }
 `;
 
@@ -70,6 +76,11 @@ export const InfosCompra = styled.div`
   column-gap: 15%;
   color: #023454;
   margin: 2% 0;
+
+  #total {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 `;
 
 export const Transportadoras = styled.div`

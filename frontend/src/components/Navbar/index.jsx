@@ -49,18 +49,26 @@ export const NavBar = () => {
                 <Trigger> VENDAS</Trigger>
                 <ConteudoPopup width="500px" top="45px" left="150px">
                   <ul>
-                    <li onClick={() => router.push("/")}>Todas</li>
-                    <li onClick={() => router.push("/")}>
+                    <li onClick={() => router.push("/listarTodasVendas")}>
+                      Todas
+                    </li>
+                    <li
+                      onClick={() => router.push("/listarVendasMesEspecifico")}
+                    >
                       Vendas e lucro por mês
                     </li>
-                    <li onClick={() => router.push("/")}>
+                    <li onClick={() => router.push("/listarVendasDesenvMes")}>
                       Vendas por desenvolvedoras
                     </li>
-                    <li onClick={() => router.push("/")}>Pagas em boleto</li>
-                    <li onClick={() => router.push("/")}>
+                    <li onClick={() => router.push("/listarVendasBoleto")}>
+                      Pagas em boleto
+                    </li>
+                    <li onClick={() => router.push("/listarVendasCartao")}>
                       Pagas em cartão de crédito
                     </li>
-                    <li onClick={() => router.push("/")}>Pagas com PIX</li>
+                    <li onClick={() => router.push("/listarVendasPix")}>
+                      Pagas com PIX
+                    </li>
                   </ul>
                 </ConteudoPopup>
               </Itens>
@@ -149,11 +157,21 @@ export const NavBar = () => {
                     <li onClick={() => router.push("/listarTodosClientes")}>
                       Todos
                     </li>
-                    <li onClick={() => router.push("/")}>Clientes épicos</li>
-                    <li onClick={() => router.push("/")}>
+                    <li onClick={() => router.push("/listarClientesEpicos")}>
+                      Clientes épicos
+                    </li>
+                    <li
+                      onClick={() => router.push("/listarClientesMaiorNivel")}
+                    >
                       Dez clientes com maior nível
                     </li>
-                    <li onClick={() => router.push("/")}>Histórico de venda</li>
+                    <li
+                      onClick={() =>
+                        router.push("/listarHistoricoClienteEspecifico")
+                      }
+                    >
+                      Histórico de venda
+                    </li>
                   </ul>
                 </ConteudoPopup>
               </Itens>
@@ -166,11 +184,17 @@ export const NavBar = () => {
                     >
                       Todas
                     </li>
-                    <li onClick={() => router.push("/")}>
+                    <li
+                      onClick={() =>
+                        router.push("/listarDesenvMaisJogosVendidos")
+                      }
+                    >
                       Com mais jogos vendidos
                     </li>
-                    <li>Gênero do jogo</li>
-                    <li onClick={() => router.push("/")}>De maior lucro</li>
+
+                    <li onClick={() => router.push("/listarDesenvMaiorLucro")}>
+                      De maior lucro
+                    </li>
                   </ul>
                 </ConteudoPopup>
               </Itens>
@@ -185,9 +209,12 @@ export const NavBar = () => {
                     <li onClick={() => router.push("/cadastroDeGerente")}>
                       Gerente
                     </li>
-                    <li>Gênero do jogo</li>
+
                     <li onClick={() => router.push("/cadastroDeDesenv")}>
                       Desenvolvedora
+                    </li>
+                    <li onClick={() => router.push("/cadastroNovaVenda")}>
+                      Nova Venda
                     </li>
                   </ul>
                 </ConteudoPopup>
