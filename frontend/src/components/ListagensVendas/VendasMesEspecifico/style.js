@@ -16,15 +16,16 @@ export const Container = styled.div`
 `;
 
 export const Info = styled.div`
-  margin-top: 3%;
-  display: flex;
-  flex-direction: column;
-  label {
+  select {
+    border: 1px solid rgba(1, 118, 154, 1);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: 6px;
+    border-radius: 14px;
+    font-weight: 300;
+    height: 40px;
+    font-size: 0.9rem;
     color: rgba(2, 52, 84, 1);
-    margin-left: 6px;
-    margin-bottom: 6px;
-    font-size: 1rem;
-    font-weight: normal;
   }
 `;
 export const Content = styled.div`

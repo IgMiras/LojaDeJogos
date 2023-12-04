@@ -34,8 +34,8 @@ export const ListagemVendasMes = () => {
     <Container>
       <a id="title">Vendas por mês</a>
       <Info>
-        <label for="estado">Mês</label>
-        <select id="estado" name="estado">
+        {/* <label for="mes">Mês</label> */}
+        <select id="mes" name="mes">
           <option value="1">Janeiro</option>
           <option value="2">Fevereiro</option>
           <option value="3">Março</option>
