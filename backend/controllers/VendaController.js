@@ -107,6 +107,7 @@ async function listarTodasVendas(req, res) {
         const vendas = await VendaModel.find()
             .populate('cliente')
             .populate('gerente')
+            .populate('transportadora')
             .exec();
 
         res.status(200).json(vendas);
