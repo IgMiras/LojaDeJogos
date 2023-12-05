@@ -208,10 +208,15 @@ async function vendasDesenvolvedoraMesELucro(req, res) {
 
 async function listarVendasBoleto(req, res) {
     try {
-        const vendas = await VendaModel.find().populate({
-            path: 'pagamento',
-            match: { tipo: 'Boleto' },
-        });
+        const vendas = await VendaModel.find()
+            .populate({
+                path: 'pagamento',
+                match: { tipo: 'Boleto' },
+            })
+            .populate('cliente')
+            .populate('gerente')
+            .populate('transportadora')
+            .exec();
         res.status(200).json(vendas);
     } catch (err) {
         console.error(err.message);
@@ -221,10 +226,15 @@ async function listarVendasBoleto(req, res) {
 
 async function listarVendasCartao(req, res) {
     try {
-        const vendas = await VendaModel.find().populate({
-            path: 'pagamento',
-            match: { tipo: 'Cartao' },
-        });
+        const vendas = await VendaModel.find()
+            .populate({
+                path: 'pagamento',
+                match: { tipo: 'Cartao' },
+            })
+            .populate('cliente')
+            .populate('gerente')
+            .populate('transportadora')
+            .exec();
         res.status(200).json(vendas);
     } catch (err) {
         console.error(err.message);
@@ -234,10 +244,15 @@ async function listarVendasCartao(req, res) {
 
 async function listarVendasPix(req, res) {
     try {
-        const vendas = await VendaModel.find().populate({
-            path: 'pagamento',
-            match: { tipo: 'Pix' },
-        });
+        const vendas = await VendaModel.find()
+            .populate({
+                path: 'pagamento',
+                match: { tipo: 'Pix' },
+            })
+            .populate('cliente')
+            .populate('gerente')
+            .populate('transportadora')
+            .exec();
         res.status(200).json(vendas);
     } catch (err) {
         console.error(err.message);
