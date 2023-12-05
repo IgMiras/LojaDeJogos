@@ -23,8 +23,8 @@ export const ListagemVendasBoleto = () => {
       codigoVenda={item.codigoVenda}
       nomeTransportadora={item.nomeTransportadora}
       dataVenda={item.dataVenda}
-      cliente={item.cliente}
-      gerente={item.gerente}
+      cliente={item.cliente.nome}
+      gerente={item.gerente.nome}
       valor={item.valorTotal}
       itensVenda={item.itensVenda}
     />

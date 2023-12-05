@@ -102,7 +102,7 @@ export const TelaCadastroGerente = () => {
               type="text"
               name="nasc"
               id="nasc"
-              placeHolder="DD/MM/YYYY"
+              placeHolder="MM/DD/YYYY"
               width="100%"
               height="40px"
               value={nasc}

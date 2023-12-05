@@ -14,9 +14,8 @@ export const CardVenda = ({
   valor,
   itensVenda,
 }) => {
-  // const data = new Date(dataVenda);
-  // const dataFormatada = format(data, "dd/MM/yyyy");
-  // const valorFormatado = valor.toFixed(2);
+  const data = new Date(dataVenda);
+  const dataFormatada = format(data, "dd/MM/yyyy");
 
   return (
     <Container>
@@ -33,7 +32,7 @@ export const CardVenda = ({
               ? `Transportadora: ${nomeTransportadora}`
               : ""}
           </a>
-          <a id="endereco">Data venda: {dataVenda} </a>
+          <a id="endereco">Data venda: {dataFormatada} </a>
           <a>Cliente: {cliente}</a>
           <a>Gerente: {gerente}</a>
           <a id="cep">Valor R${valor} </a>

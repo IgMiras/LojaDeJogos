@@ -23,8 +23,10 @@ export const ListagemTodasVendas = () => {
 
   const renderizando = data.map((item) => (
     <CardVenda
-      codigoVenda={item._id}
-      nomeTransportadora={"item.nomeTransportadora"}
+      codigoVenda={""}
+      nomeTransportadora={
+        item.transportadora ? item.transportadora.nome : "Sem transportadora"
+      }
       dataVenda={item.dataVenda}
       cliente={item.cliente.nome}
       gerente={item.gerente.nome}
