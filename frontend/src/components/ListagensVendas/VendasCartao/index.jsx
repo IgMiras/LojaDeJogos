@@ -20,12 +20,14 @@ export const ListagemVendasCartao = () => {
 
   const renderizando = data.map((item) => (
     <CardVenda
-      codigoVenda={item.codigoVenda}
-      nomeTransportadora={item.nomeTransportadora}
+      codigoVenda={""}
+      nomeTransportadora={
+        item.transportadora ? item.transportadora.nome : "Sem transportadora"
+      }
       dataVenda={item.dataVenda}
-      cliente={item.cliente}
-      gerente={item.gerente}
-      valor={item.valorTotal}
+      cliente={item.cliente.nome}
+      gerente={item.gerente.nome}
+      valor={item.valorTotal.toFixed(2)}
       itensVenda={item.itensVenda}
     />
   ));
