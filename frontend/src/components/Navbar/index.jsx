@@ -115,23 +115,6 @@ export const NavBar = () => {
                             >
                               Os 10 jogos mais baratos
                             </li>
-                            <TriggerSub>Lista de avaliações</TriggerSub>
-                            <ConteudoPopup
-                              width="300px"
-                              top="265px"
-                              left="155px"
-                            >
-                              <SubContent>
-                                <ul>
-                                  <li onClick={() => router.push("/")}>
-                                    Tipo A
-                                  </li>
-                                  <li onClick={() => router.push("/")}>
-                                    Tipo B
-                                  </li>
-                                </ul>
-                              </SubContent>
-                            </ConteudoPopup>
                           </ul>
                         </SubContent>
                       </ConteudoPopup>
