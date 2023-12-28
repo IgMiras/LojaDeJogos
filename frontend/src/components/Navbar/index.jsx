@@ -192,9 +192,11 @@ export const NavBar = () => {
                     <li onClick={() => router.push("/cadastroDeGerente")}>
                       Gerente
                     </li>
-
                     <li onClick={() => router.push("/cadastroDeDesenv")}>
                       Desenvolvedora
+                    </li>
+                    <li onClick={() => router.push("/cadastroDeJogo")}>
+                      Jogo
                     </li>
                     <li onClick={() => router.push("/cadastroNovaVenda")}>
                       Nova Venda
