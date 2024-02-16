@@ -26,7 +26,7 @@ export const NavBar = () => {
           id="img"
           src={logoImg}
           alt="Logo da loja de jogos"
-          onClick={() => router.push("/")}
+          onClick={() => router.push("/home")}
         />
         <NavContainer>
           <Nav>
