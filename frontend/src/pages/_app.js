@@ -8,6 +8,7 @@ import { TelaAvaliacao } from '@/components/TelaAvalicao/index.jsx';
 import { Layout } from '@/components/Layout';
 
 import Home from '.';
+import Register from './register';
 
 import { ListagemTodasDesenvolvedoras } from '@/components/ListagensDesenvolvedoras/TodasDesenvolvedoras';
 import { ListagemTodasTransportadoras } from '@/components/Listagens/TodasTransportadoras';
@@ -23,11 +24,11 @@ import { ListagemHitoricoClienteEspecifico } from '@/components/ListagensCliente
 
 export default function App({ Component, pageProps }) {
 	// Verifica se a página atual é a página de login
-	const isLoginPage = Component === Home;
+	const isLoginOrRegisterPage = Component === Home || Component === Register;
 
 	// Renderiza o layout padrão com header e footer, exceto na página de login
 	const renderLayout = () => {
-		if (isLoginPage) {
+		if (isLoginOrRegisterPage) {
 			return <Component {...pageProps} />;
 		} else {
 			return (

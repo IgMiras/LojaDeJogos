@@ -9,4 +9,8 @@ export const Background = styled.div`
 	justify-content: center;
 	align-items: center;
 	overflow: hidden;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
 `;

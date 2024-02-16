@@ -1,8 +1,9 @@
 import React from "react";
+import { useRouter } from "next/router";
 import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import { Header, Container, Button, Eye, Register } from "./style";
+import { Header, Container, Button, Eye, Register, Field } from "./style";
 import logoImg from "@/assets/images/image3.png";
 
 import { useForm } from 'react-hook-form'
@@ -14,7 +15,9 @@ const createUserFormSchema = z.object({
     password: z.string().min(6, 'Password must have at least 6 characters')
 })
 
-export const SecaoFormulario = () => {
+export const SecaoFormularioLogin = () => {
+    const router = useRouter();
+
     const { register, handleSubmit, formState: { errors } } = useForm({
         resolver: zodResolver(createUserFormSchema)
     });
@@ -43,13 +46,7 @@ export const SecaoFormulario = () => {
                     gap: '30px',
                     }}
                 >
-                    <div style={{display: 'flex',
-	                    flexDirection: 'column',
-	                    justifyContent: 'center',
-                        gap: '5px',
-                        width: '100%'
-                        }}
-                    >
+                    <Field>
                         {/* <label htmlFor="" >Email</label> */}
                         <input type="email" placeholder="Your email here" style={{
                                 borderBottom: '1px solid #000',
@@ -61,14 +58,9 @@ export const SecaoFormulario = () => {
                                 {...register('email')}
                             />
                             {errors.email && <span style={{color: 'red'}}>{errors.email.message}</span>}
-                    </div>
+                    </Field>
 
-                    <div style={{display: 'flex',
-	                    flexDirection: 'column',
-	                    justifyContent: 'center',
-                        gap: '5px',
-                        width: '100%'
-                    }}>
+                    <Field>
                         {/* <label htmlFor="">Password</label> */}
                         <div style={{display: 'flex'}}>
                             <input type="password" placeholder="Password" style={{
@@ -85,7 +77,7 @@ export const SecaoFormulario = () => {
                             </Eye> */}
                         </div>
                         {errors.password && <span style={{color: 'red'}}>{errors.password.message}</span>}
-                   </div>
+                    </Field>
 
                     <Button type="submit">
                             Log in

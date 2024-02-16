@@ -6,6 +6,10 @@ export const Container = styled.div`
 	left: 50%;
 	transform: translate(-50%, -50%);
 	width: 300px;
+
+	@media (max-width: 768px) {
+		padding-top: 70px;
+	}
 `;
 
 export const Header = styled.div`
@@ -45,4 +49,19 @@ export const Register = styled.div`
 		font-weight: 600; /* Altera o peso da fonte para dar destaque quando estiver em hover */
 		font-size: 1.5rem; /* Aumenta o tamanho da fonte quando estiver em hover */
 	}
+`;
+
+export const Field = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 5px;
+	width: 100%;
+`;
+
+export const Input = styled.input`
+	border-bottom: 1px solid #000;
+	width: 100%;
+	padding: 5px;
+	outline: none;
 `;
