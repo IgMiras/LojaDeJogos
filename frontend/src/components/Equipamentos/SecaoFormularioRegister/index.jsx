@@ -69,6 +69,8 @@ export const SecaoFormularioRegister = () => {
         try {
             const response = await axios.post(URL_USER, data);
 
+            console.log(response.status);
+
             if (response.status === 200) {
                 const { token } = response.data;
                 // Salvar o token no localStorage
@@ -76,11 +78,9 @@ export const SecaoFormularioRegister = () => {
                 axios.defaults.headers.common['x-auth-token'] = token;
                 // Redirecionar o usuário para a página '/home'
                 router.push('/home');
-            } else {
-                console.error('Erro ao autenticar usuário:', response.data);
             }
         } catch (error) {
-            console.error('Erro ao enviar solicitação para a API:', error);
+            console.error('Erro ao enviar solicitação para a API:', error.response.data.errors);
         }
     }
 

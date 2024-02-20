@@ -13,7 +13,7 @@ const User = require('../../models/UserModel');
 router.post(
 	'/',
 	[
-		check('name', 'Name is required').not().isEmpty(), // Check if the field 'name' is not empty
+		check('username', 'Username is required').not().isEmpty(), // Check if the field 'name' is not empty
 		check('email', 'Please include a valid email').isEmail(), // Check if the field 'email' is valid
 		check(
 			'password',
@@ -27,7 +27,8 @@ router.post(
 			return res.status(400).json({ errors: errors.array() });
 		}
 
-		const { name, email, password } = req.body;
+		let { username, email, password } = req.body;
+		email = email.toLowerCase();
 
 		try {
 			// See if the user exists
@@ -40,7 +41,7 @@ router.post(
 			}
 
 			user = new User({
-				name,
+				username,
 				email,
 				password,
 			});
