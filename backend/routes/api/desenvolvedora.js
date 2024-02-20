@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
+const auth = require('../../middleware/auth.js');
+
 const {
 	cadastrarDesenvolvedora,
 	listarTodasDesenvolvedoras,
@@ -10,13 +12,16 @@ const {
 
 // @route   POST api/desenvolvedora
 // @desc    Cadastrar uma desenvolvedora
-// @acess   Publico (mudar futuramente caso tenha autenticação)
+// @acess   Private
 router.post(
 	'/',
 	[
-		check('cnpj', 'CNPJ é obigatorio').not().isEmpty(),
-		check('nome', 'Nome é obigatorio'),
-		check('email', 'Email é obigatorio'),
+		auth,
+		[
+			check('cnpj', 'CNPJ é obigatorio').not().isEmpty(),
+			check('nome', 'Nome é obigatorio'),
+			check('email', 'Email é obigatorio'),
+		],
 	],
 	(req, res) => {
 		const erros = validationResult(req);
@@ -30,22 +35,22 @@ router.post(
 
 // @route   GET api/desenvolvedora
 // @desc    Listar todas desenvolvedoras
-// @acess   Publico (mudar futuramente caso tenha autenticação)
-router.get('/', (req, res) => {
+// @acess   Private
+router.get('/', auth, (req, res) => {
 	listarTodasDesenvolvedoras(req, res);
 });
 
 // @route   GET api/desenvolvedora/maisjogosvendidos
 // @desc    Listar as desenvolvedoras que tiveram mais jogos vendidos
-// @acess   Publico (mudar futuramente caso tenha autenticação)
-router.get('/maisjogosvendidos', (req, res) => {
+// @acess   Private
+router.get('/maisjogosvendidos', auth, (req, res) => {
 	desenvolvedorasMaisJogosVendidos(req, res);
 });
 
 // @route   GET api/desenvolvedora/maiorlucro
 // @desc    Listar as desenvolvedoras que tiveram mais lucro
-// @acess   Publico (mudar futuramente caso tenha autenticação)
-router.get('/maiorlucro', (req, res) => {
+// @acess   Private
+router.get('/maiorlucro', auth, (req, res) => {
 	desenvolvedorasMaiorLucro(req, res);
 });
 

@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { check, validationResult } = require('express-validator');
+const auth = require('../../middleware/auth.js');
+
 const {
 	cadastrarVenda,
 	listarTodasVendas,
@@ -13,13 +15,16 @@ const {
 
 // @route   POST api/venda
 // @desc    Cadastrar uma venda
-// @acess   Publico (mudar futuramente caso tenha autenticação)
+// @acess   Private
 router.post(
 	'/',
 	[
-		check('nomeCliente', 'Nome do Cliente é obigatorio').not().isEmpty(),
-		check('nomeGerente', 'Nome do Gerente é obigatorio').not().isEmpty(),
-		check('itensVenda', 'itensVenda é obigatorio').not().isEmpty(),
+		auth,
+		[
+			check('nomeCliente', 'Nome do Cliente é obigatorio').not().isEmpty(),
+			check('nomeGerente', 'Nome do Gerente é obigatorio').not().isEmpty(),
+			check('itensVenda', 'itensVenda é obigatorio').not().isEmpty(),
+		],
 	],
 	(req, res) => {
 		const erros = validationResult(req);
@@ -33,19 +38,22 @@ router.post(
 
 // @route   GET api/venda
 // @desc    Listar todas vendas
-// @acess   Publico (mudar futuramente caso tenha autenticação)
-router.get('/', (req, res) => {
+// @acess   Private
+router.get('/', auth, (req, res) => {
 	listarTodasVendas(req, res);
 });
 
 // @route   POST api/venda/meslucro
 // @desc    Listar todas vendas de um mes especifico e seu lucro
-// @acess   Publico (mudar futuramente caso tenha autenticação)
+// @acess   Private
 router.post(
 	'/meslucro',
 	[
-		check('mes', 'Mes é obigatorio').not().isEmpty(),
-		check('ano', 'Ano é obigatorio').not().isEmpty(),
+		auth,
+		[
+			check('mes', 'Mes é obigatorio').not().isEmpty(),
+			check('ano', 'Ano é obigatorio').not().isEmpty(),
+		],
 	],
 	(req, res) => {
 		listarVendasMesEspecificoLucro(req, res);
@@ -54,13 +62,18 @@ router.post(
 
 // @route   POST api/venda/desenvolvedora
 // @desc    Listar todas vendas de uma desenvolvedora em um mes especifico e seu lucro
-// @acess   Publico (mudar futuramente caso tenha autenticação)
+// @acess   Private
 router.post(
 	'/desenvolvedora',
 	[
-		check('mes', 'Mes é obigatorio').not().isEmpty(),
-		check('ano', 'Ano é obigatorio').not().isEmpty(),
-		check('nomeDesenvolvedora', 'Desenvolvedora é obigatorio').not().isEmpty(),
+		auth,
+		[
+			check('mes', 'Mes é obigatorio').not().isEmpty(),
+			check('ano', 'Ano é obigatorio').not().isEmpty(),
+			check('nomeDesenvolvedora', 'Desenvolvedora é obigatorio')
+				.not()
+				.isEmpty(),
+		],
 	],
 	(req, res) => {
 		vendasDesenvolvedoraMesELucro(req, res);
@@ -69,22 +82,22 @@ router.post(
 
 // @route   GET api/venda/boleto
 // @desc    Listar todas vendas em que o pagamento foi feito com boleto
-// @acess   Publico (mudar futuramente caso tenha autenticação)
-router.get('/boleto', (req, res) => {
+// @acess   Private
+router.get('/boleto', auth, (req, res) => {
 	listarVendasBoleto(req, res);
 });
 
 // @route   GET api/venda/cartao
 // @desc    Listar todas vendas em que o pagamento foi feito com cartao
-// @acess   Publico (mudar futuramente caso tenha autenticação)
-router.get('/cartao', (req, res) => {
+// @acess   Private
+router.get('/cartao', auth, (req, res) => {
 	listarVendasCartao(req, res);
 });
 
 // @route   GET api/venda/pix
 // @desc    Listar todas vendas em que o pagamento foi feito com pix
-// @acess   Publico (mudar futuramente caso tenha autenticação)
-router.get('/pix', (req, res) => {
+// @acess   Private
+router.get('/pix', auth, (req, res) => {
 	listarVendasPix(req, res);
 });
 
