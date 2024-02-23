@@ -28,6 +28,7 @@ const VendaSchema = new mongoose.Schema({
 
 	valorTotal: {
 		type: Number,
+		default: 0,
 	},
 
 	// Sem valorComDesconto, pois eh so tirar de valorTotal

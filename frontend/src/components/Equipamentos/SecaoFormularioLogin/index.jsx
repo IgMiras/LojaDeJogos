@@ -9,8 +9,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from "axios";
-
-const URL_AUTH = 'http://localhost:5000/api/auth';
+import { API_URL } from "@/constants";
 
 const createUserFormSchema = z.object({
     email: z.string().min(1, 'Email is required!').email('Invalid Email!'),
@@ -24,44 +23,9 @@ export const SecaoFormularioLogin = () => {
         resolver: zodResolver(createUserFormSchema)
     });
 
-    useEffect(() => {
-        // Verificar se o usuário já está autenticado
-        const token = localStorage.getItem('token');
-        if (token) {
-            // Se o token existir, fazer uma verificação no backend para confirmar se é válido
-            verificarToken(token);
-        } else {
-            // Se o token não existir, remover o cabeçalho 'x-auth-token' do axios
-            delete axios.defaults.headers.common['x-auth-token'];
-        }
-    }, []); // Executar apenas uma vez, quando o componente é montado
-    
-    const verificarToken = async (token) => {
-        const config = {
-            headers: {
-                'x-auth-token': token
-            }
-        }
-
-        try {
-            const response = await axios.post(`${URL_AUTH}/verify`, null, config);
-            if (response.status === 200) {
-                // Configurar o axios para incluir automaticamente o token em todas as solicitações
-                axios.defaults.headers.common['x-auth-token'] = token;
-                router.push('/home');
-            } else {
-                // Se o token não for válido, remover o token do localStorage e redirecionar o usuário para a página de login
-                localStorage.removeItem('token');
-                router.push('/');
-            }
-        } catch (error) {
-            console.error('Erro ao verificar o token:', error);
-        }
-    }
-
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post(URL_AUTH, data);
+            const response = await axios.post(`${API_URL}/auth`, data);
 
             if (response.status === 200) {
                 const { token } = response.data;

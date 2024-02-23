@@ -7,10 +7,16 @@ import { Layout } from '@/components/Layout';
 import Home from '.';
 import Register from './register';
 import Provider from '../../context/provider';
+import { useRouter } from 'next/router';
+import useTokenVerification from '../hooks/useTokenVerification';
 
 const client = new QueryClient();
 
 export default function App({ Component, pageProps }) {
+	const router = useRouter();
+
+	useTokenVerification(router);
+
 	// Verifica se a página atual é a página de login
 	const isLoginOrRegisterPage = Component === Home || Component === Register;
 

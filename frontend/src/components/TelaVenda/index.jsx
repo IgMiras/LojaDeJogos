@@ -28,18 +28,12 @@ import AppContext from "../../../context/context";
 import Provider from "../../../context/provider";
 import { CardCarrinhoTransportadora } from "../Equipamentos/CarrinhoCardTransportadora";
 import { Button } from "../Equipamentos/Button";
-//url pra listar opções de jogos
-const url = "http://localhost:5000/api/jogos";
-//url pra cadastrar nova venda
-const urlNovaVenda = "http://localhost:5000/api/venda";
-//url pra cadastrar novo pagamento
-const urlPagamento = "http://localhost:5000/api/pagamento";
-//url pra listar opções de transportadoras
-const urlTransportadoras = "http://localhost:5000/api/transportadora";
+
+import { API_URL } from "@/constants";
 
 export const TelaNovaVenda = () => {
   //cadastro de nova venda
-  const [data, setData] = useState([]);
+  const [dataJogos, setDataJogos] = useState([]);
   const [dataTransportadora, setDataTransportadora] = useState([]);
   const [nomeCliente, setNomeCliente] = useState("");
   const [nomeGerente, setNomeGerente] = useState("");
@@ -70,9 +64,9 @@ export const TelaNovaVenda = () => {
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(`${API_URL}/jogos`)
       .then((response) => {
-        setData(response.data);
+        setDataJogos(response.data);
         // console.log("Dados recebidos:", response.data);
       })
       .catch((error) => console.log(error));
@@ -80,15 +74,14 @@ export const TelaNovaVenda = () => {
 
   useEffect(() => {
     axios
-      .get(urlTransportadoras)
+      .get(`${API_URL}/transportadora`)
       .then((response) => {
         setDataTransportadora(response.data);
-        console.log("Transportadoras recebidss:", response.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  const renderizando = data.map((item) => (
+  const renderizando = dataJogos.map((item) => (
     <CardProdutos
       titulo={item.nome}
       desenvolvedora={item.desenvolvedora.nome}
@@ -199,18 +192,9 @@ export const TelaNovaVenda = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({
-      codigoNota,
-      tipo,
-      numeroBoleto,
-      nomeCartao,
-      bandeiraCartao,
-      numeroCartao,
-      codigoPix,
-    });
 
     try {
-      const respPagamento = await axios.post(urlPagamento, {
+      const respPagamento = await axios.post(`${API_URL}/pagamento`, {
         codigoNota: codigoNota,
         tipo: tipo,
         numeroBoleto: numeroBoleto,
@@ -220,44 +204,37 @@ export const TelaNovaVenda = () => {
         codigoPix: codigoPix,
       });
 
-      setCodigoNota(parseInt(Math.random() * 1000000));
-      setCodigoPix(parseInt(Math.random() * 50000));
-      setNumeroBoleto(parseInt(Math.random() * 2301854));
-      setNomeCartao("");
-      setBandeiraCartao("");
-      setNumeroCartao("");
-      setIdPagamento(respPagamento.data._id);
-      console.log("RESPPAGAMENTO ID", idPagamento);
+      setIdPagamento(respPagamento.data);
+
     } catch (error) {
       console.log(error.response);
     }
-    console.log({
-      nomeCliente,
-      nomeGerente,
-      nomeTransportadora,
-      dataVenda,
-      dataEntrega,
-      itensVenda,
-      idPagamento,
-    });
 
     try {
-      const resp = await axios.post(urlNovaVenda, {
+      
+      const nomesItensVenda = itensVenda.map(item => item.nome);
+
+      console.log(
+        nomeCliente,
+        nomeGerente,
+        nomeTransportadora,
+        dataVenda,
+        dataEntrega,
+        nomesItensVenda,
+        idPagamento
+      )
+
+      const resp = await axios.post(`${API_URL}/venda`, {
         nomeCliente: nomeCliente,
         nomeGerente: nomeGerente,
         nomeTransportadora: nomeTransportadora,
         dataVenda: dataVenda,
         dataEntrega: dataEntrega,
-        itensVenda: itensVenda,
+        itensVenda: nomesItensVenda,
         idPagamento: idPagamento,
       });
-      console.log("RESPPAGAMENTO ID FORAAA", idPagamento);
-      console.log(resp.data);
 
-      setNomeCliente("");
-      setNomeGerente("");
-      setDataVenda("");
-      setDataEntrega("");
+      console.log(resp.data);
 
       setCodigoPix(parseInt(Math.random() * 50000));
       setNumeroBoleto(parseInt(Math.random() * 2301854));
