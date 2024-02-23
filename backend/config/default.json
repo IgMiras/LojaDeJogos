@@ -1,4 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://IgMirasPassword:58Og4UR4wste9Qnz@lojadejogos.xldnsrw.mongodb.net/?retryWrites=true&w=majority",
-    "jwtSecret": "mysecrettoken"
-}
