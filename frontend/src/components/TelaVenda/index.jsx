@@ -29,7 +29,7 @@ import Provider from "../../../context/provider";
 import { CardCarrinhoTransportadora } from "../Equipamentos/CarrinhoCardTransportadora";
 import { Button } from "../Equipamentos/Button";
 
-import { API_URL } from "@/constants";
+import { PROD_API_URL } from "@/constants";
 
 export const TelaNovaVenda = () => {
   //cadastro de nova venda
@@ -64,7 +64,7 @@ export const TelaNovaVenda = () => {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/jogos`)
+      .get(`${PROD_API_URL}/jogos`)
       .then((response) => {
         setDataJogos(response.data);
         // console.log("Dados recebidos:", response.data);
@@ -74,7 +74,7 @@ export const TelaNovaVenda = () => {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/transportadora`)
+      .get(`${PROD_API_URL}/transportadora`)
       .then((response) => {
         setDataTransportadora(response.data);
       })
@@ -194,7 +194,7 @@ export const TelaNovaVenda = () => {
     e.preventDefault();
 
     try {
-      const respPagamento = await axios.post(`${API_URL}/pagamento`, {
+      const respPagamento = await axios.post(`${PROD_API_URL}/pagamento`, {
         codigoNota: codigoNota,
         tipo: tipo,
         numeroBoleto: numeroBoleto,
@@ -224,7 +224,7 @@ export const TelaNovaVenda = () => {
         idPagamento
       )
 
-      const resp = await axios.post(`${API_URL}/venda`, {
+      const resp = await axios.post(`${PROD_API_URL}/venda`, {
         nomeCliente: nomeCliente,
         nomeGerente: nomeGerente,
         nomeTransportadora: nomeTransportadora,

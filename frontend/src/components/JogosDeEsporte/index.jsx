@@ -4,14 +4,14 @@ import React, { useState, useEffect } from "react";
 import { Container, Content } from "./style";
 import axios from "axios";
 
-const url = "http://localhost:5000/api/jogos/esporte";
+import { PROD_API_URL } from "@/constants";
 
 export const JogosDeEsporte = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(`${PROD_API_URL}/jogos/esporte`)
       .then((response) => {
         setData(response.data);
         console.log("Dados recebidos:", response.data);

@@ -5,7 +5,7 @@ import axios from "axios";
 import { Input } from "@/components/Equipamentos/Input";
 import { Button } from "@/components/Equipamentos/Button";
 
-const url = "http://localhost:5000/api/cliente";
+import { PROD_API_URL } from "@/constants";
 
 export const TelaCadastroCliente = () => {
   const [nome, setNome] = useState("");
@@ -21,7 +21,7 @@ export const TelaCadastroCliente = () => {
     e.preventDefault();
 
     try {
-      const resp = await axios.post(url, {
+      const resp = await axios.post(`${PROD_API_URL}/cliente`, {
         nome: nome,
         cpf: cpf,
         rg: rg,

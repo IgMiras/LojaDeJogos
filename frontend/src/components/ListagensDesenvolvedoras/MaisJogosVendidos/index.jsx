@@ -3,14 +3,14 @@ import { Container, Content } from "./style";
 import axios from "axios";
 import { CardDesenvolvedora } from "@/components/Equipamentos/CardDesenvolvedora";
 
-const url = "http://localhost:5000/api/desenvolvedora/maisjogosvendidos";
+import { PROD_API_URL } from "@/constants";
 
 export const ListagemDesenvMaisJogosVendidos = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(url)
+    .get(`${PROD_API_URL}/desenvolvedora/maisjogosvendidos`)
       .then((response) => {
         setData(response.data);
         console.log("Dados recebidos:", response.data);

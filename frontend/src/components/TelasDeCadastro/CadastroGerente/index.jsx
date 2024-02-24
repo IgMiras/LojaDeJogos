@@ -5,7 +5,7 @@ import axios from "axios";
 import { Input } from "@/components/Equipamentos/Input";
 import { Button } from "@/components/Equipamentos/Button";
 
-const url = "http://localhost:5000/api/gerente";
+import { PROD_API_URL } from "@/constants";
 
 export const TelaCadastroGerente = () => {
   const [nome, setNome] = useState("");
@@ -22,7 +22,7 @@ export const TelaCadastroGerente = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const resp = await axios.post(url, {
+      const resp = await axios.post(`${PROD_API_URL}/gerente`, {
         nome: nome,
         cpf: cpf,
         rg: rg,

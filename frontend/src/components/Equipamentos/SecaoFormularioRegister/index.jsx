@@ -10,7 +10,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from "axios";
 
-const URL_USER = 'http://localhost:5000/api/user';
+import { PROD_API_URL } from "@/constants";
 
 const createUserFormSchema = z.object({
     email: z.string().min(1, 'Email is required!').email('Invalid Email!'),
@@ -31,7 +31,7 @@ export const SecaoFormularioRegister = () => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post(URL_USER, data);
+            const response = await axios.post(`${PROD_API_URL}/user`, data);
 
             console.log(response.status);
 

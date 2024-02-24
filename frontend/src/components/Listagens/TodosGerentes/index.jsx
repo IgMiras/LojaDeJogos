@@ -5,14 +5,14 @@ import { CardDesenvolvedora } from "@/components/Equipamentos/CardDesenvolvedora
 import { CardCliente } from "@/components/Equipamentos/CardCliente";
 import { CardGerente } from "@/components/Equipamentos/CardGerente";
 
-const url = "http://localhost:5000/api/gerente";
+import { PROD_API_URL } from "@/constants";
 
 export const ListagemTodosGerentes = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(`${PROD_API_URL}/gerente`)
       .then((response) => {
         setData(response.data);
         console.log("Dados recebidos:", response.data);

@@ -5,14 +5,14 @@ import { Container, Content } from "./style";
 import axios from "axios";
 import { CardListagem } from "../Equipamentos/CardListagem";
 
-const url = "http://localhost:5000/api/jogos/maiscaros";
+import { PROD_API_URL } from "@/constants";
 
 export const JogosMaisCaros = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(`${PROD_API_URL}/jogos/maiscaros`)
       .then((response) => {
         setData(response.data);
         console.log("Dados recebidos:", response.data);

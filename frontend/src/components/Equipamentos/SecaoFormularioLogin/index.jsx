@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import axios from "axios";
-import { API_URL } from "@/constants";
+import { PROD_API_URL } from "@/constants";
 
 const createUserFormSchema = z.object({
     email: z.string().min(1, 'Email is required!').email('Invalid Email!'),
@@ -25,7 +25,7 @@ export const SecaoFormularioLogin = () => {
 
     const onSubmit = async (data) => {
         try {
-            const response = await axios.post(`${API_URL}/auth`, data);
+            const response = await axios.post(`${PROD_API_URL}/auth`, data);
 
             if (response.status === 200) {
                 const { token } = response.data;

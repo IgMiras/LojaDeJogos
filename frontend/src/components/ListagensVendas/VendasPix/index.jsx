@@ -3,14 +3,14 @@ import { Container, Content } from "./style";
 import axios from "axios";
 import { CardVenda } from "@/components/Equipamentos/CardVenda";
 
-const url = "http://localhost:5000/api/venda/pix";
+import { PROD_API_URL } from "@/constants";
 
 export const ListagemVendasPix = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(`${PROD_API_URL}/venda/pix`)
       .then((response) => {
         setData(response.data);
         console.log("Dados recebidos:", response.data);

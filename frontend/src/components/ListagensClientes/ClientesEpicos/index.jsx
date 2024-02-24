@@ -4,14 +4,14 @@ import axios from "axios";
 import { CardDesenvolvedora } from "@/components/Equipamentos/CardDesenvolvedora";
 import { CardCliente } from "@/components/Equipamentos/CardCliente";
 
-const url = "http://localhost:5000/api/cliente/epicos";
+import { PROD_API_URL } from "@/constants";
 
 export const ListagemClientesEpicos = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(`${PROD_API_URL}/cliente/epicos`)
       .then((response) => {
         setData(response.data);
         console.log("Dados recebidos:", response.data);

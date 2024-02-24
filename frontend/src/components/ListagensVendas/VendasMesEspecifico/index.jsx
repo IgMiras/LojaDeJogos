@@ -6,7 +6,8 @@ import { Button } from "@/components/Equipamentos/Button";
 import Image from "next/image";
 
 import clienteImage from "../../../assets/svg/carrinho.svg";
-const url = "http://localhost:5000/api/venda/meslucro";
+
+import { PROD_API_URL } from "@/constants";
 
 export const ListagemVendasMes = () => {
   const [data, setData] = useState([]);
@@ -17,7 +18,7 @@ export const ListagemVendasMes = () => {
     e.preventDefault();
 
     try {
-      const resp = await axios.post(url, {
+      const resp = await axios.post(`${PROD_API_URL}/venda/meslucro`, {
         mes: mes,
         ano: ano,
       });

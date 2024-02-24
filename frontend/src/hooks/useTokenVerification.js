@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import axios from 'axios';
-import { API_URL } from '@/constants';
+import { PRO, PROD_API_URLD_API_URL } from '@/constants';
 
 const useTokenVerification = (router) => {
 	useEffect(() => {
@@ -15,7 +15,7 @@ const useTokenVerification = (router) => {
 
 				try {
 					const response = await axios.post(
-						`${API_URL}/auth/verify`,
+						`${PROD_API_URL}/auth/verify`,
 						null,
 						config
 					);

@@ -8,7 +8,7 @@ import { CardVenda } from "@/components/Equipamentos/CardVenda";
 import { Input } from "@/components/Equipamentos/Input";
 import { Button } from "@/components/Equipamentos/Button";
 
-const url = "http://localhost:5000/api/cliente/historico";
+import { PROD_API_URL } from "@/constants";
 
 export const ListagemHitoricoClienteEspecifico = () => {
   const [data, setData] = useState([]);
@@ -18,7 +18,7 @@ export const ListagemHitoricoClienteEspecifico = () => {
     e.preventDefault();
 
     try {
-      const resp = await axios.post(url, {
+      const resp = await axios.post(`${PROD_API_URL}/cliente/historico`, {
         nome: nome,
       });
       setData(resp.data);

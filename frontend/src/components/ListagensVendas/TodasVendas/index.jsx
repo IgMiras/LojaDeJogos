@@ -6,14 +6,14 @@ import { CardCliente } from "@/components/Equipamentos/CardCliente";
 import { CardGerente } from "@/components/Equipamentos/CardGerente";
 import { CardVenda } from "@/components/Equipamentos/CardVenda";
 
-const url = "http://localhost:5000/api/venda";
+import { PROD_API_URL } from "@/constants";
 
 export const ListagemTodasVendas = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios
-      .get(url)
+      .get(`${PROD_API_URL}/venda`)
       .then((response) => {
         setData(response.data);
         console.log("Dados recebidos:", response.data);

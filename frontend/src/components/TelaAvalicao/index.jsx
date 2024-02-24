@@ -15,7 +15,7 @@ import { Button } from "../Equipamentos/Button";
 import { stringify } from "postcss";
 import axios from "axios";
 
-const url = "http://localhost:5000/api/jogos/avaliar";
+import { PROD_API_URL } from "@/constants";
 
 export const TelaAvaliacao = () => {
   const [nomeJogo, setNomeJogo] = useState("");
@@ -25,7 +25,7 @@ export const TelaAvaliacao = () => {
     e.preventDefault();
     console.log({ nomeJogo, avaliacao, comentario });
     try {
-      const resp = await axios.post(url, {
+      const resp = await axios.post(`${PROD_API_URL}/jogos/avaliar`, {
         nomeJogo: nomeJogo,
         avaliacao: parseInt(avaliacao),
         comentario: comentario,

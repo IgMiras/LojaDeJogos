@@ -5,7 +5,7 @@ import axios from "axios";
 import { Input } from "@/components/Equipamentos/Input";
 import { Button } from "@/components/Equipamentos/Button";
 
-const url = "http://localhost:5000/api/jogos";
+import { PROD_API_URL } from "@/constants";
 
 export const TelaCadastroJogos = () => {
   const [nome, setNome] = useState("");
@@ -35,7 +35,7 @@ export const TelaCadastroJogos = () => {
     });
 
     try {
-      const resp = await axios.post(url, {
+      const resp = await axios.post(`${PROD_API_URL}/jogos`, {
         nome: nome,
         descricao: descricao,
         nomeDesenvolvedora: nomeDesenvolvedora,
