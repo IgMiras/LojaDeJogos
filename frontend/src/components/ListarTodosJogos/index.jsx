@@ -10,7 +10,7 @@ export const TodosJogos = () => {
 
   useEffect(() => {
     axios
-      .get(`${PROD_API_URL}/api/jogos`)
+      .get(`${PROD_API_URL}/jogos`)
       .then((response) => {
         setData(response.data);
         console.log("Dados recebidos:", response.data);
