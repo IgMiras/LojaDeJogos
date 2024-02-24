@@ -1,9 +1,9 @@
-process.env['NODE_CONFIG_DIR'] = __dirname + '/config/';
 const express = require('express');
 const cors = require('cors');
 const connectDB = require('./config/db');
 const PORT = process.env.PORT || 5000;
 const app = express();
+require('dotenv').config();
 
 const jogosRota = require('./routes/api/jogos');
 const desenvolvedoraRota = require('./routes/api/desenvolvedora');
