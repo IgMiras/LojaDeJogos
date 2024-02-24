@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import axios from 'axios';
-import { PRO, PROD_API_URLD_API_URL } from '@/constants';
+import { PROD_API_URL } from '@/constants';
 
 const useTokenVerification = (router) => {
 	useEffect(() => {
