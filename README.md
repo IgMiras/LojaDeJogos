@@ -5,7 +5,7 @@
  * 4 - Run a terminal in frontend folder, npm install, and type 'npm run dev' (without single quotes)
 
 ## Forward Features:
-  * 1 - Authentication to verify if an user is admin or not, and render diferent pages for them.
-  (Until now, both admin and normal user accesses the same pages). 
+  * 1 - Turn responsive;
+  * 2 - Show error messages in all forms (not only in login and register);
 
 ### This project was built with the following patterns: MVC, Factory, Strategy.
