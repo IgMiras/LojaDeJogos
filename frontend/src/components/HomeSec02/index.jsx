@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Content, Texto } from "./style";
 import Image from "next/image";
-import img2 from "../../assets/images/Image2.png";
+import img2 from "../../assets/images/image2.png";
 
 export const SubHome2 = () => {
   return (

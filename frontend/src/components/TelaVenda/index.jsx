@@ -19,7 +19,7 @@ import axios from "axios";
 import { CardProdutos } from "../Equipamentos/CardProdutos";
 import { Input } from "../Equipamentos/Input";
 import Image from "next/image";
-import boleto from "../../assets/images/boleto.png";
+import boleto from "../../assets/images/Boleto.png";
 import pix from "../../assets/images/PIX.png";
 
 import { CardCarrinhoProduto } from "../Equipamentos/CarrinhoCardProduto";

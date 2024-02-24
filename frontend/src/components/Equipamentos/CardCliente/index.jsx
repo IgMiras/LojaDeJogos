@@ -1,7 +1,7 @@
 import React, { Children } from "react";
 import Image from "next/image";
 
-import clienteImage from "../../../assets/images/clientImage.png";
+import clienteImage from "../../../assets/images/ClientImage.png";
 import { Container, Content, Description, DivImage, Title } from "./style";
 
 export const CardCliente = ({
